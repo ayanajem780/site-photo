@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Votre Nom — Photographe</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Zakaria Habbad — Photographe</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
   /* ===== COULEURS & POLICES (modifie ici) ===== */
   :root {
@@ -107,6 +107,13 @@
   footer a { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--texte-doux); }
   footer small { font-size: 11px; color: var(--texte-doux); }
 
+  /* Signature (logo) */
+  .logo img { height: 58px; width: auto; display: block; transition: filter .4s; }
+  header.scrolle .logo img { filter: brightness(0); height: 46px; }
+  footer .logo img { filter: brightness(0); height: 70px; margin: 0 auto; }
+  .hero-texte .hero-nom { font-family: 'Pinyon Script', cursive; font-weight: 400; font-size: clamp(48px, 6vw, 84px); letter-spacing: 0; line-height: 1.1; text-shadow: 0 1px 10px rgba(0,0,0,.2); }
+  header #nav { margin-left: auto; }
+  header .burger { margin-left: auto; }
   /* ===== MOBILE ===== */
   @media (max-width: 860px) {
     header, header.scrolle { padding: 18px 20px; }
@@ -127,7 +134,6 @@
 
 <!-- ===== MENU ===== -->
 <header id="header">
-  <a href="#" class="logo">Votre Nom</a>
   <button class="burger" id="burger" aria-label="Menu">☰</button>
   <nav id="nav">
     <ul>
@@ -147,8 +153,7 @@
     <source src="video/hero.mp4" type="video/mp4">
   </video>
   <div class="hero-texte">
-    <h1>Votre Nom</h1>
-    <p>Photographie de portrait &amp; de mariage</p>
+    <h1 class="hero-nom">Zakaria Habbad</h1>
   </div>
 </section>
 
@@ -162,7 +167,7 @@
     <div class="petit-titre">Ma philosophie</div>
     <h2>Des images sincères pour des souvenirs qui durent</h2>
     <p>Chaque histoire est unique : un premier regard, une main qui se serre, un éclat de rire au milieu de la fête. Ce sont ces instants vrais que j'aime saisir.</p>
-    <p>Je m'appelle Votre Nom et je vous accompagne pour raconter votre histoire en images, avec douceur et discrétion, du premier rendez-vous au dernier slow.</p>
+    <p>Je m'appelle Zakaria Habbad et je vous accompagne pour raconter votre histoire en images, avec douceur et discrétion, du premier rendez-vous au dernier slow.</p>
     <a href="#contact" class="bouton">En savoir plus</a>
   </div>
 </section>
@@ -234,7 +239,7 @@
 
 <!-- ===== PIED DE PAGE ===== -->
 <footer>
-  <a href="#" class="logo">Votre Nom</a>
+  <a href="#" class="logo"><img src="images/signature.png" alt="Zakaria Habbad"></a>
   <ul>
     <li><a href="#accueil">Accueil</a></li>
     <li><a href="#apropos">À propos</a></li>
@@ -242,7 +247,7 @@
     <li><a href="#avis">Témoignages</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <small>© 2026 Votre Nom</small>
+  <small>© 2026 Zakaria Habbad</small>
 </footer>
 
 <!-- Lightbox -->
