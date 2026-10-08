@@ -43,6 +43,7 @@
   .slide.active { opacity: 1; }
   .slide img { transform: scale(1.08); transition: transform 7s ease; }
   .slide.active img { transform: scale(1); }
+  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .hero::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.28); }
   .hero-texte { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--blanc); padding: 20px; }
   .hero-texte h1 { font-size: clamp(48px, 8vw, 96px); letter-spacing: 3px; }
@@ -141,15 +142,14 @@
 
 <!-- ===== DIAPORAMA (change les photos ici) ===== -->
 <section class="hero" id="accueil">
-  <div class="slide active"><img src="https://picsum.photos/seed/mariage1/1920/1200" alt=""></div>
-  <div class="slide"><img src="https://picsum.photos/seed/mariage2/1920/1200" alt=""></div>
-  <div class="slide"><img src="https://picsum.photos/seed/mariage3/1920/1200" alt=""></div>
-  <div class="slide"><img src="https://picsum.photos/seed/mariage4/1920/1200" alt=""></div>
+  <!-- Vidéo de fond (fichier : video/hero.mp4) -->
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="video/hero-poster.jpg">
+    <source src="video/hero.mp4" type="video/mp4">
+  </video>
   <div class="hero-texte">
     <h1>Votre Nom</h1>
     <p>Photographie de portrait &amp; de mariage</p>
   </div>
-  <div class="points" id="points"></div>
 </section>
 
 <!-- ===== PHILOSOPHIE ===== -->
@@ -257,25 +257,6 @@
   const nav = document.getElementById('nav');
   document.getElementById('burger').onclick = () => nav.classList.toggle('ouvert');
   nav.querySelectorAll('a').forEach(a => a.onclick = () => nav.classList.remove('ouvert'));
-
-  // Diaporama
-  const slides = document.querySelectorAll('.slide');
-  const points = document.getElementById('points');
-  let actuel = 0;
-  slides.forEach((s, i) => {
-    const b = document.createElement('button');
-    if (i === 0) b.classList.add('active');
-    b.onclick = () => montrer(i);
-    points.appendChild(b);
-  });
-  function montrer(i) {
-    slides[actuel].classList.remove('active');
-    points.children[actuel].classList.remove('active');
-    actuel = i;
-    slides[actuel].classList.add('active');
-    points.children[actuel].classList.add('active');
-  }
-  setInterval(() => montrer((actuel + 1) % slides.length), 5000);
 
   // Témoignages
   const temoins = document.querySelectorAll('.temoin');
