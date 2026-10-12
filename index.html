@@ -77,6 +77,7 @@
   .hero::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.42); }
   .hero-texte { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--blanc); padding: 20px; }
   .hero-texte h1 { font-size: clamp(56px, 11vw, 140px); font-weight: 600; letter-spacing: -.03em; text-transform: uppercase; line-height: .95; }
+  .hero-signature { width: clamp(260px, 42vw, 640px); height: auto; object-fit: contain; display: block; margin: 0 auto; }
 
   /* ===== PHILOSOPHIE ===== */
   .philo { max-width: 1200px; margin: 0 auto; padding: 130px 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -184,7 +185,7 @@
     <source src="video/hero.mp4" type="video/mp4">
   </video>
   <div class="hero-texte">
-    <h1 class="hero-nom">Zakaria Habbad</h1>
+    <h1 class="hero-nom"><img class="hero-signature" src="images/signature-zh.png" alt="Zakaria Habbad"></h1>
   </div>
 </section>
 
