@@ -90,6 +90,16 @@
   .bio-texte h3 { font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; margin-bottom: 30px; letter-spacing: -.01em; }
   .bio-texte p { color: var(--texte-doux); margin-bottom: 20px; font-size: 16px; }
   .bio-texte .bouton { margin-top: 20px; }
+  .bio-cercle { width: 64px; height: 64px; border-radius: 50%; background: #fff; border: 0; color: var(--fond); font-family: var(--titre); font-size: 30px; font-weight: 300; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; margin: 10px 0 30px; transition: transform .4s ease, box-shadow .4s ease; animation: pulse 2.4s ease-out infinite; }
+  .bio-cercle span { display: block; transition: transform .4s ease; }
+  .bio-cercle:hover { transform: scale(1.08); }
+  .bio-cercle[aria-expanded="true"] { animation: none; }
+  .bio-cercle[aria-expanded="true"] span { transform: rotate(45deg); }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,.45); } 100% { box-shadow: 0 0 0 18px rgba(255,255,255,0); } }
+  .bio-plus { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows .7s ease, opacity .6s ease; }
+  .bio-plus > * { min-height: 0; }
+  .bio-plus.ouvert { grid-template-rows: 1fr; opacity: 1; }
+  .bio-plus-interieur { overflow: hidden; }
 
   /* ===== PORTFOLIO (projets plein écran empilés) ===== */
   .travaux { padding: 90px 0 0; text-align: center; }
@@ -203,14 +213,17 @@
     <div class="petit-titre">About me</div>
     <h3>Understanding a place, and telling its story through my own eyes</h3>
     <!-- ===== BIOGRAPHIE (modifie le texte ici) ===== -->
-    <p>I’m Zakaria Habbad, a Moroccan photographer and filmmaker from Agadir.</p>
-    <p>For more than a decade, I’ve been carrying a camera through Morocco, moving between cities, mountains, coastlines, deserts, workshops, medinas and villages. Photography and film became my way of understanding the country I come from, and of paying attention to the things that are easy to overlook.</p>
-    <p>My work moves between photography, cinema, documentaries and visual storytelling. I photograph people, places, architecture, landscapes and everyday moments. I make films about history, culture, artisans, forgotten stories and the people who keep traditions alive. Sometimes I travel with a clear subject in mind. Other times, I simply follow what catches my eye.</p>
-    <p>Morocco is at the centre of much of what I do. Its history, craftsmanship, architecture, landscapes and cultures constantly give me something new to discover. I’m particularly interested in the relationship between the past and the present, and in how stories survive through places, objects, hands and people.</p>
-    <p>Alongside my personal work, I work with clients, brands, businesses and cultural projects, creating photographs, films and social content. My professional experience has taken me from working with artisans across Morocco to producing commercial content, travelling for projects and collaborating with different teams and clients.</p>
-    <p>I don’t see a strict line between the work I do for clients and the work I do for myself. Both come from the same place: curiosity, observation and a desire to create something that feels honest.</p>
-    <p>This website is a collection of that journey so far.</p>
-    <p>The photographs, films, documentaries, travels, discoveries and commissioned work are all different chapters of the same thing: trying to understand a place, and finding a way to tell its story through my own eyes.</p>
+    <button class="bio-cercle" id="bio-cercle" aria-expanded="false" aria-controls="bio-plus" aria-label="Lire la biographie"><span>+</span></button>
+    <div class="bio-plus" id="bio-plus"><div class="bio-plus-interieur">
+      <p>I’m Zakaria Habbad, a Moroccan photographer and filmmaker from Agadir.</p>
+      <p>For more than a decade, I’ve been carrying a camera through Morocco, moving between cities, mountains, coastlines, deserts, workshops, medinas and villages. Photography and film became my way of understanding the country I come from, and of paying attention to the things that are easy to overlook.</p>
+      <p>My work moves between photography, cinema, documentaries and visual storytelling. I photograph people, places, architecture, landscapes and everyday moments. I make films about history, culture, artisans, forgotten stories and the people who keep traditions alive. Sometimes I travel with a clear subject in mind. Other times, I simply follow what catches my eye.</p>
+      <p>Morocco is at the centre of much of what I do. Its history, craftsmanship, architecture, landscapes and cultures constantly give me something new to discover. I’m particularly interested in the relationship between the past and the present, and in how stories survive through places, objects, hands and people.</p>
+      <p>Alongside my personal work, I work with clients, brands, businesses and cultural projects, creating photographs, films and social content. My professional experience has taken me from working with artisans across Morocco to producing commercial content, travelling for projects and collaborating with different teams and clients.</p>
+      <p>I don’t see a strict line between the work I do for clients and the work I do for myself. Both come from the same place: curiosity, observation and a desire to create something that feels honest.</p>
+      <p>This website is a collection of that journey so far.</p>
+      <p>The photographs, films, documentaries, travels, discoveries and commissioned work are all different chapters of the same thing: trying to understand a place, and finding a way to tell its story through my own eyes.</p>
+    </div></div>
     <a href="#contact" class="bouton">Work with me</a>
   </div>
 </section>
@@ -327,6 +340,14 @@
   menuBtn.onclick = ouvrirMenu;
   menuClose.onclick = fermerMenu;
   menuOverlay.querySelectorAll('[data-menu-lien]').forEach(a => a.onclick = fermerMenu);
+
+  // Biographie : cercle blanc qui ouvre le texte
+  const bioCercle = document.getElementById('bio-cercle');
+  const bioPlus = document.getElementById('bio-plus');
+  bioCercle.onclick = () => {
+    const ouvert = bioPlus.classList.toggle('ouvert');
+    bioCercle.setAttribute('aria-expanded', ouvert);
+  };
 
   // Témoignages
   const temoins = document.querySelectorAll('.temoin');
