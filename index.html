@@ -136,12 +136,19 @@
   .contact p { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; max-width: 560px; margin: 0 auto 36px; color: var(--texte-doux); }
 
   /* ===== INSTAGRAM ===== */
-  .insta { padding: 100px 0 0; text-align: center; }
+  .insta { padding: 100px 0 80px; text-align: center; }
   .insta h4 { font-weight: 600; font-size: 24px; margin-bottom: 40px; }
-  .insta-grille { display: grid; grid-template-columns: repeat(6, 1fr); }
-  .insta-grille a { aspect-ratio: 1; overflow: hidden; }
-  .insta-grille img { transition: opacity .3s, filter .3s; filter: grayscale(.15); }
-  .insta-grille a:hover img { opacity: .7; }
+  .insta-bandes { display: flex; flex-direction: column; gap: 14px; overflow: hidden; }
+  .bande { overflow: hidden; }
+  .bande-piste { display: flex; gap: 14px; width: max-content; animation: defile 45s linear infinite; }
+  .bande-inverse .bande-piste { animation-direction: reverse; }
+  .bande:hover .bande-piste { animation-play-state: paused; }
+  .bande-piste a { flex: 0 0 auto; width: clamp(180px, 22vw, 320px); aspect-ratio: 1; overflow: hidden; }
+  .bande-inverse .bande-piste a { aspect-ratio: 4 / 3; }
+  .bande-piste img { transition: opacity .3s, transform .6s ease; }
+  .bande-piste a:hover img { opacity: .75; transform: scale(1.05); }
+  @keyframes defile { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 7px)); } }
+  @media (prefers-reduced-motion: reduce) { .bande-piste { animation: none; } }
 
   /* ===== PIED DE PAGE ===== */
   footer { padding: 60px 50px; text-align: center; border-top: 1px solid var(--fond-2); }
@@ -166,7 +173,6 @@
     .projet-meta { text-align: left; }
     .temoignages { padding-left: 20px; padding-right: 20px; }
     .temoin-zone { min-height: 380px; }
-    .insta-grille { grid-template-columns: repeat(3, 1fr); }
   }
 </style>
 </head>
@@ -310,13 +316,44 @@
 <section class="insta">
   <div class="petit-titre">Follow me on Instagram</div>
   <h4>@youraccount</h4>
-  <div class="insta-grille">
-    <a href="https://instagram.com/" target="_blank"><img src="https://picsum.photos/seed/insta1/400/400" alt=""></a>
-    <a href="https://instagram.com/" target="_blank"><img src="https://picsum.photos/seed/insta2/400/400" alt=""></a>
-    <a href="https://instagram.com/" target="_blank"><img src="https://picsum.photos/seed/insta3/400/400" alt=""></a>
-    <a href="https://instagram.com/" target="_blank"><img src="https://picsum.photos/seed/insta4/400/400" alt=""></a>
-    <a href="https://instagram.com/" target="_blank"><img src="https://picsum.photos/seed/insta5/400/400" alt=""></a>
-    <a href="https://instagram.com/" target="_blank"><img src="https://picsum.photos/seed/insta6/400/400" alt=""></a>
+  <!-- Deux bandes qui défilent : change les photos ici (chaque bande est écrite 2 fois pour boucler) -->
+  <div class="insta-bandes">
+    <div class="bande ">
+     <div class="bande-piste">
+      <a href="https://instagram.com/" target="_blank"><img src="images/projet-1.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank"><img src="images/zakaria-portrait.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank"><img src="images/projet-2.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank"><img src="images/projet-3.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank"><img src="images/contact-cafe.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank"><img src="images/projet-4.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank"><img src="images/projet-5.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank" aria-hidden="true" tabindex="-1"><img src="images/projet-1.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank" aria-hidden="true" tabindex="-1"><img src="images/zakaria-portrait.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank" aria-hidden="true" tabindex="-1"><img src="images/projet-2.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank" aria-hidden="true" tabindex="-1"><img src="images/projet-3.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank" aria-hidden="true" tabindex="-1"><img src="images/contact-cafe.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank" aria-hidden="true" tabindex="-1"><img src="images/projet-4.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank" aria-hidden="true" tabindex="-1"><img src="images/projet-5.jpg" alt="" loading="lazy"></a>
+     </div>
+    </div>
+    <div class="bande bande-inverse">
+     <div class="bande-piste">
+      <a href="https://instagram.com/" target="_blank"><img src="images/projet-5.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank"><img src="images/projet-3.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank"><img src="images/contact-cafe.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank"><img src="images/projet-1.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank"><img src="images/projet-4.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank"><img src="images/zakaria-portrait.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank"><img src="images/projet-2.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank" aria-hidden="true" tabindex="-1"><img src="images/projet-5.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank" aria-hidden="true" tabindex="-1"><img src="images/projet-3.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank" aria-hidden="true" tabindex="-1"><img src="images/contact-cafe.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank" aria-hidden="true" tabindex="-1"><img src="images/projet-1.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank" aria-hidden="true" tabindex="-1"><img src="images/projet-4.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank" aria-hidden="true" tabindex="-1"><img src="images/zakaria-portrait.jpg" alt="" loading="lazy"></a>
+      <a href="https://instagram.com/" target="_blank" aria-hidden="true" tabindex="-1"><img src="images/projet-2.jpg" alt="" loading="lazy"></a>
+     </div>
+    </div>
   </div>
 </section>
 
