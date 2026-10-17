@@ -6,7 +6,7 @@
 <title>Zakaria Habbad — Photographe</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter+Tight:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   /* ===== COULEURS & POLICES (modifie ici) ===== */
   :root {
@@ -79,14 +79,17 @@
   .hero-texte h1 { font-size: clamp(56px, 11vw, 140px); font-weight: 600; letter-spacing: -.03em; text-transform: uppercase; line-height: .95; }
   .hero-signature { width: clamp(260px, 42vw, 640px); height: auto; object-fit: contain; display: block; margin: 0 auto; }
 
-  /* ===== PHILOSOPHIE ===== */
-  .philo { max-width: 1200px; margin: 0 auto; padding: 130px 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-  .philo-images { position: relative; height: 620px; }
-  .philo-images .img1 { position: absolute; left: 0; top: 0; width: 65%; height: 80%; }
-  .philo-images .img2 { position: absolute; right: 0; bottom: 0; width: 50%; height: 55%; border: 10px solid var(--fond); }
-  .philo h2 { font-size: clamp(32px, 4vw, 48px); line-height: 1.15; margin-bottom: 30px; }
-  .philo p { color: var(--texte-doux); margin-bottom: 20px; font-size: 15px; }
-  .philo .bouton { margin-top: 20px; }
+  /* ===== BIOGRAPHIE ===== */
+  .bio { max-width: 1100px; margin: 0 auto; padding: 140px 50px 130px; }
+  .bio-titre { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(30px, 5vw, 62px); letter-spacing: -.01em; line-height: 1.1; color: var(--texte); display: flex; align-items: center; flex-wrap: wrap; gap: 18px; margin-bottom: 50px; }
+  .bio-titre em { font-style: italic; color: var(--texte-doux); }
+  .bio-trait { display: inline-block; width: clamp(40px, 8vw, 110px); height: 1px; background: var(--texte-doux); }
+  .bio-cadre { background: #f2f0ec; padding: clamp(14px, 3vw, 36px); padding-bottom: clamp(40px, 7vw, 90px); box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+  .bio-cadre img { aspect-ratio: 16 / 9; height: auto; filter: grayscale(1); }
+  .bio-texte { max-width: 640px; margin: 80px 0 0 auto; }
+  .bio-texte h3 { font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; margin-bottom: 30px; letter-spacing: -.01em; }
+  .bio-texte p { color: var(--texte-doux); margin-bottom: 20px; font-size: 16px; }
+  .bio-texte .bouton { margin-top: 20px; }
 
   /* ===== PORTFOLIO (projets plein écran empilés) ===== */
   .travaux { padding: 90px 0 0; text-align: center; }
@@ -142,8 +145,9 @@
     header { padding: 20px; }
     .menu-overlay { padding: 0 24px; }
     .menu-close { right: 20px; top: 20px; }
-    .philo { grid-template-columns: 1fr; padding: 90px 20px; gap: 50px; }
-    .philo-images { height: 460px; }
+    .bio { padding: 100px 20px 90px; }
+    .bio-titre { gap: 12px; margin-bottom: 30px; }
+    .bio-texte { margin-top: 50px; }
     .travaux h3 { padding: 0 20px 40px; }
     .projet-footer { flex-direction: column; align-items: flex-start; padding: 0 24px 40px; gap: 20px; }
     .projet-meta { text-align: left; }
@@ -190,17 +194,19 @@
 </section>
 
 <!-- ===== PHILOSOPHIE ===== -->
-<section class="philo" id="apropos">
-  <div class="philo-images">
-    <div class="img1"><img src="https://picsum.photos/seed/portrait5/800/1100" alt=""></div>
-    <div class="img2"><img src="https://picsum.photos/seed/portrait2/700/900" alt=""></div>
+<section class="bio" id="apropos">
+  <h2 class="bio-titre">ZAKARIA HABBAD <span class="bio-trait"></span> <em>Biographie</em></h2>
+  <div class="bio-cadre">
+    <img src="images/zakaria-portrait.jpg" alt="Portrait de Zakaria Habbad, appareil photo à la main">
   </div>
-  <div>
+  <div class="bio-texte">
     <div class="petit-titre">Ma philosophie</div>
-    <h2>Des images sincères pour des souvenirs qui durent</h2>
-    <p>Chaque histoire est unique : un premier regard, une main qui se serre, un éclat de rire au milieu de la fête. Ce sont ces instants vrais que j'aime saisir.</p>
-    <p>Je m'appelle Zakaria Habbad et je vous accompagne pour raconter votre histoire en images, avec douceur et discrétion, du premier rendez-vous au dernier slow.</p>
-    <a href="#contact" class="bouton">En savoir plus</a>
+    <h3>Des images sincères pour des souvenirs qui durent</h3>
+    <!-- ===== BIOGRAPHIE (modifie le texte ici) ===== -->
+    <p>Zakaria Habbad est un photographe marocain. Son regard s'est forgé au contact de la lumière franche du Maroc, des murs chauffés par le soleil et des gens qu'il croise sur sa route.</p>
+    <p>Du portrait au reportage, de la photographie de produit aux lieux d'accueil, il cherche toujours la même chose : l'instant vrai, celui qui ne se met pas en scène. Un premier regard, une main qui se serre, un éclat de rire au milieu de la fête.</p>
+    <p>Il travaille avec douceur et discrétion, pour que chacun se sente à l'aise devant l'objectif, et que les images racontent votre histoire telle qu'elle a été vécue.</p>
+    <a href="#contact" class="bouton">Travailler ensemble</a>
   </div>
 </section>
 
