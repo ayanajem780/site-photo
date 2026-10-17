@@ -204,7 +204,7 @@
   <nav class="menu-liens">
     <a href="#accueil" data-menu-lien>Home</a>
     <a href="#portfolio" data-menu-lien>Portfolio</a>
-    <a href="#apropos" data-menu-lien>Biography</a>
+    <a href="biography.html" data-menu-lien>Biography</a>
     <a href="#contact" data-menu-lien>Contact</a>
   </nav>
 </div>
@@ -220,30 +220,7 @@
   </div>
 </section>
 
-<!-- ===== PHILOSOPHIE ===== -->
-<section class="bio" id="apropos">
-  <h2 class="bio-titre">ZAKARIA HABBAD <span style="color: var(--texte-doux)">·</span> <em>Biography</em></h2>
-  <div class="bio-cadre">
-    <img src="images/zakaria-portrait.jpg" alt="Portrait of Zakaria Habbad holding his camera">
-  </div>
-  <div class="bio-texte">
-    <div class="petit-titre">About me</div>
-    <h3>Understanding a place, and telling its story through my own eyes</h3>
-    <!-- ===== BIOGRAPHIE (modifie le texte ici) ===== -->
-    <button class="bio-cercle" id="bio-cercle" aria-expanded="false" aria-controls="bio-plus" aria-label="Read the biography"><span>+</span></button>
-    <div class="bio-plus" id="bio-plus"><div class="bio-plus-interieur">
-      <p>I’m <strong>Zakaria Habbad</strong>, a <strong>Moroccan photographer and filmmaker</strong> from Agadir.</p>
-      <p><strong>For more than a decade</strong>, I’ve been carrying a camera through Morocco, moving between cities, mountains, coastlines, deserts, workshops, medinas and villages. Photography and film became my way of <strong>understanding the country I come from</strong>, and of paying attention to the things that are easy to overlook.</p>
-      <p>My work moves between <strong>photography, cinema, documentaries and visual storytelling</strong>. I photograph people, places, architecture, landscapes and everyday moments. I make films about history, culture, artisans, forgotten stories and <strong>the people who keep traditions alive</strong>. Sometimes I travel with a clear subject in mind. Other times, I simply follow what catches my eye.</p>
-      <p><strong>Morocco is at the centre of much of what I do</strong>. Its history, craftsmanship, architecture, landscapes and cultures constantly give me something new to discover. I’m particularly interested in <strong>the relationship between the past and the present</strong>, and in how stories survive through places, objects, hands and people.</p>
-      <p>Alongside my personal work, I work with <strong>clients, brands, businesses and cultural projects</strong>, creating photographs, films and social content. My professional experience has taken me from working with artisans across Morocco to producing commercial content, travelling for projects and collaborating with different teams and clients.</p>
-      <p>I don’t see a strict line between the work I do for clients and the work I do for myself. Both come from the same place: <strong>curiosity, observation and a desire to create something that feels honest</strong>.</p>
-      <p>This website is <strong>a collection of that journey so far</strong>.</p>
-      <p>The photographs, films, documentaries, travels, discoveries and commissioned work are all different chapters of the same thing: trying to understand a place, and finding a way to <strong>tell its story through my own eyes</strong>.</p>
-    </div></div>
-    <a href="#contact" class="bouton">Work with me</a>
-  </div>
-</section>
+
 
 <!-- ===== PORTFOLIO (projets plein écran, ajoute/enlève des .projet) ===== -->
 <section class="travaux" id="portfolio">
@@ -282,11 +259,11 @@
       </div>
     </div>
     <div class="projet">
-      <a href="anza.html" class="projet-lien" aria-label="See the Me in Anza gallery"></a>
+      <a href="biography.html" class="projet-lien" aria-label="Read the biography"></a>
       <div class="projet-media"><img src="images/projet-5.jpg" alt=""></div>
       <div class="projet-degrade"></div>
       <div class="projet-footer">
-        <div class="projet-titre">Me in Anza</div>
+        <div class="projet-titre">Biography</div>
       </div>
     </div>
   </div>
@@ -377,7 +354,7 @@
   <a href="#" class="logo"><img src="images/logo-zh-blanc.svg" alt="Zakaria Habbad"></a>
   <ul>
     <li><a href="#accueil">Home</a></li>
-    <li><a href="#apropos">Biography</a></li>
+    <li><a href="biography.html">Biography</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#avis">Testimonials</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -399,7 +376,7 @@
   // Biographie : cercle blanc qui ouvre le texte
   const bioCercle = document.getElementById('bio-cercle');
   const bioPlus = document.getElementById('bio-plus');
-  bioCercle.onclick = () => {
+  if (bioCercle) bioCercle.onclick = () => {
     const ouvert = bioPlus.classList.toggle('ouvert');
     bioCercle.setAttribute('aria-expanded', ouvert);
   };
