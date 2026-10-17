@@ -111,6 +111,7 @@
   .projet-media { position: absolute; inset: 0; }
   .projet-media img, .projet-media video { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
   .projet:hover .projet-media img, .projet:hover .projet-media video { transform: scale(1.06); }
+  .projet-lien { position: absolute; inset: 0; z-index: 3; }
   .projet-degrade { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 45%, rgba(0,0,0,.88) 100%); }
   .projet-footer { position: relative; z-index: 2; width: 100%; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 50px 60px; gap: 30px; text-align: left; }
   .projet-titre { font-family: var(--titre); font-weight: 600; font-size: clamp(26px, 3.6vw, 52px); letter-spacing: -.01em; color: var(--texte); }
@@ -249,6 +250,7 @@
   <h3>Selected work</h3>
   <div class="pile" id="pile">
     <div class="projet">
+      <a href="airbnb.html" class="projet-lien" aria-label="See the Airbnb catalogue"></a>
       <div class="projet-media"><img src="images/projet-1.jpg" alt=""></div>
       <div class="projet-degrade"></div>
       <div class="projet-footer">
@@ -426,6 +428,10 @@
     animer();
     document.querySelectorAll('.projet-media video').forEach(el => {
       el.addEventListener('mouseenter', () => { curseur.classList.add('survol'); label.textContent = '[PLAY]'; });
+      el.addEventListener('mouseleave', () => { curseur.classList.remove('survol'); label.textContent = ''; });
+    });
+    document.querySelectorAll('.projet-lien').forEach(el => {
+      el.addEventListener('mouseenter', () => { curseur.classList.add('survol'); label.textContent = '[OPEN]'; });
       el.addEventListener('mouseleave', () => { curseur.classList.remove('survol'); label.textContent = ''; });
     });
     document.querySelectorAll('.projet-media img').forEach(el => {
