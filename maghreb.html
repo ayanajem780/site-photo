@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maghreb — Zakaria Habbad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --fond:#0a0a0a; --fond-2:#141414; --texte:#ededed; --texte-doux:#9a9a9a; --titre:'Inter Tight',sans-serif; --mono:'JetBrains Mono',monospace; --serif:'Cormorant Garamond',serif; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--fond); color:var(--texte); font-family:var(--titre); line-height:1.6; }
+  a { color:inherit; text-decoration:none; }
+  img { display:block; width:100%; height:auto; }
+  header { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:26px 50px; color:#fff; mix-blend-mode:difference; }
+  .logo-texte { font-weight:600; font-size:20px; letter-spacing:-.01em; }
+  .retour { font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; }
+  .retour:hover { opacity:.6; }
+  .intro { padding:170px 50px 40px; max-width:1300px; margin:0 auto; }
+  .petit-titre { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); margin-bottom:18px; }
+  .intro h1 { font-family:var(--serif); font-weight:400; font-size:clamp(56px,10vw,140px); line-height:.95; letter-spacing:-.01em; }
+  .intro h1 em { color:var(--texte-doux); }
+  .intro p { color:var(--texte-doux); max-width:560px; margin-top:26px; font-size:16px; }
+  .nav-lieux { position:sticky; top:0; z-index:50; background:rgba(10,10,10,.85); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--fond-2); }
+  .nav-lieux div { max-width:1300px; margin:0 auto; padding:84px 50px 18px; display:flex; gap:28px; overflow-x:auto; scrollbar-width:none; }
+  .nav-lieux a { font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--texte-doux); white-space:nowrap; transition:color .3s; }
+  .nav-lieux a:hover, .nav-lieux a.actif { color:var(--texte); }
+  .lieu { max-width:1300px; margin:0 auto; padding:90px 50px 20px; scroll-margin-top:110px; }
+  .lieu-tete { display:flex; justify-content:space-between; align-items:baseline; gap:20px; border-bottom:1px solid rgba(237,237,237,.15); padding-bottom:18px; margin-bottom:28px; flex-wrap:wrap; }
+  .lieu h2 { font-family:var(--serif); font-weight:400; font-size:clamp(36px,5vw,64px); line-height:1; }
+  .lieu-type { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); }
+  .grille { columns:3 300px; column-gap:14px; }
+  .vignette { display:block; width:100%; margin:0 0 14px; padding:0; border:0; background:var(--fond-2); cursor:zoom-in; overflow:hidden; break-inside:avoid; }
+  .vignette img { transition:transform .8s ease, opacity .4s; }
+  .vignette:hover img { transform:scale(1.04); opacity:.85; }
+  .vignette:focus-visible { outline:2px solid var(--texte); outline-offset:3px; }
+  .lb { position:fixed; inset:0; z-index:200; background:rgba(5,5,5,.96); display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .35s; }
+  .lb.ouvert { opacity:1; pointer-events:auto; }
+  .lb img { max-width:92vw; max-height:84vh; width:auto; height:auto; object-fit:contain; }
+  .lb button { position:absolute; background:none; border:0; color:var(--texte); font-family:var(--mono); font-size:12px; letter-spacing:.1em; cursor:pointer; padding:14px; }
+  .lb button:hover { opacity:.6; }
+  .lb-fermer { top:20px; right:36px; }
+  .lb-prec { left:20px; top:50%; transform:translateY(-50%); font-size:28px !important; }
+  .lb-suiv { right:20px; top:50%; transform:translateY(-50%); font-size:28px !important; }
+  .lb-compte { position:absolute; bottom:24px; left:0; right:0; text-align:center; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); }
+  footer { padding:80px 50px 60px; text-align:center; }
+  footer a { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); }
+  footer a:hover { color:var(--texte); }
+  @media (max-width:860px) {
+    header { padding:20px; } .intro { padding:130px 20px 30px; } .nav-lieux div { padding:70px 20px 14px; gap:20px; }
+    .lieu { padding:60px 20px 10px; } .grille { columns:2 140px; column-gap:8px; } .vignette { margin-bottom:8px; }
+    .lb-prec, .lb-suiv { top:auto; bottom:12px; transform:none; } .lb-fermer { right:12px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo-texte">Zakaria Habbad®</a>
+  <a href="index.html#portfolio" class="retour">[BACK]</a>
+</header>
+
+<section class="intro">
+  <div class="petit-titre">Selected work</div>
+  <h1>Maghreb</h1>
+  <p>Cities, deserts, rituals and light: travels through Morocco and the Maghreb.</p>
+</section>
+
+<nav class="nav-lieux"><div><a href="#andalusia">Andalusia</a><a href="#marrakesh">Marrakesh</a><a href="#sahara">Sahara</a><a href="#ramadan">Ramadan Cheikhat</a><a href="#essaouira">Essaouira</a></div></nav>
+
+<section class="lieu" id="andalusia">
+  <div class="lieu-tete"><h2>Andalusia</h2><span class="lieu-type">16 photos</span></div>
+  <div class="grille"><button class="vignette" data-full="images/maghreb/andalusia/01.jpg" aria-label="Open photo 1 of Andalusia"><img src="images/maghreb/andalusia/01-mini.jpg" alt="Andalusia, photo 1" loading="lazy"></button><button class="vignette" data-full="images/maghreb/andalusia/02.jpg" aria-label="Open photo 2 of Andalusia"><img src="images/maghreb/andalusia/02-mini.jpg" alt="Andalusia, photo 2" loading="lazy"></button><button class="vignette" data-full="images/maghreb/andalusia/03.jpg" aria-label="Open photo 3 of Andalusia"><img src="images/maghreb/andalusia/03-mini.jpg" alt="Andalusia, photo 3" loading="lazy"></button><button class="vignette" data-full="images/maghreb/andalusia/04.jpg" aria-label="Open photo 4 of Andalusia"><img src="images/maghreb/andalusia/04-mini.jpg" alt="Andalusia, photo 4" loading="lazy"></button><button class="vignette" data-full="images/maghreb/andalusia/05.jpg" aria-label="Open photo 5 of Andalusia"><img src="images/maghreb/andalusia/05-mini.jpg" alt="Andalusia, photo 5" loading="lazy"></button><button class="vignette" data-full="images/maghreb/andalusia/06.jpg" aria-label="Open photo 6 of Andalusia"><img src="images/maghreb/andalusia/06-mini.jpg" alt="Andalusia, photo 6" loading="lazy"></button><button class="vignette" data-full="images/maghreb/andalusia/07.jpg" aria-label="Open photo 7 of Andalusia"><img src="images/maghreb/andalusia/07-mini.jpg" alt="Andalusia, photo 7" loading="lazy"></button><button class="vignette" data-full="images/maghreb/andalusia/08.jpg" aria-label="Open photo 8 of Andalusia"><img src="images/maghreb/andalusia/08-mini.jpg" alt="Andalusia, photo 8" loading="lazy"></button><button class="vignette" data-full="images/maghreb/andalusia/09.jpg" aria-label="Open photo 9 of Andalusia"><img src="images/maghreb/andalusia/09-mini.jpg" alt="Andalusia, photo 9" loading="lazy"></button><button class="vignette" data-full="images/maghreb/andalusia/10.jpg" aria-label="Open photo 10 of Andalusia"><img src="images/maghreb/andalusia/10-mini.jpg" alt="Andalusia, photo 10" loading="lazy"></button><button class="vignette" data-full="images/maghreb/andalusia/11.jpg" aria-label="Open photo 11 of Andalusia"><img src="images/maghreb/andalusia/11-mini.jpg" alt="Andalusia, photo 11" loading="lazy"></button><button class="vignette" data-full="images/maghreb/andalusia/12.jpg" aria-label="Open photo 12 of Andalusia"><img src="images/maghreb/andalusia/12-mini.jpg" alt="Andalusia, photo 12" loading="lazy"></button><button class="vignette" data-full="images/maghreb/andalusia/13.jpg" aria-label="Open photo 13 of Andalusia"><img src="images/maghreb/andalusia/13-mini.jpg" alt="Andalusia, photo 13" loading="lazy"></button><button class="vignette" data-full="images/maghreb/andalusia/14.jpg" aria-label="Open photo 14 of Andalusia"><img src="images/maghreb/andalusia/14-mini.jpg" alt="Andalusia, photo 14" loading="lazy"></button><button class="vignette" data-full="images/maghreb/andalusia/15.jpg" aria-label="Open photo 15 of Andalusia"><img src="images/maghreb/andalusia/15-mini.jpg" alt="Andalusia, photo 15" loading="lazy"></button><button class="vignette" data-full="images/maghreb/andalusia/16.jpg" aria-label="Open photo 16 of Andalusia"><img src="images/maghreb/andalusia/16-mini.jpg" alt="Andalusia, photo 16" loading="lazy"></button></div>
+</section>
+
+<section class="lieu" id="marrakesh">
+  <div class="lieu-tete"><h2>Marrakesh</h2><span class="lieu-type">4 photos</span></div>
+  <div class="grille"><button class="vignette" data-full="images/maghreb/marrakesh/01.jpg" aria-label="Open photo 1 of Marrakesh"><img src="images/maghreb/marrakesh/01-mini.jpg" alt="Marrakesh, photo 1" loading="lazy"></button><button class="vignette" data-full="images/maghreb/marrakesh/02.jpg" aria-label="Open photo 2 of Marrakesh"><img src="images/maghreb/marrakesh/02-mini.jpg" alt="Marrakesh, photo 2" loading="lazy"></button><button class="vignette" data-full="images/maghreb/marrakesh/03.jpg" aria-label="Open photo 3 of Marrakesh"><img src="images/maghreb/marrakesh/03-mini.jpg" alt="Marrakesh, photo 3" loading="lazy"></button><button class="vignette" data-full="images/maghreb/marrakesh/04.jpg" aria-label="Open photo 4 of Marrakesh"><img src="images/maghreb/marrakesh/04-mini.jpg" alt="Marrakesh, photo 4" loading="lazy"></button></div>
+</section>
+
+<section class="lieu" id="sahara">
+  <div class="lieu-tete"><h2>Sahara</h2><span class="lieu-type">20 photos</span></div>
+  <div class="grille"><button class="vignette" data-full="images/maghreb/sahara/01.jpg" aria-label="Open photo 1 of Sahara"><img src="images/maghreb/sahara/01-mini.jpg" alt="Sahara, photo 1" loading="lazy"></button><button class="vignette" data-full="images/maghreb/sahara/02.jpg" aria-label="Open photo 2 of Sahara"><img src="images/maghreb/sahara/02-mini.jpg" alt="Sahara, photo 2" loading="lazy"></button><button class="vignette" data-full="images/maghreb/sahara/03.jpg" aria-label="Open photo 3 of Sahara"><img src="images/maghreb/sahara/03-mini.jpg" alt="Sahara, photo 3" loading="lazy"></button><button class="vignette" data-full="images/maghreb/sahara/04.jpg" aria-label="Open photo 4 of Sahara"><img src="images/maghreb/sahara/04-mini.jpg" alt="Sahara, photo 4" loading="lazy"></button><button class="vignette" data-full="images/maghreb/sahara/05.jpg" aria-label="Open photo 5 of Sahara"><img src="images/maghreb/sahara/05-mini.jpg" alt="Sahara, photo 5" loading="lazy"></button><button class="vignette" data-full="images/maghreb/sahara/06.jpg" aria-label="Open photo 6 of Sahara"><img src="images/maghreb/sahara/06-mini.jpg" alt="Sahara, photo 6" loading="lazy"></button><button class="vignette" data-full="images/maghreb/sahara/07.jpg" aria-label="Open photo 7 of Sahara"><img src="images/maghreb/sahara/07-mini.jpg" alt="Sahara, photo 7" loading="lazy"></button><button class="vignette" data-full="images/maghreb/sahara/08.jpg" aria-label="Open photo 8 of Sahara"><img src="images/maghreb/sahara/08-mini.jpg" alt="Sahara, photo 8" loading="lazy"></button><button class="vignette" data-full="images/maghreb/sahara/09.jpg" aria-label="Open photo 9 of Sahara"><img src="images/maghreb/sahara/09-mini.jpg" alt="Sahara, photo 9" loading="lazy"></button><button class="vignette" data-full="images/maghreb/sahara/10.jpg" aria-label="Open photo 10 of Sahara"><img src="images/maghreb/sahara/10-mini.jpg" alt="Sahara, photo 10" loading="lazy"></button><button class="vignette" data-full="images/maghreb/sahara/11.jpg" aria-label="Open photo 11 of Sahara"><img src="images/maghreb/sahara/11-mini.jpg" alt="Sahara, photo 11" loading="lazy"></button><button class="vignette" data-full="images/maghreb/sahara/12.jpg" aria-label="Open photo 12 of Sahara"><img src="images/maghreb/sahara/12-mini.jpg" alt="Sahara, photo 12" loading="lazy"></button><button class="vignette" data-full="images/maghreb/sahara/13.jpg" aria-label="Open photo 13 of Sahara"><img src="images/maghreb/sahara/13-mini.jpg" alt="Sahara, photo 13" loading="lazy"></button><button class="vignette" data-full="images/maghreb/sahara/14.jpg" aria-label="Open photo 14 of Sahara"><img src="images/maghreb/sahara/14-mini.jpg" alt="Sahara, photo 14" loading="lazy"></button><button class="vignette" data-full="images/maghreb/sahara/15.jpg" aria-label="Open photo 15 of Sahara"><img src="images/maghreb/sahara/15-mini.jpg" alt="Sahara, photo 15" loading="lazy"></button><button class="vignette" data-full="images/maghreb/sahara/16.jpg" aria-label="Open photo 16 of Sahara"><img src="images/maghreb/sahara/16-mini.jpg" alt="Sahara, photo 16" loading="lazy"></button><button class="vignette" data-full="images/maghreb/sahara/17.jpg" aria-label="Open photo 17 of Sahara"><img src="images/maghreb/sahara/17-mini.jpg" alt="Sahara, photo 17" loading="lazy"></button><button class="vignette" data-full="images/maghreb/sahara/18.jpg" aria-label="Open photo 18 of Sahara"><img src="images/maghreb/sahara/18-mini.jpg" alt="Sahara, photo 18" loading="lazy"></button><button class="vignette" data-full="images/maghreb/sahara/19.jpg" aria-label="Open photo 19 of Sahara"><img src="images/maghreb/sahara/19-mini.jpg" alt="Sahara, photo 19" loading="lazy"></button><button class="vignette" data-full="images/maghreb/sahara/20.jpg" aria-label="Open photo 20 of Sahara"><img src="images/maghreb/sahara/20-mini.jpg" alt="Sahara, photo 20" loading="lazy"></button></div>
+</section>
+
+<section class="lieu" id="ramadan">
+  <div class="lieu-tete"><h2>Ramadan Cheikhat</h2><span class="lieu-type">20 photos</span></div>
+  <div class="grille"><button class="vignette" data-full="images/maghreb/ramadan/01.jpg" aria-label="Open photo 1 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/01-mini.jpg" alt="Ramadan Cheikhat, photo 1" loading="lazy"></button><button class="vignette" data-full="images/maghreb/ramadan/02.jpg" aria-label="Open photo 2 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/02-mini.jpg" alt="Ramadan Cheikhat, photo 2" loading="lazy"></button><button class="vignette" data-full="images/maghreb/ramadan/03.jpg" aria-label="Open photo 3 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/03-mini.jpg" alt="Ramadan Cheikhat, photo 3" loading="lazy"></button><button class="vignette" data-full="images/maghreb/ramadan/04.jpg" aria-label="Open photo 4 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/04-mini.jpg" alt="Ramadan Cheikhat, photo 4" loading="lazy"></button><button class="vignette" data-full="images/maghreb/ramadan/05.jpg" aria-label="Open photo 5 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/05-mini.jpg" alt="Ramadan Cheikhat, photo 5" loading="lazy"></button><button class="vignette" data-full="images/maghreb/ramadan/06.jpg" aria-label="Open photo 6 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/06-mini.jpg" alt="Ramadan Cheikhat, photo 6" loading="lazy"></button><button class="vignette" data-full="images/maghreb/ramadan/07.jpg" aria-label="Open photo 7 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/07-mini.jpg" alt="Ramadan Cheikhat, photo 7" loading="lazy"></button><button class="vignette" data-full="images/maghreb/ramadan/08.jpg" aria-label="Open photo 8 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/08-mini.jpg" alt="Ramadan Cheikhat, photo 8" loading="lazy"></button><button class="vignette" data-full="images/maghreb/ramadan/09.jpg" aria-label="Open photo 9 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/09-mini.jpg" alt="Ramadan Cheikhat, photo 9" loading="lazy"></button><button class="vignette" data-full="images/maghreb/ramadan/10.jpg" aria-label="Open photo 10 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/10-mini.jpg" alt="Ramadan Cheikhat, photo 10" loading="lazy"></button><button class="vignette" data-full="images/maghreb/ramadan/11.jpg" aria-label="Open photo 11 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/11-mini.jpg" alt="Ramadan Cheikhat, photo 11" loading="lazy"></button><button class="vignette" data-full="images/maghreb/ramadan/12.jpg" aria-label="Open photo 12 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/12-mini.jpg" alt="Ramadan Cheikhat, photo 12" loading="lazy"></button><button class="vignette" data-full="images/maghreb/ramadan/13.jpg" aria-label="Open photo 13 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/13-mini.jpg" alt="Ramadan Cheikhat, photo 13" loading="lazy"></button><button class="vignette" data-full="images/maghreb/ramadan/14.jpg" aria-label="Open photo 14 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/14-mini.jpg" alt="Ramadan Cheikhat, photo 14" loading="lazy"></button><button class="vignette" data-full="images/maghreb/ramadan/15.jpg" aria-label="Open photo 15 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/15-mini.jpg" alt="Ramadan Cheikhat, photo 15" loading="lazy"></button><button class="vignette" data-full="images/maghreb/ramadan/16.jpg" aria-label="Open photo 16 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/16-mini.jpg" alt="Ramadan Cheikhat, photo 16" loading="lazy"></button><button class="vignette" data-full="images/maghreb/ramadan/17.jpg" aria-label="Open photo 17 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/17-mini.jpg" alt="Ramadan Cheikhat, photo 17" loading="lazy"></button><button class="vignette" data-full="images/maghreb/ramadan/18.jpg" aria-label="Open photo 18 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/18-mini.jpg" alt="Ramadan Cheikhat, photo 18" loading="lazy"></button><button class="vignette" data-full="images/maghreb/ramadan/19.jpg" aria-label="Open photo 19 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/19-mini.jpg" alt="Ramadan Cheikhat, photo 19" loading="lazy"></button><button class="vignette" data-full="images/maghreb/ramadan/20.jpg" aria-label="Open photo 20 of Ramadan Cheikhat"><img src="images/maghreb/ramadan/20-mini.jpg" alt="Ramadan Cheikhat, photo 20" loading="lazy"></button></div>
+</section>
+
+<section class="lieu" id="essaouira">
+  <div class="lieu-tete"><h2>Essaouira</h2><span class="lieu-type">18 photos</span></div>
+  <div class="grille"><button class="vignette" data-full="images/maghreb/essaouira/01.jpg" aria-label="Open photo 1 of Essaouira"><img src="images/maghreb/essaouira/01-mini.jpg" alt="Essaouira, photo 1" loading="lazy"></button><button class="vignette" data-full="images/maghreb/essaouira/02.jpg" aria-label="Open photo 2 of Essaouira"><img src="images/maghreb/essaouira/02-mini.jpg" alt="Essaouira, photo 2" loading="lazy"></button><button class="vignette" data-full="images/maghreb/essaouira/03.jpg" aria-label="Open photo 3 of Essaouira"><img src="images/maghreb/essaouira/03-mini.jpg" alt="Essaouira, photo 3" loading="lazy"></button><button class="vignette" data-full="images/maghreb/essaouira/04.jpg" aria-label="Open photo 4 of Essaouira"><img src="images/maghreb/essaouira/04-mini.jpg" alt="Essaouira, photo 4" loading="lazy"></button><button class="vignette" data-full="images/maghreb/essaouira/05.jpg" aria-label="Open photo 5 of Essaouira"><img src="images/maghreb/essaouira/05-mini.jpg" alt="Essaouira, photo 5" loading="lazy"></button><button class="vignette" data-full="images/maghreb/essaouira/06.jpg" aria-label="Open photo 6 of Essaouira"><img src="images/maghreb/essaouira/06-mini.jpg" alt="Essaouira, photo 6" loading="lazy"></button><button class="vignette" data-full="images/maghreb/essaouira/07.jpg" aria-label="Open photo 7 of Essaouira"><img src="images/maghreb/essaouira/07-mini.jpg" alt="Essaouira, photo 7" loading="lazy"></button><button class="vignette" data-full="images/maghreb/essaouira/08.jpg" aria-label="Open photo 8 of Essaouira"><img src="images/maghreb/essaouira/08-mini.jpg" alt="Essaouira, photo 8" loading="lazy"></button><button class="vignette" data-full="images/maghreb/essaouira/09.jpg" aria-label="Open photo 9 of Essaouira"><img src="images/maghreb/essaouira/09-mini.jpg" alt="Essaouira, photo 9" loading="lazy"></button><button class="vignette" data-full="images/maghreb/essaouira/10.jpg" aria-label="Open photo 10 of Essaouira"><img src="images/maghreb/essaouira/10-mini.jpg" alt="Essaouira, photo 10" loading="lazy"></button><button class="vignette" data-full="images/maghreb/essaouira/11.jpg" aria-label="Open photo 11 of Essaouira"><img src="images/maghreb/essaouira/11-mini.jpg" alt="Essaouira, photo 11" loading="lazy"></button><button class="vignette" data-full="images/maghreb/essaouira/12.jpg" aria-label="Open photo 12 of Essaouira"><img src="images/maghreb/essaouira/12-mini.jpg" alt="Essaouira, photo 12" loading="lazy"></button><button class="vignette" data-full="images/maghreb/essaouira/13.jpg" aria-label="Open photo 13 of Essaouira"><img src="images/maghreb/essaouira/13-mini.jpg" alt="Essaouira, photo 13" loading="lazy"></button><button class="vignette" data-full="images/maghreb/essaouira/14.jpg" aria-label="Open photo 14 of Essaouira"><img src="images/maghreb/essaouira/14-mini.jpg" alt="Essaouira, photo 14" loading="lazy"></button><button class="vignette" data-full="images/maghreb/essaouira/15.jpg" aria-label="Open photo 15 of Essaouira"><img src="images/maghreb/essaouira/15-mini.jpg" alt="Essaouira, photo 15" loading="lazy"></button><button class="vignette" data-full="images/maghreb/essaouira/16.jpg" aria-label="Open photo 16 of Essaouira"><img src="images/maghreb/essaouira/16-mini.jpg" alt="Essaouira, photo 16" loading="lazy"></button><button class="vignette" data-full="images/maghreb/essaouira/17.jpg" aria-label="Open photo 17 of Essaouira"><img src="images/maghreb/essaouira/17-mini.jpg" alt="Essaouira, photo 17" loading="lazy"></button><button class="vignette" data-full="images/maghreb/essaouira/18.jpg" aria-label="Open photo 18 of Essaouira"><img src="images/maghreb/essaouira/18-mini.jpg" alt="Essaouira, photo 18" loading="lazy"></button></div>
+</section>
+
+<footer><a href="index.html#portfolio">← Back to selected work</a></footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-fermer" id="lb-fermer">[CLOSE]</button>
+  <button class="lb-prec" id="lb-prec" aria-label="Previous">←</button>
+  <img id="lb-img" alt="">
+  <button class="lb-suiv" id="lb-suiv" aria-label="Next">→</button>
+  <div class="lb-compte" id="lb-compte"></div>
+</div>
+
+<script>
+  // Visionneuse : clic sur une photo pour l'agrandir
+  const vignettes = [...document.querySelectorAll('.vignette')];
+  const lb = document.getElementById('lb'), lbImg = document.getElementById('lb-img'), lbCompte = document.getElementById('lb-compte');
+  let actuel = 0;
+  function montrer(i) {
+    actuel = (i + vignettes.length) % vignettes.length;
+    const v = vignettes[actuel];
+    lbImg.src = v.dataset.full;
+    lbImg.alt = v.querySelector('img').alt;
+    lbCompte.textContent = v.closest('.lieu').querySelector('h2').textContent + ' — ' + v.querySelector('img').alt.split('photo ')[1];
+  }
+  function ouvrir(i) { montrer(i); lb.classList.add('ouvert'); document.body.style.overflow = 'hidden'; }
+  function fermer() { lb.classList.remove('ouvert'); document.body.style.overflow = ''; vignettes[actuel].focus(); }
+  vignettes.forEach((v, i) => v.onclick = () => ouvrir(i));
+  document.getElementById('lb-fermer').onclick = fermer;
+  document.getElementById('lb-prec').onclick = () => montrer(actuel - 1);
+  document.getElementById('lb-suiv').onclick = () => montrer(actuel + 1);
+  lb.onclick = e => { if (e.target === lb) fermer(); };
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('ouvert')) return;
+    if (e.key === 'Escape') fermer();
+    if (e.key === 'ArrowLeft') montrer(actuel - 1);
+    if (e.key === 'ArrowRight') montrer(actuel + 1);
+  });
+  // Menu des lieux : souligne le lieu visible
+  const liens = [...document.querySelectorAll('.nav-lieux a')];
+  const obs = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) liens.forEach(l => l.classList.toggle('actif', l.getAttribute('href') === '#' + e.target.id));
+  }), { rootMargin: '-40% 0px -55% 0px' });
+  document.querySelectorAll('.lieu').forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
