@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turath Ummati — Zakaria Habbad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --fond:#0a0a0a; --fond-2:#141414; --texte:#ededed; --texte-doux:#9a9a9a; --titre:'Inter Tight',sans-serif; --mono:'JetBrains Mono',monospace; --serif:'Cormorant Garamond',serif; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--fond); color:var(--texte); font-family:var(--titre); line-height:1.6; }
+  a { color:inherit; text-decoration:none; }
+  img { display:block; width:100%; height:auto; }
+  header { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:26px 50px; color:#fff; mix-blend-mode:difference; }
+  .logo-texte { font-weight:600; font-size:20px; letter-spacing:-.01em; }
+  .retour { font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; }
+  .retour:hover { opacity:.6; }
+  .intro { padding:170px 50px 40px; max-width:1300px; margin:0 auto; }
+  .petit-titre { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); margin-bottom:18px; }
+  .intro h1 { font-family:var(--serif); font-weight:400; font-size:clamp(56px,10vw,140px); line-height:.95; letter-spacing:-.01em; }
+  .intro h1 em { color:var(--texte-doux); }
+  .intro p { color:var(--texte-doux); max-width:560px; margin-top:26px; font-size:16px; }
+  .nav-lieux { position:sticky; top:0; z-index:50; background:rgba(10,10,10,.85); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--fond-2); }
+  .nav-lieux div { max-width:1300px; margin:0 auto; padding:84px 50px 18px; display:flex; gap:28px; overflow-x:auto; scrollbar-width:none; }
+  .nav-lieux a { font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--texte-doux); white-space:nowrap; transition:color .3s; }
+  .nav-lieux a:hover, .nav-lieux a.actif { color:var(--texte); }
+  .lieu { max-width:1300px; margin:0 auto; padding:90px 50px 20px; scroll-margin-top:110px; }
+  .lieu-tete { display:flex; justify-content:space-between; align-items:baseline; gap:20px; border-bottom:1px solid rgba(237,237,237,.15); padding-bottom:18px; margin-bottom:28px; flex-wrap:wrap; }
+  .lieu h2 { font-family:var(--serif); font-weight:400; font-size:clamp(36px,5vw,64px); line-height:1; }
+  .lieu-type { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); }
+  .grille { columns:3 300px; column-gap:14px; }
+  .vignette { display:block; width:100%; margin:0 0 14px; padding:0; border:0; background:var(--fond-2); cursor:zoom-in; overflow:hidden; break-inside:avoid; }
+  .vignette img { transition:transform .8s ease, opacity .4s; }
+  .vignette:hover img { transform:scale(1.04); opacity:.85; }
+  .vignette:focus-visible { outline:2px solid var(--texte); outline-offset:3px; }
+  .lb { position:fixed; inset:0; z-index:200; background:rgba(5,5,5,.96); display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .35s; }
+  .lb.ouvert { opacity:1; pointer-events:auto; }
+  .lb img { max-width:92vw; max-height:84vh; width:auto; height:auto; object-fit:contain; }
+  .lb button { position:absolute; background:none; border:0; color:var(--texte); font-family:var(--mono); font-size:12px; letter-spacing:.1em; cursor:pointer; padding:14px; }
+  .lb button:hover { opacity:.6; }
+  .lb-fermer { top:20px; right:36px; }
+  .lb-prec { left:20px; top:50%; transform:translateY(-50%); font-size:28px !important; }
+  .lb-suiv { right:20px; top:50%; transform:translateY(-50%); font-size:28px !important; }
+  .lb-compte { position:absolute; bottom:24px; left:0; right:0; text-align:center; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); }
+  footer { padding:80px 50px 60px; text-align:center; }
+  footer a { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); }
+  footer a:hover { color:var(--texte); }
+  @media (max-width:860px) {
+    header { padding:20px; } .intro { padding:130px 20px 30px; } .nav-lieux div { padding:70px 20px 14px; gap:20px; }
+    .lieu { padding:60px 20px 10px; } .grille { columns:2 140px; column-gap:8px; } .vignette { margin-bottom:8px; }
+    .lb-prec, .lb-suiv { top:auto; bottom:12px; transform:none; } .lb-fermer { right:12px; }
+  }
+ .logo-texte { display:block; line-height:0; } .logo-texte img { height:52px; width:auto; display:block; } @media (max-width:860px) { .logo-texte img { height:40px; } }
+ .credit { margin-top:18px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#6a6a6a; } .credit span { color:#ededed; text-transform:none; letter-spacing:.02em; font-size:12px; }
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo-texte"><img src="images/signature-zh-petit.png" alt="Zakaria Habbad"></a>
+  <a href="index.html#portfolio" class="retour">[BACK]</a>
+</header>
+
+<section class="intro">
+  <div class="petit-titre">Documentary series</div>
+  <h1>Turath <em>Ummati</em></h1>
+  <p>A documentary series across Morocco, in search of the places that shaped its history: zawiyas, dynasties and forgotten heritage, still alive far from the books.</p>
+</section>
+
+<nav class="nav-lieux"><div><a href="#ep1">Episode 1 · Wagag</a><a href="#ep2">Episode 2 · Saadian Sugar</a><a href="#ep3">Episode 3 · The Saadians</a></div></nav>
+
+<section class="lieu" id="ep1">
+  <div class="lieu-tete"><h2>Wagag</h2><span class="lieu-type">Episode 1 · 20 photos</span></div>
+  <div class="grille"><button class="vignette" data-full="images/turath/ep1/01.jpg" aria-label="Open photo 1 of Wagag"><img src="images/turath/ep1/01-mini.jpg" alt="Wagag, photo 1" loading="lazy"></button><button class="vignette" data-full="images/turath/ep1/02.jpg" aria-label="Open photo 2 of Wagag"><img src="images/turath/ep1/02-mini.jpg" alt="Wagag, photo 2" loading="lazy"></button><button class="vignette" data-full="images/turath/ep1/03.jpg" aria-label="Open photo 3 of Wagag"><img src="images/turath/ep1/03-mini.jpg" alt="Wagag, photo 3" loading="lazy"></button><button class="vignette" data-full="images/turath/ep1/04.jpg" aria-label="Open photo 4 of Wagag"><img src="images/turath/ep1/04-mini.jpg" alt="Wagag, photo 4" loading="lazy"></button><button class="vignette" data-full="images/turath/ep1/05.jpg" aria-label="Open photo 5 of Wagag"><img src="images/turath/ep1/05-mini.jpg" alt="Wagag, photo 5" loading="lazy"></button><button class="vignette" data-full="images/turath/ep1/06.jpg" aria-label="Open photo 6 of Wagag"><img src="images/turath/ep1/06-mini.jpg" alt="Wagag, photo 6" loading="lazy"></button><button class="vignette" data-full="images/turath/ep1/07.jpg" aria-label="Open photo 7 of Wagag"><img src="images/turath/ep1/07-mini.jpg" alt="Wagag, photo 7" loading="lazy"></button><button class="vignette" data-full="images/turath/ep1/08.jpg" aria-label="Open photo 8 of Wagag"><img src="images/turath/ep1/08-mini.jpg" alt="Wagag, photo 8" loading="lazy"></button><button class="vignette" data-full="images/turath/ep1/09.jpg" aria-label="Open photo 9 of Wagag"><img src="images/turath/ep1/09-mini.jpg" alt="Wagag, photo 9" loading="lazy"></button><button class="vignette" data-full="images/turath/ep1/10.jpg" aria-label="Open photo 10 of Wagag"><img src="images/turath/ep1/10-mini.jpg" alt="Wagag, photo 10" loading="lazy"></button><button class="vignette" data-full="images/turath/ep1/11.jpg" aria-label="Open photo 11 of Wagag"><img src="images/turath/ep1/11-mini.jpg" alt="Wagag, photo 11" loading="lazy"></button><button class="vignette" data-full="images/turath/ep1/12.jpg" aria-label="Open photo 12 of Wagag"><img src="images/turath/ep1/12-mini.jpg" alt="Wagag, photo 12" loading="lazy"></button><button class="vignette" data-full="images/turath/ep1/13.jpg" aria-label="Open photo 13 of Wagag"><img src="images/turath/ep1/13-mini.jpg" alt="Wagag, photo 13" loading="lazy"></button><button class="vignette" data-full="images/turath/ep1/14.jpg" aria-label="Open photo 14 of Wagag"><img src="images/turath/ep1/14-mini.jpg" alt="Wagag, photo 14" loading="lazy"></button><button class="vignette" data-full="images/turath/ep1/15.jpg" aria-label="Open photo 15 of Wagag"><img src="images/turath/ep1/15-mini.jpg" alt="Wagag, photo 15" loading="lazy"></button><button class="vignette" data-full="images/turath/ep1/16.jpg" aria-label="Open photo 16 of Wagag"><img src="images/turath/ep1/16-mini.jpg" alt="Wagag, photo 16" loading="lazy"></button><button class="vignette" data-full="images/turath/ep1/17.jpg" aria-label="Open photo 17 of Wagag"><img src="images/turath/ep1/17-mini.jpg" alt="Wagag, photo 17" loading="lazy"></button><button class="vignette" data-full="images/turath/ep1/18.jpg" aria-label="Open photo 18 of Wagag"><img src="images/turath/ep1/18-mini.jpg" alt="Wagag, photo 18" loading="lazy"></button><button class="vignette" data-full="images/turath/ep1/19.jpg" aria-label="Open photo 19 of Wagag"><img src="images/turath/ep1/19-mini.jpg" alt="Wagag, photo 19" loading="lazy"></button><button class="vignette" data-full="images/turath/ep1/20.jpg" aria-label="Open photo 20 of Wagag"><img src="images/turath/ep1/20-mini.jpg" alt="Wagag, photo 20" loading="lazy"></button></div>
+</section>
+
+<section class="lieu" id="ep2">
+  <div class="lieu-tete"><h2>Saadian Sugar</h2><span class="lieu-type">Episode 2 · 44 photos</span></div>
+  <div class="grille"><button class="vignette" data-full="images/turath/ep2/01.jpg" aria-label="Open photo 1 of Saadian Sugar"><img src="images/turath/ep2/01-mini.jpg" alt="Saadian Sugar, photo 1" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/02.jpg" aria-label="Open photo 2 of Saadian Sugar"><img src="images/turath/ep2/02-mini.jpg" alt="Saadian Sugar, photo 2" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/03.jpg" aria-label="Open photo 3 of Saadian Sugar"><img src="images/turath/ep2/03-mini.jpg" alt="Saadian Sugar, photo 3" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/04.jpg" aria-label="Open photo 4 of Saadian Sugar"><img src="images/turath/ep2/04-mini.jpg" alt="Saadian Sugar, photo 4" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/05.jpg" aria-label="Open photo 5 of Saadian Sugar"><img src="images/turath/ep2/05-mini.jpg" alt="Saadian Sugar, photo 5" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/06.jpg" aria-label="Open photo 6 of Saadian Sugar"><img src="images/turath/ep2/06-mini.jpg" alt="Saadian Sugar, photo 6" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/07.jpg" aria-label="Open photo 7 of Saadian Sugar"><img src="images/turath/ep2/07-mini.jpg" alt="Saadian Sugar, photo 7" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/08.jpg" aria-label="Open photo 8 of Saadian Sugar"><img src="images/turath/ep2/08-mini.jpg" alt="Saadian Sugar, photo 8" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/09.jpg" aria-label="Open photo 9 of Saadian Sugar"><img src="images/turath/ep2/09-mini.jpg" alt="Saadian Sugar, photo 9" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/10.jpg" aria-label="Open photo 10 of Saadian Sugar"><img src="images/turath/ep2/10-mini.jpg" alt="Saadian Sugar, photo 10" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/11.jpg" aria-label="Open photo 11 of Saadian Sugar"><img src="images/turath/ep2/11-mini.jpg" alt="Saadian Sugar, photo 11" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/12.jpg" aria-label="Open photo 12 of Saadian Sugar"><img src="images/turath/ep2/12-mini.jpg" alt="Saadian Sugar, photo 12" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/13.jpg" aria-label="Open photo 13 of Saadian Sugar"><img src="images/turath/ep2/13-mini.jpg" alt="Saadian Sugar, photo 13" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/14.jpg" aria-label="Open photo 14 of Saadian Sugar"><img src="images/turath/ep2/14-mini.jpg" alt="Saadian Sugar, photo 14" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/15.jpg" aria-label="Open photo 15 of Saadian Sugar"><img src="images/turath/ep2/15-mini.jpg" alt="Saadian Sugar, photo 15" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/16.jpg" aria-label="Open photo 16 of Saadian Sugar"><img src="images/turath/ep2/16-mini.jpg" alt="Saadian Sugar, photo 16" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/17.jpg" aria-label="Open photo 17 of Saadian Sugar"><img src="images/turath/ep2/17-mini.jpg" alt="Saadian Sugar, photo 17" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/18.jpg" aria-label="Open photo 18 of Saadian Sugar"><img src="images/turath/ep2/18-mini.jpg" alt="Saadian Sugar, photo 18" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/19.jpg" aria-label="Open photo 19 of Saadian Sugar"><img src="images/turath/ep2/19-mini.jpg" alt="Saadian Sugar, photo 19" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/20.jpg" aria-label="Open photo 20 of Saadian Sugar"><img src="images/turath/ep2/20-mini.jpg" alt="Saadian Sugar, photo 20" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/21.jpg" aria-label="Open photo 21 of Saadian Sugar"><img src="images/turath/ep2/21-mini.jpg" alt="Saadian Sugar, photo 21" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/22.jpg" aria-label="Open photo 22 of Saadian Sugar"><img src="images/turath/ep2/22-mini.jpg" alt="Saadian Sugar, photo 22" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/23.jpg" aria-label="Open photo 23 of Saadian Sugar"><img src="images/turath/ep2/23-mini.jpg" alt="Saadian Sugar, photo 23" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/24.jpg" aria-label="Open photo 24 of Saadian Sugar"><img src="images/turath/ep2/24-mini.jpg" alt="Saadian Sugar, photo 24" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/25.jpg" aria-label="Open photo 25 of Saadian Sugar"><img src="images/turath/ep2/25-mini.jpg" alt="Saadian Sugar, photo 25" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/26.jpg" aria-label="Open photo 26 of Saadian Sugar"><img src="images/turath/ep2/26-mini.jpg" alt="Saadian Sugar, photo 26" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/27.jpg" aria-label="Open photo 27 of Saadian Sugar"><img src="images/turath/ep2/27-mini.jpg" alt="Saadian Sugar, photo 27" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/28.jpg" aria-label="Open photo 28 of Saadian Sugar"><img src="images/turath/ep2/28-mini.jpg" alt="Saadian Sugar, photo 28" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/29.jpg" aria-label="Open photo 29 of Saadian Sugar"><img src="images/turath/ep2/29-mini.jpg" alt="Saadian Sugar, photo 29" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/30.jpg" aria-label="Open photo 30 of Saadian Sugar"><img src="images/turath/ep2/30-mini.jpg" alt="Saadian Sugar, photo 30" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/31.jpg" aria-label="Open photo 31 of Saadian Sugar"><img src="images/turath/ep2/31-mini.jpg" alt="Saadian Sugar, photo 31" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/32.jpg" aria-label="Open photo 32 of Saadian Sugar"><img src="images/turath/ep2/32-mini.jpg" alt="Saadian Sugar, photo 32" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/33.jpg" aria-label="Open photo 33 of Saadian Sugar"><img src="images/turath/ep2/33-mini.jpg" alt="Saadian Sugar, photo 33" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/34.jpg" aria-label="Open photo 34 of Saadian Sugar"><img src="images/turath/ep2/34-mini.jpg" alt="Saadian Sugar, photo 34" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/35.jpg" aria-label="Open photo 35 of Saadian Sugar"><img src="images/turath/ep2/35-mini.jpg" alt="Saadian Sugar, photo 35" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/36.jpg" aria-label="Open photo 36 of Saadian Sugar"><img src="images/turath/ep2/36-mini.jpg" alt="Saadian Sugar, photo 36" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/37.jpg" aria-label="Open photo 37 of Saadian Sugar"><img src="images/turath/ep2/37-mini.jpg" alt="Saadian Sugar, photo 37" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/38.jpg" aria-label="Open photo 38 of Saadian Sugar"><img src="images/turath/ep2/38-mini.jpg" alt="Saadian Sugar, photo 38" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/39.jpg" aria-label="Open photo 39 of Saadian Sugar"><img src="images/turath/ep2/39-mini.jpg" alt="Saadian Sugar, photo 39" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/40.jpg" aria-label="Open photo 40 of Saadian Sugar"><img src="images/turath/ep2/40-mini.jpg" alt="Saadian Sugar, photo 40" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/41.jpg" aria-label="Open photo 41 of Saadian Sugar"><img src="images/turath/ep2/41-mini.jpg" alt="Saadian Sugar, photo 41" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/42.jpg" aria-label="Open photo 42 of Saadian Sugar"><img src="images/turath/ep2/42-mini.jpg" alt="Saadian Sugar, photo 42" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/43.jpg" aria-label="Open photo 43 of Saadian Sugar"><img src="images/turath/ep2/43-mini.jpg" alt="Saadian Sugar, photo 43" loading="lazy"></button><button class="vignette" data-full="images/turath/ep2/44.jpg" aria-label="Open photo 44 of Saadian Sugar"><img src="images/turath/ep2/44-mini.jpg" alt="Saadian Sugar, photo 44" loading="lazy"></button></div>
+</section>
+
+<section class="lieu" id="ep3">
+  <div class="lieu-tete"><h2>The Saadians</h2><span class="lieu-type">Episode 3 · 2 photos</span></div>
+  <div class="grille"><button class="vignette" data-full="images/turath/ep3/01.jpg" aria-label="Open photo 1 of The Saadians"><img src="images/turath/ep3/01-mini.jpg" alt="The Saadians, photo 1" loading="lazy"></button><button class="vignette" data-full="images/turath/ep3/02.jpg" aria-label="Open photo 2 of The Saadians"><img src="images/turath/ep3/02-mini.jpg" alt="The Saadians, photo 2" loading="lazy"></button></div>
+</section>
+
+<footer><a href="index.html#portfolio">← Back to selected work</a><p class="credit">Website made by <span>kréova</span></p></footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-fermer" id="lb-fermer">[CLOSE]</button>
+  <button class="lb-prec" id="lb-prec" aria-label="Previous">←</button>
+  <img id="lb-img" alt="">
+  <button class="lb-suiv" id="lb-suiv" aria-label="Next">→</button>
+  <div class="lb-compte" id="lb-compte"></div>
+</div>
+
+<script>
+  // Visionneuse : clic sur une photo pour l'agrandir
+  const vignettes = [...document.querySelectorAll('.vignette')];
+  const lb = document.getElementById('lb'), lbImg = document.getElementById('lb-img'), lbCompte = document.getElementById('lb-compte');
+  let actuel = 0;
+  function montrer(i) {
+    actuel = (i + vignettes.length) % vignettes.length;
+    const v = vignettes[actuel];
+    lbImg.src = v.dataset.full;
+    lbImg.alt = v.querySelector('img').alt;
+    lbCompte.textContent = v.closest('.lieu').querySelector('h2').textContent + ' — ' + v.querySelector('img').alt.split('photo ')[1];
+  }
+  function ouvrir(i) { montrer(i); lb.classList.add('ouvert'); document.body.style.overflow = 'hidden'; }
+  function fermer() { lb.classList.remove('ouvert'); document.body.style.overflow = ''; vignettes[actuel].focus(); }
+  vignettes.forEach((v, i) => v.onclick = () => ouvrir(i));
+  document.getElementById('lb-fermer').onclick = fermer;
+  document.getElementById('lb-prec').onclick = () => montrer(actuel - 1);
+  document.getElementById('lb-suiv').onclick = () => montrer(actuel + 1);
+  lb.onclick = e => { if (e.target === lb) fermer(); };
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('ouvert')) return;
+    if (e.key === 'Escape') fermer();
+    if (e.key === 'ArrowLeft') montrer(actuel - 1);
+    if (e.key === 'ArrowRight') montrer(actuel + 1);
+  });
+  // Menu des lieux : souligne le lieu visible
+  const liens = [...document.querySelectorAll('.nav-lieux a')];
+  const obs = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) liens.forEach(l => l.classList.toggle('actif', l.getAttribute('href') === '#' + e.target.id));
+  }), { rootMargin: '-40% 0px -55% 0px' });
+  document.querySelectorAll('.lieu').forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
