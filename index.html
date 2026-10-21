@@ -289,31 +289,9 @@
   </div>
 </section>
 
-<!-- ===== TEMOIGNAGES (modifie les textes) ===== -->
-<section class="temoignages" id="avis">
-  <div class="petit-titre">Testimonials</div>
-  <div class="temoin-zone">
-    <div class="temoin active">
-      <p>“He captured both the big moments and all the little details that matter to us. Every photo takes us right back to our day. Thank you so much!”</p>
-      <h4>Sara + Youssef</h4>
-    </div>
-    <div class="temoin">
-      <p>“We felt at ease from the very first minute. The photos are beautiful and perfectly reflect the joy of our wedding. We recommend him without hesitation.”</p>
-      <h4>Lina + Karim</h4>
-    </div>
-    <div class="temoin">
-      <p>“A true artist, professional and attentive. From the engagement shoot to the big day, everything was perfect. We gained wonderful memories… and a friend.”</p>
-      <h4>Nora + Adam</h4>
-    </div>
-  </div>
-  <div class="fleches">
-    <button id="prec" aria-label="Previous">←</button>
-    <button id="suiv" aria-label="Next">→</button>
-  </div>
-</section>
 
 <!-- ===== TURATH UMMATI (case cliquable) ===== -->
-<a href="turath-ummati.html" class="turath-case" id="turath" aria-label="Discover the Turath Ummati series">
+<a href="turath-ummati.html" class="turath-case" id="turath" style="margin-top:100px" aria-label="Discover the Turath Ummati series">
   <img src="images/projet-6.jpg" alt="Zawiya in Aglou, Turath Ummati series" loading="lazy">
   <div class="ombre"></div>
   <div class="turath-texte">
@@ -388,7 +366,6 @@
     <li><a href="biography.html">Biography</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="turath-ummati.html">Turath Ummati</a></li>
-    <li><a href="#avis">Testimonials</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <small>© 2026 Zakaria Habbad</small>
@@ -413,18 +390,6 @@
     const ouvert = bioPlus.classList.toggle('ouvert');
     bioCercle.setAttribute('aria-expanded', ouvert);
   };
-
-  // Témoignages
-  const temoins = document.querySelectorAll('.temoin');
-  let t = 0;
-  function temoin(n) {
-    temoins[t].classList.remove('active');
-    t = (n + temoins.length) % temoins.length;
-    temoins[t].classList.add('active');
-  }
-  document.getElementById('prec').onclick = () => temoin(t - 1);
-  document.getElementById('suiv').onclick = () => temoin(t + 1);
-  setInterval(() => temoin(t + 1), 8000);
 
   // Curseur personnalisé (désactivé sur mobile/tactile)
   (function () {
