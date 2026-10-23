@@ -55,6 +55,10 @@
   }
  .logo-texte { display:block; line-height:0; } .logo-texte img { height:52px; width:auto; display:block; } @media (max-width:860px) { .logo-texte img { height:40px; } }
  .credit { margin-top:18px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#6a6a6a; } .credit span { color:#ededed; text-transform:none; letter-spacing:.02em; font-size:12px; }
+  .lieu-choix { flex-basis:100%; display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+  .lieu-choix a { font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--texte-doux); border:1px solid rgba(237,237,237,.2); border-radius:999px; padding:7px 14px; transition:color .3s, border-color .3s, background .3s; }
+  .lieu-choix a:hover { color:var(--texte); border-color:var(--texte); }
+  .lieu-choix a.actif { color:#0a0a0a; background:var(--texte); border-color:var(--texte); }
 </style>
 </head>
 <body>
@@ -137,6 +141,16 @@
     if (e.isIntersecting) liens.forEach(l => l.classList.toggle('actif', l.getAttribute('href') === '#' + e.target.id));
   }), { rootMargin: '-40% 0px -55% 0px' });
   document.querySelectorAll('.lieu').forEach(s => obs.observe(s));
+  document.querySelectorAll('.lieu').forEach(s => {
+    const choix = document.createElement('div');
+    choix.className = 'lieu-choix';
+    document.querySelectorAll('.nav-lieux a').forEach(a => {
+      const l = a.cloneNode(true);
+      l.classList.toggle('actif', a.getAttribute('href') === '#' + s.id);
+      choix.appendChild(l);
+    });
+    s.querySelector('.lieu-tete').appendChild(choix);
+  });
 </script>
 </body>
 </html>
