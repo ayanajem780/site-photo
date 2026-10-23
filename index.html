@@ -104,7 +104,7 @@
   .bio-plus-interieur { overflow: hidden; }
 
   /* ===== PORTFOLIO (projets plein écran empilés) ===== */
-  .travaux { padding: 90px 0 0; text-align: center; }
+  .travaux { padding: 0; text-align: center; scroll-margin-top: 0; }
   .travaux h3 { font-family: var(--titre); font-size: 40px; font-weight: 600; margin-bottom: 0; padding: 0 50px 60px; }
   .pile { position: relative; }
   .projet { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: flex-end; }
@@ -236,7 +236,6 @@
 
 <!-- ===== PORTFOLIO (projets plein écran, ajoute/enlève des .projet) ===== -->
 <section class="travaux" id="portfolio">
-  <h3>Selected work</h3>
   <div class="pile" id="pile">
     <div class="projet">
       <a href="airbnb.html" class="projet-lien" aria-label="See the Airbnb catalogue"></a>
