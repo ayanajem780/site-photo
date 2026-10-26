@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Me in Anza — Zakaria Habbad</title>
+<title>Me in Anza - Zakaria Habbad</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -95,7 +95,7 @@
     const v = vignettes[actuel];
     lbImg.src = v.dataset.full;
     lbImg.alt = v.querySelector('img').alt;
-    lbCompte.textContent = v.closest('.lieu').querySelector('h2').textContent + ' — ' + v.querySelector('img').alt.split('photo ')[1];
+    lbCompte.textContent = v.closest('.lieu').querySelector('h2').textContent + ' - ' + v.querySelector('img').alt.split('photo ')[1];
   }
   function ouvrir(i) { montrer(i); lb.classList.add('ouvert'); document.body.style.overflow = 'hidden'; }
   function fermer() { lb.classList.remove('ouvert'); document.body.style.overflow = ''; vignettes[actuel].focus(); }
