@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Izem — Maghreb — Zakaria Habbad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --fond:#0a0a0a; --fond-2:#141414; --texte:#ededed; --texte-doux:#9a9a9a; --titre:'Inter Tight',sans-serif; --mono:'JetBrains Mono',monospace; --serif:'Cormorant Garamond',serif; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--fond); color:var(--texte); font-family:var(--titre); line-height:1.6; }
+  a { color:inherit; text-decoration:none; }
+  img { display:block; width:100%; height:auto; }
+  header { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:26px 50px; color:#fff; mix-blend-mode:difference; }
+  .logo-texte { display:block; line-height:0; } .logo-texte img { height:52px; width:auto; }
+  .retour { font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; }
+  .retour:hover { opacity:.6; }
+  .intro { padding:170px 50px 50px; max-width:1300px; margin:0 auto; }
+  .petit-titre { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); margin-bottom:18px; }
+  .petit-titre a:hover { color:var(--texte); }
+  .intro h1 { font-family:var(--serif); font-weight:400; font-size:clamp(56px,10vw,140px); line-height:.95; letter-spacing:-.01em; }
+  .intro p { color:var(--texte-doux); max-width:560px; margin-top:26px; font-size:16px; }
+  .zone { max-width:1300px; margin:0 auto; padding:0 50px 40px; }
+  footer { padding:80px 50px 60px; text-align:center; }
+  footer a { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); }
+  footer a:hover { color:var(--texte); }
+  .credit { margin-top:18px; font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#6a6a6a; } .credit span { color:#ededed; text-transform:none; letter-spacing:.02em; font-size:12px; }
+  .grille { columns:3 300px; column-gap:14px; }
+  .vignette { display:block; width:100%; margin:0 0 14px; padding:0; border:0; background:var(--fond-2); cursor:zoom-in; overflow:hidden; break-inside:avoid; }
+  .vignette img { transition:transform .8s ease, opacity .4s; }
+  .vignette:hover img { transform:scale(1.04); opacity:.85; }
+  .vignette:focus-visible { outline:2px solid var(--texte); outline-offset:3px; }
+  .suite { max-width:1300px; margin:0 auto; padding:50px 50px 0; display:flex; justify-content:space-between; gap:20px; border-top:1px solid rgba(237,237,237,.15); }
+  .suite a { display:flex; flex-direction:column; gap:4px; }
+  .suite a:last-child { text-align:right; }
+  .suite small { font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); }
+  .suite span { font-family:var(--serif); font-size:clamp(24px,3vw,36px); line-height:1.1; }
+  .suite a:hover span { color:var(--texte-doux); }
+  .lb { position:fixed; inset:0; z-index:200; background:rgba(5,5,5,.96); display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .35s; }
+  .lb.ouvert { opacity:1; pointer-events:auto; }
+  .lb img { max-width:92vw; max-height:84vh; width:auto; height:auto; object-fit:contain; }
+  .lb button { position:absolute; background:none; border:0; color:var(--texte); font-family:var(--mono); font-size:12px; letter-spacing:.1em; cursor:pointer; padding:14px; }
+  .lb button:hover { opacity:.6; }
+  .lb-fermer { top:20px; right:36px; }
+  .lb-prec { left:20px; top:50%; transform:translateY(-50%); font-size:28px !important; }
+  .lb-suiv { right:20px; top:50%; transform:translateY(-50%); font-size:28px !important; }
+  .lb-compte { position:absolute; bottom:24px; left:0; right:0; text-align:center; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); }
+  @media (max-width:860px) {
+    header { padding:20px; } .logo-texte img { height:40px; } .intro { padding:130px 20px 30px; } .zone { padding:0 20px 30px; }
+    .grille { columns:2 140px; column-gap:8px; } .vignette { margin-bottom:8px; } .suite { padding:36px 20px 0; }
+    .lb-prec, .lb-suiv { top:auto; bottom:12px; transform:none; } .lb-fermer { right:12px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo-texte"><img src="images/signature-zh-petit.png" alt="Zakaria Habbad"></a>
+  <a href="maghreb.html" class="retour">[BACK]</a>
+</header>
+
+<section class="intro">
+  <div class="petit-titre"><a href="maghreb.html">Maghreb</a> · 40 photos</div>
+  <h1>Izem</h1>
+</section>
+
+<main class="zone"><div class="grille"><button class="vignette" data-full="images/maghreb/izem/01.jpg" aria-label="Open photo 1 of Izem"><img src="images/maghreb/izem/01-mini.jpg" alt="Izem, photo 1" loading="eager"></button><button class="vignette" data-full="images/maghreb/izem/02.jpg" aria-label="Open photo 2 of Izem"><img src="images/maghreb/izem/02-mini.jpg" alt="Izem, photo 2" loading="eager"></button><button class="vignette" data-full="images/maghreb/izem/03.jpg" aria-label="Open photo 3 of Izem"><img src="images/maghreb/izem/03-mini.jpg" alt="Izem, photo 3" loading="eager"></button><button class="vignette" data-full="images/maghreb/izem/04.jpg" aria-label="Open photo 4 of Izem"><img src="images/maghreb/izem/04-mini.jpg" alt="Izem, photo 4" loading="eager"></button><button class="vignette" data-full="images/maghreb/izem/05.jpg" aria-label="Open photo 5 of Izem"><img src="images/maghreb/izem/05-mini.jpg" alt="Izem, photo 5" loading="eager"></button><button class="vignette" data-full="images/maghreb/izem/06.jpg" aria-label="Open photo 6 of Izem"><img src="images/maghreb/izem/06-mini.jpg" alt="Izem, photo 6" loading="eager"></button><button class="vignette" data-full="images/maghreb/izem/07.jpg" aria-label="Open photo 7 of Izem"><img src="images/maghreb/izem/07-mini.jpg" alt="Izem, photo 7" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/08.jpg" aria-label="Open photo 8 of Izem"><img src="images/maghreb/izem/08-mini.jpg" alt="Izem, photo 8" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/09.jpg" aria-label="Open photo 9 of Izem"><img src="images/maghreb/izem/09-mini.jpg" alt="Izem, photo 9" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/10.jpg" aria-label="Open photo 10 of Izem"><img src="images/maghreb/izem/10-mini.jpg" alt="Izem, photo 10" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/11.jpg" aria-label="Open photo 11 of Izem"><img src="images/maghreb/izem/11-mini.jpg" alt="Izem, photo 11" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/12.jpg" aria-label="Open photo 12 of Izem"><img src="images/maghreb/izem/12-mini.jpg" alt="Izem, photo 12" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/13.jpg" aria-label="Open photo 13 of Izem"><img src="images/maghreb/izem/13-mini.jpg" alt="Izem, photo 13" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/14.jpg" aria-label="Open photo 14 of Izem"><img src="images/maghreb/izem/14-mini.jpg" alt="Izem, photo 14" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/15.jpg" aria-label="Open photo 15 of Izem"><img src="images/maghreb/izem/15-mini.jpg" alt="Izem, photo 15" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/16.jpg" aria-label="Open photo 16 of Izem"><img src="images/maghreb/izem/16-mini.jpg" alt="Izem, photo 16" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/17.jpg" aria-label="Open photo 17 of Izem"><img src="images/maghreb/izem/17-mini.jpg" alt="Izem, photo 17" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/18.jpg" aria-label="Open photo 18 of Izem"><img src="images/maghreb/izem/18-mini.jpg" alt="Izem, photo 18" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/19.jpg" aria-label="Open photo 19 of Izem"><img src="images/maghreb/izem/19-mini.jpg" alt="Izem, photo 19" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/20.jpg" aria-label="Open photo 20 of Izem"><img src="images/maghreb/izem/20-mini.jpg" alt="Izem, photo 20" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/21.jpg" aria-label="Open photo 21 of Izem"><img src="images/maghreb/izem/21-mini.jpg" alt="Izem, photo 21" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/22.jpg" aria-label="Open photo 22 of Izem"><img src="images/maghreb/izem/22-mini.jpg" alt="Izem, photo 22" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/23.jpg" aria-label="Open photo 23 of Izem"><img src="images/maghreb/izem/23-mini.jpg" alt="Izem, photo 23" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/24.jpg" aria-label="Open photo 24 of Izem"><img src="images/maghreb/izem/24-mini.jpg" alt="Izem, photo 24" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/25.jpg" aria-label="Open photo 25 of Izem"><img src="images/maghreb/izem/25-mini.jpg" alt="Izem, photo 25" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/26.jpg" aria-label="Open photo 26 of Izem"><img src="images/maghreb/izem/26-mini.jpg" alt="Izem, photo 26" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/27.jpg" aria-label="Open photo 27 of Izem"><img src="images/maghreb/izem/27-mini.jpg" alt="Izem, photo 27" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/28.jpg" aria-label="Open photo 28 of Izem"><img src="images/maghreb/izem/28-mini.jpg" alt="Izem, photo 28" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/29.jpg" aria-label="Open photo 29 of Izem"><img src="images/maghreb/izem/29-mini.jpg" alt="Izem, photo 29" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/30.jpg" aria-label="Open photo 30 of Izem"><img src="images/maghreb/izem/30-mini.jpg" alt="Izem, photo 30" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/31.jpg" aria-label="Open photo 31 of Izem"><img src="images/maghreb/izem/31-mini.jpg" alt="Izem, photo 31" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/32.jpg" aria-label="Open photo 32 of Izem"><img src="images/maghreb/izem/32-mini.jpg" alt="Izem, photo 32" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/33.jpg" aria-label="Open photo 33 of Izem"><img src="images/maghreb/izem/33-mini.jpg" alt="Izem, photo 33" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/34.jpg" aria-label="Open photo 34 of Izem"><img src="images/maghreb/izem/34-mini.jpg" alt="Izem, photo 34" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/35.jpg" aria-label="Open photo 35 of Izem"><img src="images/maghreb/izem/35-mini.jpg" alt="Izem, photo 35" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/36.jpg" aria-label="Open photo 36 of Izem"><img src="images/maghreb/izem/36-mini.jpg" alt="Izem, photo 36" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/37.jpg" aria-label="Open photo 37 of Izem"><img src="images/maghreb/izem/37-mini.jpg" alt="Izem, photo 37" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/38.jpg" aria-label="Open photo 38 of Izem"><img src="images/maghreb/izem/38-mini.jpg" alt="Izem, photo 38" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/39.jpg" aria-label="Open photo 39 of Izem"><img src="images/maghreb/izem/39-mini.jpg" alt="Izem, photo 39" loading="lazy"></button><button class="vignette" data-full="images/maghreb/izem/40.jpg" aria-label="Open photo 40 of Izem"><img src="images/maghreb/izem/40-mini.jpg" alt="Izem, photo 40" loading="lazy"></button></div></main>
+
+<nav class="suite">
+  <a href="maghreb-rabat-chellah.html"><small>← Previous album</small><span>Rabat — Chellah</span></a>
+  <a href="maghreb-fes-2025.html"><small>Next album →</small><span>Fes 2025</span></a>
+</nav>
+
+<footer><a href="maghreb.html">← All Maghreb albums</a><p class="credit">Website made by <span>kréova</span></p></footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-fermer" id="lb-fermer">[CLOSE]</button>
+  <button class="lb-prec" id="lb-prec" aria-label="Previous">←</button>
+  <img id="lb-img" alt="">
+  <button class="lb-suiv" id="lb-suiv" aria-label="Next">→</button>
+  <div class="lb-compte" id="lb-compte"></div>
+</div>
+
+<script>
+  // Visionneuse : clic sur une photo pour l'agrandir
+  const vignettes = [...document.querySelectorAll('.vignette')];
+  const lb = document.getElementById('lb'), lbImg = document.getElementById('lb-img'), lbCompte = document.getElementById('lb-compte');
+  let actuel = 0;
+  function montrer(i) {
+    actuel = (i + vignettes.length) % vignettes.length;
+    lbImg.src = vignettes[actuel].dataset.full;
+    lbImg.alt = vignettes[actuel].querySelector('img').alt;
+    lbCompte.textContent = (actuel + 1) + ' / ' + vignettes.length;
+  }
+  function ouvrir(i) { montrer(i); lb.classList.add('ouvert'); document.body.style.overflow = 'hidden'; }
+  function fermer() { lb.classList.remove('ouvert'); document.body.style.overflow = ''; vignettes[actuel].focus(); }
+  vignettes.forEach((v, i) => v.onclick = () => ouvrir(i));
+  document.getElementById('lb-fermer').onclick = fermer;
+  document.getElementById('lb-prec').onclick = () => montrer(actuel - 1);
+  document.getElementById('lb-suiv').onclick = () => montrer(actuel + 1);
+  lb.onclick = e => { if (e.target === lb) fermer(); };
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('ouvert')) return;
+    if (e.key === 'Escape') fermer();
+    if (e.key === 'ArrowLeft') montrer(actuel - 1);
+    if (e.key === 'ArrowRight') montrer(actuel + 1);
+  });
+</script>
+</body>
+</html>
