@@ -73,9 +73,21 @@
   .menu-liens a:hover { opacity: 1; filter: blur(0); }
 
   /* ===== DIAPORAMA ===== */
-  .hero { position: relative; height: 100vh; overflow: hidden; }
+  .hero { position: relative; height: 100vh; overflow: hidden; display: grid; grid-template-columns: 58% 42%; background: var(--fond); }
+  .hero-media { position: relative; overflow: hidden; }
   .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .hero::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.42); }
+  .hero-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.15), rgba(0,0,0,.35) 70%, var(--fond)); }
+  .hero-manifeste { display: flex; flex-direction: column; justify-content: center; padding: 120px clamp(30px, 5vw, 80px) 60px clamp(24px, 3vw, 50px); }
+  .hero-manifeste h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(34px, 3.6vw, 58px); line-height: 1.08; letter-spacing: -.01em; margin-bottom: 34px; }
+  .hero-manifeste h2 em { font-style: italic; color: var(--texte-doux); }
+  .hero-manifeste p { color: var(--texte-doux); font-size: 15.5px; line-height: 1.75; max-width: 460px; margin-bottom: 18px; }
+  .hero-manifeste .hero-trait { width: 60px; height: 1px; background: var(--texte-doux); margin-top: 22px; }
+  @media (max-width: 860px) {
+    .hero { height: auto; grid-template-columns: 1fr; }
+    .hero-media { height: 70vh; }
+    .hero-media::after { background: linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.3) 70%, var(--fond)); }
+    .hero-manifeste { padding: 40px 24px 90px; }
+  }
   .hero-texte { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--blanc); padding: 20px; }
   .hero-texte h1 { font-size: clamp(56px, 11vw, 140px); font-weight: 600; letter-spacing: -.03em; text-transform: uppercase; line-height: .95; }
   .hero-signature { width: clamp(260px, 42vw, 640px); height: auto; object-fit: contain; display: block; margin: 0 auto; }
@@ -227,9 +239,20 @@
 <!-- ===== DIAPORAMA (change les photos ici) ===== -->
 <section class="hero" id="accueil">
   <!-- Vidéo de fond (fichier : video/hero.mp4) -->
-  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="video/hero-poster.jpg">
-    <source src="video/hero.mp4" type="video/mp4">
-  </video>
+  <div class="hero-media">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="video/hero-poster.jpg">
+      <source src="video/hero.mp4" type="video/mp4">
+    </video>
+  </div>
+  <!-- Texte à côté de la vidéo (modifie ici) -->
+  <div class="hero-manifeste">
+    <div class="petit-titre">The art of seeing</div>
+    <h2>Light is fleeting.<br><em>A photograph lets it stay.</em></h2>
+    <p>Photography begins long before the shutter clicks. It begins with patience - with watching how the wind moves a scarf, how the late sun warms a cliff, how a face changes in the second before a smile.</p>
+    <p>It is a quiet passion: walking out at dawn, waiting for the right light, and returning with a single frame that holds a whole moment. Every image is a conversation between a place, a person and the one behind the lens.</p>
+    <p>Here, that conversation is rooted in Morocco - its deserts, its coastlines, its heritage and its people - told with honesty, warmth and time.</p>
+    <div class="hero-trait"></div>
+  </div>
   <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Zakaria Habbad - Photographer &amp; Filmmaker</h1>
 </section>
 
