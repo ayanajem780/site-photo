@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Saadians · Turath Ummati - Zakaria Habbad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --fond:#0a0a0a; --fond-2:#141414; --texte:#ededed; --texte-doux:#9a9a9a; --titre:'Inter Tight',sans-serif; --mono:'JetBrains Mono',monospace; --serif:'Cormorant Garamond',serif; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--fond); color:var(--texte); font-family:var(--titre); line-height:1.6; }
+  a { color:inherit; text-decoration:none; }
+  img { display:block; width:100%; height:auto; }
+  header { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:26px 50px; color:#fff; mix-blend-mode:difference; }
+  .logo-texte { font-weight:600; font-size:20px; letter-spacing:-.01em; }
+  .retour { font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; }
+  .retour:hover { opacity:.6; }
+  .intro { padding:170px 50px 40px; max-width:1300px; margin:0 auto; }
+  .petit-titre { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); margin-bottom:18px; }
+  .intro h1 { font-family:var(--serif); font-weight:400; font-size:clamp(56px,10vw,140px); line-height:.95; letter-spacing:-.01em; }
+  .intro h1 em { color:var(--texte-doux); }
+  .intro p { color:var(--texte-doux); max-width:560px; margin-top:26px; font-size:16px; }
+  .nav-lieux { position:sticky; top:0; z-index:50; background:rgba(10,10,10,.85); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--fond-2); }
+  .nav-lieux div { max-width:1300px; margin:0 auto; padding:84px 50px 18px; display:flex; gap:28px; overflow-x:auto; scrollbar-width:none; }
+  .nav-lieux a { font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--texte-doux); white-space:nowrap; transition:color .3s; }
+  .nav-lieux a:hover, .nav-lieux a.actif { color:var(--texte); }
+  .lieu { max-width:1300px; margin:0 auto; padding:90px 50px 20px; scroll-margin-top:110px; }
+  .lieu-tete { display:flex; justify-content:space-between; align-items:baseline; gap:20px; border-bottom:1px solid rgba(237,237,237,.15); padding-bottom:18px; margin-bottom:28px; flex-wrap:wrap; }
+  .lieu h2 { font-family:var(--serif); font-weight:400; font-size:clamp(36px,5vw,64px); line-height:1; }
+  .lieu-type { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); }
+  .grille { columns:3 300px; column-gap:14px; }
+  .vignette { display:block; width:100%; margin:0 0 14px; padding:0; border:0; background:var(--fond-2); cursor:zoom-in; overflow:hidden; break-inside:avoid; }
+  .vignette img { transition:transform .8s ease, opacity .4s; }
+  .vignette:hover img { transform:scale(1.04); opacity:.85; }
+  .vignette:focus-visible { outline:2px solid var(--texte); outline-offset:3px; }
+  .lb { position:fixed; inset:0; z-index:200; background:rgba(5,5,5,.96); display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .35s; }
+  .lb.ouvert { opacity:1; pointer-events:auto; }
+  .lb img { max-width:92vw; max-height:84vh; width:auto; height:auto; object-fit:contain; }
+  .lb button { position:absolute; background:none; border:0; color:var(--texte); font-family:var(--mono); font-size:12px; letter-spacing:.1em; cursor:pointer; padding:14px; }
+  .lb button:hover { opacity:.6; }
+  .lb-fermer { top:20px; right:36px; }
+  .lb-prec { left:20px; top:50%; transform:translateY(-50%); font-size:28px !important; }
+  .lb-suiv { right:20px; top:50%; transform:translateY(-50%); font-size:28px !important; }
+  .lb-compte { position:absolute; bottom:24px; left:0; right:0; text-align:center; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); }
+  footer { padding:80px 50px 60px; text-align:center; }
+  footer a { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); }
+  footer a:hover { color:var(--texte); }
+  @media (max-width:860px) {
+    header { padding:20px; } .intro { padding:130px 20px 30px; } .nav-lieux div { padding:70px 20px 14px; gap:20px; }
+    .lieu { padding:60px 20px 10px; } .grille { columns:2 140px; column-gap:8px; } .vignette { margin-bottom:8px; }
+    .lb-prec, .lb-suiv { top:auto; bottom:12px; transform:none; } .lb-fermer { right:12px; }
+  }
+ .logo-texte { display:block; line-height:0; } .logo-texte img { height:52px; width:auto; display:block; } @media (max-width:860px) { .logo-texte img { height:40px; } }
+ .credit { margin-top:18px; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#6a6a6a; } .credit span { color:#ededed; text-transform:none; letter-spacing:.02em; font-size:12px; }
+  .video-ep { position:relative; aspect-ratio:16/9; background:var(--fond-2); margin-bottom:14px; }
+  .video-ep iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .lien-yt { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); margin-bottom:34px; }
+  .lien-yt:hover { color:var(--texte); }
+  .eps { max-width:1600px; margin:0 auto; padding:10px 50px 60px; --galerie-h:72vh; }
+  .ep-carte { display:block; }
+  .ep-carte .ep-img { aspect-ratio:4/3; overflow:hidden; background:var(--fond-2); }
+  .ep-carte img { height:100%; object-fit:cover; transition:transform .8s ease, opacity .4s; }
+  .ep-carte:hover img { transform:scale(1.04); opacity:.85; }
+  .ep-num { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); margin-top:16px; }
+  .ep-carte h3 { font-family:var(--serif); font-weight:400; font-size:26px; line-height:1.15; margin-top:6px; }
+  .ep-lire { display:inline-block; margin-top:10px; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); }
+  .ep-carte:hover .ep-lire { color:var(--texte); }
+  .ep-main { margin-bottom:34px; }
+  .article { max-width:760px; margin:0 auto 50px; }
+  .article h3 { font-family:var(--serif); font-weight:400; font-size:clamp(28px,3.4vw,42px); line-height:1.15; margin-bottom:22px; }
+  .article p { color:#cfcfcf; font-size:17px; line-height:1.75; margin-bottom:18px; }
+  .article p.cta { color:var(--texte); font-weight:600; margin-top:26px; }
+  @media (max-width:860px) { .eps { padding:10px 20px 40px; } .article p { font-size:16px; } }
+  .intro h1.titre-ar { font-family:'Amiri',var(--serif); font-weight:400; line-height:1.3; text-align:left; }
+
+  /* ===== ARTICLES (cartes façon blog : grande photo + bandeau bleu) ===== */
+  :root { --bleu:#4f5cf6; }
+  .articles { max-width:1300px; margin:0 auto; padding:10px 50px 90px; display:grid; grid-template-columns:repeat(2,1fr); gap:28px; }
+  .art-carte { display:flex; flex-direction:column; border-radius:10px; overflow:hidden; background:var(--bleu); color:#fff; transition:transform .5s ease; }
+  .art-carte:hover { transform:translateY(-4px); }
+  .art-img { aspect-ratio:16/10; overflow:hidden; background:var(--fond-2); }
+  .art-img img { width:100%; height:100%; object-fit:cover; transition:transform 1.1s ease; }
+  .art-carte:hover .art-img img { transform:scale(1.05); }
+  .art-bas { flex:1; padding:34px 38px 30px; display:flex; flex-direction:column; justify-content:space-between; gap:22px; }
+  .art-bas h3, .art-bandeau h1 { font-family:var(--titre); font-weight:700; letter-spacing:-.01em; line-height:1.18; }
+  .art-bas h3 { font-size:clamp(22px,2.3vw,32px); }
+  .art-meta { font-size:14px; letter-spacing:.05em; text-transform:uppercase; opacity:.85; }
+  @media (max-width:860px) { .articles { grid-template-columns:1fr; padding:10px 20px 60px; gap:20px; } .art-bas { padding:24px 22px 22px; } }
+
+  /* ===== PAGE D'UN EPISODE ===== */
+  .ep-haut { max-width:1300px; margin:0 auto; padding:120px 50px 0; }
+  .ep-fil { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); margin-bottom:22px; display:inline-block; }
+  .ep-fil:hover { color:var(--texte); }
+  .ep-couverture { border-radius:10px 10px 0 0; overflow:hidden; aspect-ratio:16/8; background:var(--fond-2); }
+  .ep-couverture img { width:100%; height:100%; object-fit:cover; }
+  .art-bandeau { background:var(--bleu); color:#fff; border-radius:0 0 10px 10px; padding:44px 56px 38px; }
+  .art-bandeau h1 { font-size:clamp(30px,4vw,56px); max-width:1000px; }
+  .art-bandeau .art-meta { margin-top:22px; }
+  .ep-corps { max-width:1300px; margin:0 auto; padding:70px 50px 20px; }
+  .ep-section-titre { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); border-bottom:1px solid rgba(237,237,237,.15); padding-bottom:14px; margin:60px 0 26px; }
+  .ep-suite { max-width:1300px; margin:0 auto; padding:60px 50px 0; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+  .ep-suite a { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); border:1px solid rgba(237,237,237,.2); border-radius:999px; padding:10px 18px; transition:color .3s, border-color .3s; }
+  .ep-suite a:hover { color:var(--texte); border-color:var(--texte); }
+  @media (max-width:860px) { .ep-haut { padding:100px 20px 0; } .ep-couverture { aspect-ratio:4/3; } .art-bandeau { padding:26px 22px 24px; } .ep-corps { padding:50px 20px 10px; } .ep-suite { padding:40px 20px 0; } }
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo-texte"><img src="images/signature-zh-petit.png" alt="Zakaria Habbad"></a>
+  <a href="turath-ummati.html" class="retour">[BACK]</a>
+</header>
+
+<section class="ep-haut">
+  <a class="ep-fil" href="turath-ummati.html">← <span lang="ar" dir="rtl" style="font-family:'Amiri',serif;letter-spacing:0;font-size:14px">تراث أمتي</span> · All episodes</a>
+  <div class="ep-couverture"><img src="images/turath/main/ep3.jpg" alt="Episode 3 · The Saadians"></div>
+  <div class="art-bandeau">
+    <h1>The Fortress That Fell: The Battle for Santa Cruz</h1>
+    <div class="art-meta">Episode 3 · The Saadians | Documentary series</div>
+  </div>
+</section>
+
+<main class="ep-corps">
+  <article class="article"><p>Imagine a mighty Portuguese fortress, armed with heavy cannons and the most modern weapons of its age. Around it stand ordinary men from Sous, carrying swords and spears. They have one goal, which is to take back their land. They do not know fear, and they do not know the meaning of surrender.</p><p>You may have stood on the Kasbah of Agadir Oufella and admired the view of the bay. Most visitors see ruins and the scars of the 1960 earthquake. In this episode, Zakaria sees something more: a battlefield that shaped the history of Morocco.</p><p>The story begins in 1505, when a Portuguese explorer arrives, falls in love with a spring of fresh water and builds a fort around it. His name for the spot still lives on in a famous Agadir neighborhood today. From there, the coast is swallowed one fortress at a time, and the people of Sous are left to face cannons with almost nothing.</p><p>Then the tide begins to turn. There are daring raids, sudden betrayals and a night when cunning proves deadlier than any cannon. There is a truce that sparks one big question: was it a surrender, or the calm before a storm? And then comes a siege on a scale the region had rarely seen, with a vast army gathered on the hills above the fortress.</p><p>How did a people with so little bring down a fort with so much? And what did the Portuguese themselves write about their enemies, compared with what the Moroccans wrote about theirs?</p><p>Some victories are won with weapons. Some are won with unity and faith.</p><p class="cta">Press play and climb the Kasbah with us.</p></article>
+  <div class="ep-section-titre">Watch the episode</div>
+  <div class="video-ep"><iframe src="https://www.youtube-nocookie.com/embed/twMiH_Q5IKI" title="Episode 3 · The Saadians" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><a class="lien-yt" href="https://youtu.be/twMiH_Q5IKI" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+  <div class="ep-section-titre">Photos · 2 photos</div>
+  <div class="grille"><button class="vignette" data-full="images/turath/ep3/01.jpg" aria-label="Open photo 1 of The Saadians"><img src="images/turath/ep3/01-mini.jpg" alt="The Saadians, photo 1" loading="lazy"></button><button class="vignette" data-full="images/turath/ep3/02.jpg" aria-label="Open photo 2 of The Saadians"><img src="images/turath/ep3/02-mini.jpg" alt="The Saadians, photo 2" loading="lazy"></button></div>
+</main>
+
+<nav class="ep-suite"><a href="turath-ep2.html">← Episode 2 · Saadian Sugar</a><a href="turath-ep4.html">Episode 4 · Iguiliz →</a></nav>
+
+<footer><a href="turath-ummati.html">← Back to all episodes</a><p class="credit">Website made by <span>kréova</span></p></footer>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-fermer" id="lb-fermer">[CLOSE]</button>
+  <button class="lb-prec" id="lb-prec" aria-label="Previous">←</button>
+  <img id="lb-img" alt="">
+  <button class="lb-suiv" id="lb-suiv" aria-label="Next">→</button>
+  <div class="lb-compte" id="lb-compte"></div>
+</div>
+
+<script>
+  // Visionneuse : clic sur une photo pour l'agrandir
+  const vignettes = [...document.querySelectorAll('.vignette')];
+  const lb = document.getElementById('lb'), lbImg = document.getElementById('lb-img'), lbCompte = document.getElementById('lb-compte');
+  let actuel = 0;
+  function montrer(i) {
+    actuel = (i + vignettes.length) % vignettes.length;
+    const v = vignettes[actuel];
+    lbImg.src = v.dataset.full;
+    lbImg.alt = v.querySelector('img').alt;
+    lbCompte.textContent = document.title.split(' · ')[0] + ' - ' + v.querySelector('img').alt.split('photo ')[1];
+  }
+  function ouvrir(i) { montrer(i); lb.classList.add('ouvert'); document.body.style.overflow = 'hidden'; }
+  function fermer() { lb.classList.remove('ouvert'); document.body.style.overflow = ''; vignettes[actuel].focus(); }
+  vignettes.forEach((v, i) => v.onclick = () => ouvrir(i));
+  document.getElementById('lb-fermer').onclick = fermer;
+  document.getElementById('lb-prec').onclick = () => montrer(actuel - 1);
+  document.getElementById('lb-suiv').onclick = () => montrer(actuel + 1);
+  lb.onclick = e => { if (e.target === lb) fermer(); };
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('ouvert')) return;
+    if (e.key === 'Escape') fermer();
+    if (e.key === 'ArrowLeft') montrer(actuel - 1);
+    if (e.key === 'ArrowRight') montrer(actuel + 1);
+  });
+</script>
+</body>
+</html>
