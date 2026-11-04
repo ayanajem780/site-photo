@@ -83,7 +83,7 @@
   .hero-photo-2 { left: 45.3%; top: 21%; width: 25.6%; aspect-ratio: 780 / 974; z-index: 1; animation-delay: .35s; }
   .hero-photo-2 img { object-position: 50% 30%; }
   .hero-legende { position: absolute; left: 18.3%; top: 33%; z-index: 4; font-size: 12px; letter-spacing: .01em; color: #fff; opacity: 0; animation: apparait 1s ease .8s forwards; }
-  .hero-lettre { position: absolute; left: 53.5%; top: 37%; z-index: 3; font-family: var(--titre); font-weight: 700; font-size: clamp(90px, 10vw, 150px); line-height: .8; color: #fff; pointer-events: none; opacity: 0; animation: lettre 1.2s ease .6s forwards; }
+  .hero-lettre { position: absolute; left: 50%; top: 36%; z-index: 3; width: clamp(180px, 17vw, 270px); height: auto; object-fit: contain; filter: drop-shadow(0 2px 10px rgba(0,0,0,.3)); pointer-events: none; opacity: 0; animation: lettre 1.2s ease .6s forwards; }
   .hero-nom { position: absolute; left: 50px; bottom: 40px; z-index: 4; font-family: var(--titre); font-weight: 600; font-size: clamp(28px, 2.6vw, 40px); letter-spacing: -.035em; line-height: 1; color: #fff; }
   .hero-vertical { position: absolute; z-index: 4; font-size: 12px; color: #fff; writing-mode: vertical-rl; transform: rotate(180deg); transition: opacity .3s; }
   .hero-vertical:hover { opacity: .6; }
@@ -99,7 +99,7 @@
     .hero-photo-1 { left: 6%; top: 16%; width: 72%; }
     .hero-photo-2 { left: 42%; top: 33%; width: 52%; }
     .hero-legende { left: 6%; top: calc(16% - 26px); }
-    .hero-lettre { left: 36%; top: 38%; font-size: 90px; }
+    .hero-lettre { left: 30%; top: 37%; width: 170px; }
     .hero-nom { left: 20px; bottom: 28px; font-size: 28px; }
     .hero-vertical-gauche { left: 12px; top: 72%; }
     .hero-vertical-droite { right: 10px; top: auto; bottom: 140px; }
@@ -258,7 +258,7 @@
   <a href="#portfolio" class="hero-photo hero-photo-1"><img src="images/accueil/plage-danse.jpg" alt="Dancer on a Moroccan beach"></a>
   <a href="#portfolio" class="hero-photo hero-photo-2"><img src="images/accueil/plage-homme.jpg" alt="Man in white shirt and black scarf on the shore"></a>
   <div class="hero-legende">The art of seeing - Morocco</div>
-  <div class="hero-lettre" aria-hidden="true">Z</div>
+  <img class="hero-lettre" src="images/signature-zh.png" alt="" aria-hidden="true">
   <a href="#portfolio" class="hero-vertical hero-vertical-gauche">Portfolio</a>
   <a href="https://www.instagram.com/zakariahabbad/" target="_blank" rel="noopener" class="hero-vertical hero-vertical-droite">@zakariahabbad</a>
   <div class="hero-nom">ZakariaHabbad</div>
