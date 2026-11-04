@@ -60,7 +60,7 @@
   .video-ep iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
   .lien-yt { display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); margin-bottom:34px; }
   .lien-yt:hover { color:var(--texte); }
-  .eps { max-width:1300px; margin:0 auto; padding:10px 50px 40px; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:22px; }
+  .eps { max-width:1600px; margin:0 auto; padding:10px 50px 60px; --galerie-h:72vh; }
   .ep-carte { display:block; }
   .ep-carte .ep-img { aspect-ratio:4/3; overflow:hidden; background:var(--fond-2); }
   .ep-carte img { height:100%; object-fit:cover; transition:transform .8s ease, opacity .4s; }
@@ -74,9 +74,10 @@
   .article h3 { font-family:var(--serif); font-weight:400; font-size:clamp(28px,3.4vw,42px); line-height:1.15; margin-bottom:22px; }
   .article p { color:#cfcfcf; font-size:17px; line-height:1.75; margin-bottom:18px; }
   .article p.cta { color:var(--texte); font-weight:600; margin-top:26px; }
-  @media (max-width:860px) { .eps { padding:10px 20px 30px; } .article p { font-size:16px; } }
+  @media (max-width:860px) { .eps { padding:10px 20px 40px; } .article p { font-size:16px; } }
   .intro h1.titre-ar { font-family:'Amiri',var(--serif); font-weight:400; line-height:1.3; text-align:left; }
 </style>
+<link rel="stylesheet" href="albums.css">
 </head>
 <body>
 <header>
@@ -90,7 +91,12 @@
   <p>A documentary series across Morocco, in search of the places that shaped its history: zawiyas, dynasties and forgotten heritage, still alive far from the books.</p>
 </section>
 
-<section class="eps"><a class="ep-carte" href="#ep1"><div class="ep-img"><img src="images/turath/main/ep1-mini.jpg" alt="Episode 1 · Wagag" loading="lazy"></div><div class="ep-num">Episode 1 · Wagag</div><h3>The Forgotten Village That Gave Birth to an Empire</h3><span class="ep-lire">Read &amp; watch ↓</span></a><a class="ep-carte" href="#ep2"><div class="ep-img"><img src="images/turath/main/ep2-mini.jpg" alt="Episode 2 · Saadian Sugar" loading="lazy"></div><div class="ep-num">Episode 2 · Saadian Sugar</div><h3>The Sweet Secret That Built an Empire</h3><span class="ep-lire">Read &amp; watch ↓</span></a><a class="ep-carte" href="#ep3"><div class="ep-img"><img src="images/turath/main/ep3-mini.jpg" alt="Episode 3 · The Saadians" loading="lazy"></div><div class="ep-num">Episode 3 · The Saadians</div><h3>The Fortress That Fell: The Battle for Santa Cruz</h3><span class="ep-lire">Read &amp; watch ↓</span></a><a class="ep-carte" href="#ep4"><div class="ep-img"><img src="images/turath/main/ep4-mini.jpg" alt="Episode 4 · Iguiliz" loading="lazy"></div><div class="ep-num">Episode 4 · Iguiliz</div><h3>The Forgotten Summit That Shook an Empire</h3><span class="ep-lire">Read &amp; watch ↓</span></a></section>
+<section class="eps"><div class="galerie" data-galerie>
+  <a class="volet actif" href="#ep1"><span class="volet-num">01<b>Wagag</b></span><span class="volet-carte"><img src="images/turath/main/ep1.jpg" alt="Wagag" loading="lazy"><span class="volet-vertical">Wagag</span><span class="volet-texte"><span class="volet-cat">Episode 1 · Wagag</span><span class="volet-titre">The Forgotten Village That Gave Birth to an Empire</span><span class="volet-lien">Read &amp; watch ↓</span></span></span></a>
+  <a class="volet" href="#ep2"><span class="volet-num">02<b>Saadian Sugar</b></span><span class="volet-carte"><img src="images/turath/main/ep2.jpg" alt="Saadian Sugar" loading="lazy"><span class="volet-vertical">Saadian Sugar</span><span class="volet-texte"><span class="volet-cat">Episode 2 · Saadian Sugar</span><span class="volet-titre">The Sweet Secret That Built an Empire</span><span class="volet-lien">Read &amp; watch ↓</span></span></span></a>
+  <a class="volet" href="#ep3"><span class="volet-num">03<b>The Saadians</b></span><span class="volet-carte"><img src="images/turath/main/ep3.jpg" alt="The Saadians" loading="lazy"><span class="volet-vertical">The Saadians</span><span class="volet-texte"><span class="volet-cat">Episode 3 · The Saadians</span><span class="volet-titre">The Fortress That Fell: The Battle for Santa Cruz</span><span class="volet-lien">Read &amp; watch ↓</span></span></span></a>
+  <a class="volet" href="#ep4"><span class="volet-num">04<b>Iguiliz</b></span><span class="volet-carte"><img src="images/turath/main/ep4.jpg" alt="Iguiliz" loading="lazy"><span class="volet-vertical">Iguiliz</span><span class="volet-texte"><span class="volet-cat">Episode 4 · Iguiliz</span><span class="volet-titre">The Forgotten Summit That Shook an Empire</span><span class="volet-lien">Read &amp; watch ↓</span></span></span></a>
+</div></section>
 
 <nav class="nav-lieux"><div><a href="#ep1">Episode 1 · Wagag</a><a href="#ep2">Episode 2 · Saadian Sugar</a><a href="#ep3">Episode 3 · The Saadians</a><a href="#ep4">Episode 4 · Iguiliz</a></div></nav>
 
@@ -167,5 +173,6 @@
   }), { rootMargin: '-40% 0px -55% 0px' });
   document.querySelectorAll('.lieu').forEach(s => obs.observe(s));
 </script>
+<script src="albums.js"></script>
 </body>
 </html>

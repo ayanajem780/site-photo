@@ -59,7 +59,10 @@
   .lieu-choix a { font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--texte-doux); border:1px solid rgba(237,237,237,.2); border-radius:999px; padding:7px 14px; transition:color .3s, border-color .3s, background .3s; }
   .lieu-choix a:hover { color:var(--texte); border-color:var(--texte); }
   .lieu-choix a.actif { color:#0a0a0a; background:var(--texte); border-color:var(--texte); }
+  .albums-zone { max-width:1600px; margin:0 auto; padding:10px 50px 70px; --galerie-h:72vh; }
+  @media (max-width:860px) { .albums-zone { padding:10px 20px 40px; } }
 </style>
+<link rel="stylesheet" href="albums.css">
 </head>
 <body>
 <header>
@@ -72,6 +75,13 @@
   <h1>Product Photography</h1>
   <p>Objects, textures and light: products photographed to tell the story of the hands that made them.</p>
 </section>
+
+<section class="albums-zone"><div class="galerie" data-galerie>
+  <a class="volet actif" href="#artisania"><span class="volet-num">01<b>Artisania</b></span><span class="volet-carte"><img src="images/produits/artisania/01.jpg" alt="Artisania" loading="eager"><span class="volet-vertical">Artisania</span><span class="volet-texte"><span class="volet-cat">Product Photography</span><span class="volet-titre">Artisania</span><span class="volet-sous">70 photos</span><span class="volet-lien">See the album ↓</span></span></span></a>
+  <a class="volet" href="#selenite-1"><span class="volet-num">02<b>Selenite Deco I</b></span><span class="volet-carte"><img src="images/produits/selenite-1/01.jpg" alt="Selenite Deco I" loading="eager"><span class="volet-vertical">Selenite Deco I</span><span class="volet-texte"><span class="volet-cat">Product Photography</span><span class="volet-titre">Selenite Deco I</span><span class="volet-sous">13 photos</span><span class="volet-lien">See the album ↓</span></span></span></a>
+  <a class="volet" href="#insolance"><span class="volet-num">03<b>Insolance</b></span><span class="volet-carte"><img src="images/produits/insolance/01.jpg" alt="Insolance" loading="eager"><span class="volet-vertical">Insolance</span><span class="volet-texte"><span class="volet-cat">Product Photography</span><span class="volet-titre">Insolance</span><span class="volet-sous">48 photos</span><span class="volet-lien">See the album ↓</span></span></span></a>
+  <a class="volet" href="#selenite-2"><span class="volet-num">04<b>Selenite Deco II</b></span><span class="volet-carte"><img src="images/produits/selenite-2/01.jpg" alt="Selenite Deco II" loading="eager"><span class="volet-vertical">Selenite Deco II</span><span class="volet-texte"><span class="volet-cat">Product Photography</span><span class="volet-titre">Selenite Deco II</span><span class="volet-sous">12 photos</span><span class="volet-lien">See the album ↓</span></span></span></a>
+</div></section>
 
 <nav class="nav-lieux"><div><a href="#artisania">Artisania</a><a href="#selenite-1">Selenite Deco I</a><a href="#insolance">Insolance</a><a href="#selenite-2">Selenite Deco II</a></div></nav>
 
@@ -147,5 +157,6 @@
     s.querySelector('.lieu-tete').appendChild(choix);
   });
 </script>
+<script src="albums.js"></script>
 </body>
 </html>

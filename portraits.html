@@ -59,7 +59,10 @@
   .lieu-choix a { font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--texte-doux); border:1px solid rgba(237,237,237,.2); border-radius:999px; padding:7px 14px; transition:color .3s, border-color .3s, background .3s; }
   .lieu-choix a:hover { color:var(--texte); border-color:var(--texte); }
   .lieu-choix a.actif { color:#0a0a0a; background:var(--texte); border-color:var(--texte); }
+  .albums-zone { max-width:1600px; margin:0 auto; padding:10px 50px 70px; --galerie-h:72vh; }
+  @media (max-width:860px) { .albums-zone { padding:10px 20px 40px; } }
 </style>
+<link rel="stylesheet" href="albums.css">
 </head>
 <body>
 <header>
@@ -72,6 +75,15 @@
   <h1>Portraits</h1>
   <p>People, light and presence: honest portraits shot along the Moroccan coast and beyond.</p>
 </section>
+
+<section class="albums-zone"><div class="galerie" data-galerie>
+  <a class="volet actif" href="#imuknari"><span class="volet-num">01<b>Imuknari</b></span><span class="volet-carte"><img src="images/portraits/imuknari/01.jpg" alt="Imuknari" loading="eager"><span class="volet-vertical">Imuknari</span><span class="volet-texte"><span class="volet-cat">Portraits</span><span class="volet-titre">Imuknari</span><span class="volet-sous">29 photos</span><span class="volet-lien">See the album ↓</span></span></span></a>
+  <a class="volet" href="#afaf"><span class="volet-num">02<b>Afaf</b></span><span class="volet-carte"><img src="images/portraits/afaf/01.jpg" alt="Afaf" loading="eager"><span class="volet-vertical">Afaf</span><span class="volet-texte"><span class="volet-cat">Portraits</span><span class="volet-titre">Afaf</span><span class="volet-sous">15 photos</span><span class="volet-lien">See the album ↓</span></span></span></a>
+  <a class="volet" href="#monica"><span class="volet-num">03<b>Monica in Tamraght</b></span><span class="volet-carte"><img src="images/portraits/monica/01.jpg" alt="Monica in Tamraght" loading="eager"><span class="volet-vertical">Monica in Tamraght</span><span class="volet-texte"><span class="volet-cat">Portraits</span><span class="volet-titre">Monica in Tamraght</span><span class="volet-sous">9 photos</span><span class="volet-lien">See the album ↓</span></span></span></a>
+  <a class="volet" href="#oumaima"><span class="volet-num">04<b>Oumaima Yoga</b></span><span class="volet-carte"><img src="images/portraits/oumaima/01.jpg" alt="Oumaima Yoga" loading="eager"><span class="volet-vertical">Oumaima Yoga</span><span class="volet-texte"><span class="volet-cat">Portraits</span><span class="volet-titre">Oumaima Yoga</span><span class="volet-sous">11 photos</span><span class="volet-lien">See the album ↓</span></span></span></a>
+  <a class="volet" href="#keili"><span class="volet-num">05<b>Keili Mei</b></span><span class="volet-carte"><img src="images/portraits/keili/01.jpg" alt="Keili Mei" loading="eager"><span class="volet-vertical">Keili Mei</span><span class="volet-texte"><span class="volet-cat">Portraits</span><span class="volet-titre">Keili Mei</span><span class="volet-sous">15 photos</span><span class="volet-lien">See the album ↓</span></span></span></a>
+  <a class="volet" href="#sara"><span class="volet-num">06<b>Sara Morbi in Tamraght</b></span><span class="volet-carte"><img src="images/portraits/sara/01.jpg" alt="Sara Morbi in Tamraght" loading="eager"><span class="volet-vertical">Sara Morbi in Tamraght</span><span class="volet-texte"><span class="volet-cat">Portraits</span><span class="volet-titre">Sara Morbi in Tamraght</span><span class="volet-sous">26 photos</span><span class="volet-lien">See the album ↓</span></span></span></a>
+</div></section>
 
 <nav class="nav-lieux"><div><a href="#imuknari">Imuknari</a><a href="#afaf">Afaf</a><a href="#monica">Monica in Tamraght</a><a href="#oumaima">Oumaima Yoga</a><a href="#keili">Keili Mei</a><a href="#sara">Sara Morbi in Tamraght</a></div></nav>
 
@@ -157,5 +169,6 @@
     s.querySelector('.lieu-tete').appendChild(choix);
   });
 </script>
+<script src="albums.js"></script>
 </body>
 </html>

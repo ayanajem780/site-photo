@@ -59,7 +59,10 @@
   .lieu-choix a { font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--texte-doux); border:1px solid rgba(237,237,237,.2); border-radius:999px; padding:7px 14px; transition:color .3s, border-color .3s, background .3s; }
   .lieu-choix a:hover { color:var(--texte); border-color:var(--texte); }
   .lieu-choix a.actif { color:#0a0a0a; background:var(--texte); border-color:var(--texte); }
+  .albums-zone { max-width:1600px; margin:0 auto; padding:10px 50px 70px; --galerie-h:72vh; }
+  @media (max-width:860px) { .albums-zone { padding:10px 20px 40px; } }
 </style>
+<link rel="stylesheet" href="albums.css">
 </head>
 <body>
 <header>
@@ -72,6 +75,14 @@
   <h1>Airbnb</h1>
   <p>Interiors, light and atmosphere: places photographed to make you want to stay.</p>
 </section>
+
+<section class="albums-zone"><div class="galerie" data-galerie>
+  <a class="volet actif" href="#connect"><span class="volet-num">01<b>Connect</b></span><span class="volet-carte"><img src="images/airbnb/connect/01.jpg" alt="Connect" loading="eager"><span class="volet-vertical">Connect</span><span class="volet-texte"><span class="volet-cat">Airbnb</span><span class="volet-titre">Connect</span><span class="volet-sous">30 photos</span><span class="volet-lien">See the album ↓</span></span></span></a>
+  <a class="volet" href="#dalila"><span class="volet-num">02<b>Dalila</b></span><span class="volet-carte"><img src="images/airbnb/dalila/01.jpg" alt="Dalila" loading="eager"><span class="volet-vertical">Dalila</span><span class="volet-texte"><span class="volet-cat">Airbnb</span><span class="volet-titre">Dalila</span><span class="volet-sous">30 photos</span><span class="volet-lien">See the album ↓</span></span></span></a>
+  <a class="volet" href="#tigmaia"><span class="volet-num">03<b>Tigmaia</b></span><span class="volet-carte"><img src="images/airbnb/tigmaia/01.jpg" alt="Tigmaia" loading="eager"><span class="volet-vertical">Tigmaia</span><span class="volet-texte"><span class="volet-cat">Airbnb</span><span class="volet-titre">Tigmaia</span><span class="volet-sous">28 photos</span><span class="volet-lien">See the album ↓</span></span></span></a>
+  <a class="volet" href="#villa"><span class="volet-num">04<b>Villa</b></span><span class="volet-carte"><img src="images/airbnb/villa/01.jpg" alt="Villa" loading="eager"><span class="volet-vertical">Villa</span><span class="volet-texte"><span class="volet-cat">Airbnb</span><span class="volet-titre">Villa</span><span class="volet-sous">20 photos</span><span class="volet-lien">See the album ↓</span></span></span></a>
+  <a class="volet" href="#windy-bay"><span class="volet-num">05<b>Windy Bay</b></span><span class="volet-carte"><img src="images/airbnb/windy-bay/01.jpg" alt="Windy Bay" loading="eager"><span class="volet-vertical">Windy Bay</span><span class="volet-texte"><span class="volet-cat">Airbnb</span><span class="volet-titre">Windy Bay</span><span class="volet-sous">28 photos</span><span class="volet-lien">See the album ↓</span></span></span></a>
+</div></section>
 
 <nav class="nav-lieux"><div><a href="#connect">Connect</a><a href="#dalila">Dalila</a><a href="#tigmaia">Tigmaia</a><a href="#villa">Villa</a><a href="#windy-bay">Windy Bay</a></div></nav>
 
@@ -152,5 +163,6 @@
     s.querySelector('.lieu-tete').appendChild(choix);
   });
 </script>
+<script src="albums.js"></script>
 </body>
 </html>

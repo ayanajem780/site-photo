@@ -22,7 +22,7 @@
   .petit-titre a:hover { color:var(--texte); }
   .intro h1 { font-family:var(--serif); font-weight:400; font-size:clamp(56px,10vw,140px); line-height:.95; letter-spacing:-.01em; }
   .intro p { color:var(--texte-doux); max-width:560px; margin-top:26px; font-size:16px; }
-  .zone { max-width:1300px; margin:0 auto; padding:0 50px 40px; }
+  .zone { max-width:1600px; margin:0 auto; padding:0 50px 40px; }
   footer { padding:80px 50px 60px; text-align:center; }
   footer a { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); }
   footer a:hover { color:var(--texte); }
@@ -42,6 +42,7 @@
     .albums { gap:8px; } .album-texte { left:14px; right:14px; bottom:12px; flex-direction:column; align-items:flex-start; gap:2px; } .album-nb { padding:0; }
   }
 </style>
+<link rel="stylesheet" href="albums.css">
 </head>
 <body>
 <header>
@@ -56,25 +57,26 @@
 </section>
 
 <main class="zone">
-<div class="albums">
-  <a class="album" href="maghreb-mellah.html"><img src="images/maghreb/mellah/01-mini.jpg" alt="Mellah" loading="eager"><div class="album-texte"><h2>Mellah</h2><span class="album-nb">24 photos</span></div></a>
-  <a class="album" href="maghreb-wagag.html"><img src="images/maghreb/wagag/01-mini.jpg" alt="Wagag" loading="eager"><div class="album-texte"><h2>Wagag</h2><span class="album-nb">15 photos</span></div></a>
-  <a class="album" href="maghreb-saadien-sugar-factory.html"><img src="images/maghreb/saadien-sugar-factory/01-mini.jpg" alt="Saadien Sugar Factory" loading="eager"><div class="album-texte"><h2>Saadien Sugar Factory</h2><span class="album-nb">27 photos</span></div></a>
-  <a class="album" href="maghreb-cheikhat.html"><img src="images/maghreb/cheikhat/01-mini.jpg" alt="Cheikhat" loading="eager"><div class="album-texte"><h2>Cheikhat</h2><span class="album-nb">16 photos</span></div></a>
-  <a class="album" href="maghreb-sahara.html"><img src="images/maghreb/sahara/01-mini.jpg" alt="Sahara" loading="eager"><div class="album-texte"><h2>Sahara</h2><span class="album-nb">109 photos</span></div></a>
-  <a class="album" href="maghreb-semara.html"><img src="images/maghreb/semara/01-mini.jpg" alt="Semara" loading="eager"><div class="album-texte"><h2>Semara</h2><span class="album-nb">25 photos</span></div></a>
-  <a class="album" href="maghreb-ben-youssef-spirit.html"><img src="images/maghreb/ben-youssef-spirit/01-mini.jpg" alt="Ben Youssef Spirit" loading="lazy"><div class="album-texte"><h2>Ben Youssef Spirit</h2><span class="album-nb">22 photos</span></div></a>
-  <a class="album" href="maghreb-marrakesh-2024.html"><img src="images/maghreb/marrakesh-2024/01-mini.jpg" alt="Marrakesh 2024" loading="lazy"><div class="album-texte"><h2>Marrakesh 2024</h2><span class="album-nb">4 photos</span></div></a>
-  <a class="album" href="maghreb-menara.html"><img src="images/maghreb/menara/01-mini.jpg" alt="Menara" loading="lazy"><div class="album-texte"><h2>Menara</h2><span class="album-nb">17 photos</span></div></a>
-  <a class="album" href="maghreb-rabat-chellah.html"><img src="images/maghreb/rabat-chellah/01-mini.jpg" alt="Rabat - Chellah" loading="lazy"><div class="album-texte"><h2>Rabat - Chellah</h2><span class="album-nb">56 photos</span></div></a>
-  <a class="album" href="maghreb-izem.html"><img src="images/maghreb/izem/01-mini.jpg" alt="Izem" loading="lazy"><div class="album-texte"><h2>Izem</h2><span class="album-nb">40 photos</span></div></a>
-  <a class="album" href="maghreb-fes-2025.html"><img src="images/maghreb/fes-2025/01-mini.jpg" alt="Fes 2025" loading="lazy"><div class="album-texte"><h2>Fes 2025</h2><span class="album-nb">44 photos</span></div></a>
-  <a class="album" href="maghreb-andalusia.html"><img src="images/maghreb/andalusia/01-mini.jpg" alt="Andalusia" loading="lazy"><div class="album-texte"><h2>Andalusia</h2><span class="album-nb">37 photos</span></div></a>
-  <a class="album" href="maghreb-boudhour.html"><img src="images/maghreb/boudhour/01-mini.jpg" alt="Boudhour" loading="lazy"><div class="album-texte"><h2>Boudhour</h2><span class="album-nb">50 photos</span></div></a>
-  <a class="album" href="maghreb-mogador-walk.html"><img src="images/maghreb/mogador-walk/01-mini.jpg" alt="Mogador Walk" loading="lazy"><div class="album-texte"><h2>Mogador Walk</h2><span class="album-nb">15 photos</span></div></a>
+<div class="galerie" data-galerie>
+  <a class="volet actif" href="maghreb-mellah.html"><span class="volet-num">01<b>Mellah</b></span><span class="volet-carte"><img src="images/maghreb/mellah/01-mini.jpg" alt="Mellah" loading="lazy"><span class="volet-vertical">Mellah</span><span class="volet-texte"><span class="volet-cat">Maghreb</span><span class="volet-titre">Mellah</span><span class="volet-sous">24 photos</span><span class="volet-lien">See the album →</span></span></span></a>
+  <a class="volet" href="maghreb-wagag.html"><span class="volet-num">02<b>Wagag</b></span><span class="volet-carte"><img src="images/maghreb/wagag/01-mini.jpg" alt="Wagag" loading="lazy"><span class="volet-vertical">Wagag</span><span class="volet-texte"><span class="volet-cat">Maghreb</span><span class="volet-titre">Wagag</span><span class="volet-sous">15 photos</span><span class="volet-lien">See the album →</span></span></span></a>
+  <a class="volet" href="maghreb-saadien-sugar-factory.html"><span class="volet-num">03<b>Saadien Sugar Factory</b></span><span class="volet-carte"><img src="images/maghreb/saadien-sugar-factory/01-mini.jpg" alt="Saadien Sugar Factory" loading="lazy"><span class="volet-vertical">Saadien Sugar Factory</span><span class="volet-texte"><span class="volet-cat">Maghreb</span><span class="volet-titre">Saadien Sugar Factory</span><span class="volet-sous">27 photos</span><span class="volet-lien">See the album →</span></span></span></a>
+  <a class="volet" href="maghreb-cheikhat.html"><span class="volet-num">04<b>Cheikhat</b></span><span class="volet-carte"><img src="images/maghreb/cheikhat/01-mini.jpg" alt="Cheikhat" loading="lazy"><span class="volet-vertical">Cheikhat</span><span class="volet-texte"><span class="volet-cat">Maghreb</span><span class="volet-titre">Cheikhat</span><span class="volet-sous">16 photos</span><span class="volet-lien">See the album →</span></span></span></a>
+  <a class="volet" href="maghreb-sahara.html"><span class="volet-num">05<b>Sahara</b></span><span class="volet-carte"><img src="images/maghreb/sahara/01-mini.jpg" alt="Sahara" loading="lazy"><span class="volet-vertical">Sahara</span><span class="volet-texte"><span class="volet-cat">Maghreb</span><span class="volet-titre">Sahara</span><span class="volet-sous">109 photos</span><span class="volet-lien">See the album →</span></span></span></a>
+  <a class="volet" href="maghreb-semara.html"><span class="volet-num">06<b>Semara</b></span><span class="volet-carte"><img src="images/maghreb/semara/01-mini.jpg" alt="Semara" loading="lazy"><span class="volet-vertical">Semara</span><span class="volet-texte"><span class="volet-cat">Maghreb</span><span class="volet-titre">Semara</span><span class="volet-sous">25 photos</span><span class="volet-lien">See the album →</span></span></span></a>
+  <a class="volet" href="maghreb-ben-youssef-spirit.html"><span class="volet-num">07<b>Ben Youssef Spirit</b></span><span class="volet-carte"><img src="images/maghreb/ben-youssef-spirit/01-mini.jpg" alt="Ben Youssef Spirit" loading="lazy"><span class="volet-vertical">Ben Youssef Spirit</span><span class="volet-texte"><span class="volet-cat">Maghreb</span><span class="volet-titre">Ben Youssef Spirit</span><span class="volet-sous">22 photos</span><span class="volet-lien">See the album →</span></span></span></a>
+  <a class="volet" href="maghreb-marrakesh-2024.html"><span class="volet-num">08<b>Marrakesh 2024</b></span><span class="volet-carte"><img src="images/maghreb/marrakesh-2024/01-mini.jpg" alt="Marrakesh 2024" loading="lazy"><span class="volet-vertical">Marrakesh 2024</span><span class="volet-texte"><span class="volet-cat">Maghreb</span><span class="volet-titre">Marrakesh 2024</span><span class="volet-sous">4 photos</span><span class="volet-lien">See the album →</span></span></span></a>
+  <a class="volet" href="maghreb-menara.html"><span class="volet-num">09<b>Menara</b></span><span class="volet-carte"><img src="images/maghreb/menara/01-mini.jpg" alt="Menara" loading="lazy"><span class="volet-vertical">Menara</span><span class="volet-texte"><span class="volet-cat">Maghreb</span><span class="volet-titre">Menara</span><span class="volet-sous">17 photos</span><span class="volet-lien">See the album →</span></span></span></a>
+  <a class="volet" href="maghreb-rabat-chellah.html"><span class="volet-num">10<b>Rabat - Chellah</b></span><span class="volet-carte"><img src="images/maghreb/rabat-chellah/01-mini.jpg" alt="Rabat - Chellah" loading="lazy"><span class="volet-vertical">Rabat - Chellah</span><span class="volet-texte"><span class="volet-cat">Maghreb</span><span class="volet-titre">Rabat - Chellah</span><span class="volet-sous">56 photos</span><span class="volet-lien">See the album →</span></span></span></a>
+  <a class="volet" href="maghreb-izem.html"><span class="volet-num">11<b>Izem</b></span><span class="volet-carte"><img src="images/maghreb/izem/01-mini.jpg" alt="Izem" loading="lazy"><span class="volet-vertical">Izem</span><span class="volet-texte"><span class="volet-cat">Maghreb</span><span class="volet-titre">Izem</span><span class="volet-sous">40 photos</span><span class="volet-lien">See the album →</span></span></span></a>
+  <a class="volet" href="maghreb-fes-2025.html"><span class="volet-num">12<b>Fes 2025</b></span><span class="volet-carte"><img src="images/maghreb/fes-2025/01-mini.jpg" alt="Fes 2025" loading="lazy"><span class="volet-vertical">Fes 2025</span><span class="volet-texte"><span class="volet-cat">Maghreb</span><span class="volet-titre">Fes 2025</span><span class="volet-sous">44 photos</span><span class="volet-lien">See the album →</span></span></span></a>
+  <a class="volet" href="maghreb-andalusia.html"><span class="volet-num">13<b>Andalusia</b></span><span class="volet-carte"><img src="images/maghreb/andalusia/01-mini.jpg" alt="Andalusia" loading="lazy"><span class="volet-vertical">Andalusia</span><span class="volet-texte"><span class="volet-cat">Maghreb</span><span class="volet-titre">Andalusia</span><span class="volet-sous">37 photos</span><span class="volet-lien">See the album →</span></span></span></a>
+  <a class="volet" href="maghreb-boudhour.html"><span class="volet-num">14<b>Boudhour</b></span><span class="volet-carte"><img src="images/maghreb/boudhour/01-mini.jpg" alt="Boudhour" loading="lazy"><span class="volet-vertical">Boudhour</span><span class="volet-texte"><span class="volet-cat">Maghreb</span><span class="volet-titre">Boudhour</span><span class="volet-sous">50 photos</span><span class="volet-lien">See the album →</span></span></span></a>
+  <a class="volet" href="maghreb-mogador-walk.html"><span class="volet-num">15<b>Mogador Walk</b></span><span class="volet-carte"><img src="images/maghreb/mogador-walk/01-mini.jpg" alt="Mogador Walk" loading="lazy"><span class="volet-vertical">Mogador Walk</span><span class="volet-texte"><span class="volet-cat">Maghreb</span><span class="volet-titre">Mogador Walk</span><span class="volet-sous">15 photos</span><span class="volet-lien">See the album →</span></span></span></a>
 </div>
 </main>
 
 <footer><a href="index.html#portfolio">← Back to selected work</a><p class="credit">Website made by <span>kréova</span></p></footer>
+<script src="albums.js"></script>
 </body>
 </html>
