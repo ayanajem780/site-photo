@@ -148,6 +148,26 @@
   .projet-titre .type { color: var(--texte-doux); font-weight: 400; }
   .projet-meta { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--texte-doux); border-top: 1px solid rgba(237,237,237,.3); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; text-align: right; white-space: nowrap; }
 
+
+  /* ===== PASSAGE ACCUEIL -> PORTFOLIO (carte + tache d'encre au scroll) ===== */
+  .passage { position: relative; height: 400vh; }
+  .passage-scene { position: sticky; top: 0; height: 100vh; overflow: hidden; background: #d6d6d6; }
+  .passage-texte { position: absolute; left: 0; right: 0; top: 0; text-align: center; padding: 0 24px; color: #fff; will-change: transform; }
+  .passage-texte .petit-titre { color: inherit; opacity: .7; }
+  .passage-texte h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; text-transform: uppercase; font-size: clamp(40px, 7vw, 110px); line-height: .92; letter-spacing: -.01em; }
+  .passage-texte h2 em { color: var(--texte-doux); }
+  .passage-carte { position: absolute; left: 50%; top: 50%; width: clamp(210px, 21vw, 330px); aspect-ratio: 3 / 4; margin: 0; border-radius: 16px; overflow: hidden; background: #f2f0ec; padding: 10px 10px 44px; box-shadow: 0 30px 80px rgba(0,0,0,.5); will-change: transform, opacity; z-index: 3; }
+  .passage-carte img { border-radius: 9px; }
+  .passage-carte figcaption { position: absolute; left: 14px; right: 14px; bottom: 13px; display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #0a0a0a; }
+  .passage-encre { position: absolute; left: 50%; top: 50%; z-index: 2; visibility: hidden;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='black' d='M96.04,50.00 L95.72,51.60 L95.73,53.20 L95.89,54.82 L95.61,56.41 L94.50,57.85 L92.82,59.10 L91.40,60.32 L90.87,61.72 L91.19,63.38 L91.54,65.12 L91.08,66.60 L89.52,67.59 L87.28,68.18 L85.05,68.64 L83.12,69.12 L81.28,69.55 L79.18,69.68 L76.81,69.48 L74.64,69.25 L73.19,69.46 L72.55,70.31 L72.24,71.47 L71.60,72.37 L70.38,72.63 L68.89,72.51 L67.73,72.69 L67.25,73.74 L67.31,75.66 L67.47,77.96 L67.40,80.13 L67.08,82.12 L66.70,84.25 L66.36,86.75 L65.90,89.35 L65.04,91.33 L63.70,92.16 L62.05,92.01 L60.39,91.67 L58.92,91.96 L57.59,93.04 L56.23,94.30 L54.72,94.92 L53.12,94.58 L51.52,93.67 L50.00,92.84 L48.52,92.38 L47.06,92.02 L45.66,91.29 L44.36,90.16 L43.09,89.20 L41.69,89.11 L40.02,90.04 L38.13,91.38 L36.30,92.15 L34.79,91.79 L33.63,90.52 L32.59,89.10 L31.41,88.12 L30.03,87.56 L28.66,86.96 L27.54,85.95 L26.63,84.65 L25.65,83.51 L24.35,82.83 L22.83,82.38 L21.58,81.57 L21.01,80.02 L21.09,77.92 L21.22,75.92 L20.71,74.57 L19.33,73.96 L17.45,73.65 L15.73,73.11 L14.53,72.17 L13.67,70.97 L12.78,69.79 L11.74,68.66 L10.95,67.39 L10.95,65.78 L11.85,63.89 L13.09,61.99 L13.87,60.36 L13.80,59.03 L13.31,57.80 L13.27,56.48 L14.27,55.02 L16.14,53.56 L18.09,52.23 L19.44,51.07 L20.10,50.00 L20.47,48.97 L20.90,47.97 L21.19,46.97 L20.75,45.89 L19.24,44.58 L17.00,42.99 L14.93,41.26 L13.79,39.62 L13.62,38.18 L13.73,36.80 L13.34,35.19 L12.25,33.19 L10.93,30.94 L10.05,28.76 L9.89,26.84 L10.20,25.13 L10.55,23.39 L10.85,21.56 L11.48,19.90 L12.85,18.83 L14.97,18.46 L17.28,18.41 L19.10,18.00 L20.12,16.82 L20.67,15.05 L21.36,13.35 L22.59,12.28 L24.28,11.87 L26.06,11.69 L27.65,11.29 L29.10,10.70 L30.67,10.36 L32.46,10.60 L34.34,11.23 L36.04,11.64 L37.43,11.32 L38.67,10.49 L40.01,9.94 L41.59,10.45 L43.32,12.11 L44.97,14.23 L46.42,15.89 L47.67,16.66 L48.84,16.81 L50.00,16.89 L51.15,17.13 L52.29,17.19 L53.51,16.59 L54.88,15.30 L56.36,13.95 L57.80,13.28 L59.08,13.57 L60.24,14.29 L61.51,14.58 L63.11,13.97 L65.04,12.78 L66.99,11.83 L68.65,11.76 L69.91,12.55 L70.94,13.73 L71.96,14.86 L72.92,16.02 L73.57,17.56 L73.70,19.67 L73.47,22.03 L73.42,23.98 L74.08,25.07 L75.45,25.42 L77.03,25.66 L78.18,26.36 L78.68,27.60 L78.91,28.99 L79.51,30.09 L80.80,30.76 L82.52,31.23 L84.20,31.82 L85.63,32.62 L87.10,33.48 L89.06,34.22 L91.54,34.88 L93.93,35.73 L95.38,36.99 L95.53,38.65 L94.82,40.47 L94.19,42.21 L94.34,43.77 L95.16,45.25 L96.01,46.78 L96.30,48.38Z'/%3E%3C/svg%3E"); mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='black' d='M96.04,50.00 L95.72,51.60 L95.73,53.20 L95.89,54.82 L95.61,56.41 L94.50,57.85 L92.82,59.10 L91.40,60.32 L90.87,61.72 L91.19,63.38 L91.54,65.12 L91.08,66.60 L89.52,67.59 L87.28,68.18 L85.05,68.64 L83.12,69.12 L81.28,69.55 L79.18,69.68 L76.81,69.48 L74.64,69.25 L73.19,69.46 L72.55,70.31 L72.24,71.47 L71.60,72.37 L70.38,72.63 L68.89,72.51 L67.73,72.69 L67.25,73.74 L67.31,75.66 L67.47,77.96 L67.40,80.13 L67.08,82.12 L66.70,84.25 L66.36,86.75 L65.90,89.35 L65.04,91.33 L63.70,92.16 L62.05,92.01 L60.39,91.67 L58.92,91.96 L57.59,93.04 L56.23,94.30 L54.72,94.92 L53.12,94.58 L51.52,93.67 L50.00,92.84 L48.52,92.38 L47.06,92.02 L45.66,91.29 L44.36,90.16 L43.09,89.20 L41.69,89.11 L40.02,90.04 L38.13,91.38 L36.30,92.15 L34.79,91.79 L33.63,90.52 L32.59,89.10 L31.41,88.12 L30.03,87.56 L28.66,86.96 L27.54,85.95 L26.63,84.65 L25.65,83.51 L24.35,82.83 L22.83,82.38 L21.58,81.57 L21.01,80.02 L21.09,77.92 L21.22,75.92 L20.71,74.57 L19.33,73.96 L17.45,73.65 L15.73,73.11 L14.53,72.17 L13.67,70.97 L12.78,69.79 L11.74,68.66 L10.95,67.39 L10.95,65.78 L11.85,63.89 L13.09,61.99 L13.87,60.36 L13.80,59.03 L13.31,57.80 L13.27,56.48 L14.27,55.02 L16.14,53.56 L18.09,52.23 L19.44,51.07 L20.10,50.00 L20.47,48.97 L20.90,47.97 L21.19,46.97 L20.75,45.89 L19.24,44.58 L17.00,42.99 L14.93,41.26 L13.79,39.62 L13.62,38.18 L13.73,36.80 L13.34,35.19 L12.25,33.19 L10.93,30.94 L10.05,28.76 L9.89,26.84 L10.20,25.13 L10.55,23.39 L10.85,21.56 L11.48,19.90 L12.85,18.83 L14.97,18.46 L17.28,18.41 L19.10,18.00 L20.12,16.82 L20.67,15.05 L21.36,13.35 L22.59,12.28 L24.28,11.87 L26.06,11.69 L27.65,11.29 L29.10,10.70 L30.67,10.36 L32.46,10.60 L34.34,11.23 L36.04,11.64 L37.43,11.32 L38.67,10.49 L40.01,9.94 L41.59,10.45 L43.32,12.11 L44.97,14.23 L46.42,15.89 L47.67,16.66 L48.84,16.81 L50.00,16.89 L51.15,17.13 L52.29,17.19 L53.51,16.59 L54.88,15.30 L56.36,13.95 L57.80,13.28 L59.08,13.57 L60.24,14.29 L61.51,14.58 L63.11,13.97 L65.04,12.78 L66.99,11.83 L68.65,11.76 L69.91,12.55 L70.94,13.73 L71.96,14.86 L72.92,16.02 L73.57,17.56 L73.70,19.67 L73.47,22.03 L73.42,23.98 L74.08,25.07 L75.45,25.42 L77.03,25.66 L78.18,26.36 L78.68,27.60 L78.91,28.99 L79.51,30.09 L80.80,30.76 L82.52,31.23 L84.20,31.82 L85.63,32.62 L87.10,33.48 L89.06,34.22 L91.54,34.88 L93.93,35.73 L95.38,36.99 L95.53,38.65 L94.82,40.47 L94.19,42.21 L94.34,43.77 L95.16,45.25 L96.01,46.78 L96.30,48.38Z'/%3E%3C/svg%3E");
+    -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; }
+  .passage-encre .projet-media { position: absolute; inset: auto; left: 50%; top: 50%; width: 100vw; height: 100vh; }
+  .passage-final { position: absolute; inset: 0; z-index: 4; display: flex; align-items: flex-end; opacity: 0; pointer-events: none; }
+  .passage-final.actif { pointer-events: auto; }
+  .projet-apres-passage { margin-top: -100vh; }
+  @media (prefers-reduced-motion: reduce) { .passage { height: 100vh; } .passage-texte, .passage-carte { display: none; } .passage-encre { visibility: visible; -webkit-mask-image: none; mask-image: none; inset: 0; left: 0; top: 0; } .passage-final { opacity: 1; pointer-events: auto; } .projet-apres-passage { margin-top: 0; } }
+
   /* ===== TEMOIGNAGES ===== */
   .temoignages { background: var(--fond-2); padding: 130px 50px; text-align: center; }
   .temoin-zone { max-width: 820px; margin: 0 auto; position: relative; min-height: 260px; }
@@ -271,15 +291,30 @@
 <!-- ===== PORTFOLIO (projets plein écran, ajoute/enlève des .projet) ===== -->
 <section class="travaux" id="portfolio">
   <div class="pile" id="pile">
-    <div class="projet">
-      <a href="airbnb.html" class="projet-lien" aria-label="See the Airbnb catalogue"></a>
-      <div class="projet-media"><img src="images/projet-1.jpg" alt=""></div>
-      <div class="projet-degrade"></div>
-      <div class="projet-footer">
-        <div class="projet-titre">Airbnb</div>
+    <!-- Passage animé : la carte monte, puis une tache d'encre ouvre le 1er projet (Airbnb) -->
+    <div class="passage" id="passage">
+      <div class="passage-scene" id="passage-scene">
+        <div class="passage-texte" id="passage-texte">
+          <div class="petit-titre">Portfolio</div>
+          <h2>Every frame<br><em>holds a world.</em></h2>
+        </div>
+        <div class="passage-encre" id="passage-encre">
+          <div class="projet-media" id="passage-image"><img src="images/projet-1.jpg" alt=""></div>
+        </div>
+        <figure class="passage-carte" id="passage-carte">
+          <img src="images/projet-1.jpg" alt="">
+          <figcaption><span>Airbnb</span><span>01 / 05</span></figcaption>
+        </figure>
+        <div class="passage-final" id="passage-final">
+          <a href="airbnb.html" class="projet-lien" aria-label="See the Airbnb catalogue"></a>
+          <div class="projet-degrade"></div>
+          <div class="projet-footer">
+            <div class="projet-titre">Airbnb</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="projet">
+    <div class="projet projet-apres-passage">
       <a href="portraits.html" class="projet-lien" aria-label="See the Portraits catalogue"></a>
       <div class="projet-media"><img src="images/projet-2.jpg" alt=""></div>
       <div class="projet-degrade"></div>
@@ -429,6 +464,60 @@
     const ouvert = bioPlus.classList.toggle('ouvert');
     bioCercle.setAttribute('aria-expanded', ouvert);
   };
+
+  // ===== Passage animé accueil -> portfolio =====
+  (function () {
+    const passage = document.getElementById('passage');
+    if (!passage || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const scene = document.getElementById('passage-scene');
+    const texte = document.getElementById('passage-texte');
+    const carte = document.getElementById('passage-carte');
+    const encre = document.getElementById('passage-encre');
+    const image = document.getElementById('passage-image');
+    const final = document.getElementById('passage-final');
+    const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+    const lisse = t => t * t * (3 - 2 * t);
+    const sortie = t => 1 - Math.pow(1 - t, 3);
+    const entree = t => t * t * t;
+    const gris = [214, 214, 214], noir = [10, 10, 10];
+    let enCours = false;
+    function maj() {
+      enCours = false;
+      const vw = innerWidth, vh = innerHeight;
+      const p = clamp(-passage.getBoundingClientRect().top / (vh * 2));
+      // 1. Le fond gris de l'accueil devient noir
+      const f = lisse(clamp(p / 0.22));
+      scene.style.background = `rgb(${gris.map((g, i) => Math.round(g + (noir[i] - g) * f)).join(',')})`;
+      // 2. Le grand texte monte puis sort par le haut
+      const t = clamp(p / 0.45);
+      texte.style.transform = `translateY(${(1 - t) * vh * 0.75 - t * vh * 0.55}px)`;
+      texte.style.opacity = clamp(t * 4) * (1 - clamp((t - 0.75) / 0.25));
+      // 3. La carte monte au centre en se redressant, puis vacille
+      const c = sortie(clamp((p - 0.08) / 0.34));
+      const vacille = Math.sin(clamp((p - 0.42) / 0.14) * Math.PI) * 4;
+      // 4. La tache d'encre grandit depuis la carte et ouvre la photo plein écran
+      const e = clamp((p - 0.55) / 0.38);
+      const diag = Math.hypot(vw, vh);
+      const cote = diag * 1.5;
+      const taille = e <= 0 ? 0 : carte.offsetWidth * 0.8 + (diag * 1.8 - carte.offsetWidth * 0.8) * entree(e);
+      const angle = e * 40;
+      encre.style.visibility = e > 0 ? 'visible' : 'hidden';
+      encre.style.width = encre.style.height = cote + 'px';
+      encre.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+      encre.style.webkitMaskSize = encre.style.maskSize = `${taille}px ${taille}px`;
+      image.style.transform = `translate(-50%, -50%) rotate(${-angle}deg) scale(${1.15 - 0.15 * e})`;
+      carte.style.transform = `translate(-50%, -50%) translateY(${(1 - c) * vh * 0.85}px) rotate(${(1 - c) * -9 + vacille - e * 12}deg) scale(${1 - e * 0.45})`;
+      carte.style.opacity = c > 0 ? 1 - clamp(e * 1.6) : 0;
+      // 5. Le titre du projet apparaît
+      const fin = clamp((p - 0.9) / 0.1);
+      final.style.opacity = fin;
+      final.classList.toggle('actif', fin > 0.5);
+    }
+    const demander = () => { if (!enCours) { enCours = true; requestAnimationFrame(maj); } };
+    addEventListener('scroll', demander, { passive: true });
+    addEventListener('resize', demander);
+    maj();
+  })();
 
   // Curseur personnalisé (désactivé sur mobile/tactile)
   (function () {
