@@ -19,3 +19,47 @@ document.querySelectorAll('[data-galerie]').forEach(function (galerie) {
     });
   });
 });
+
+// ===== UN SEUL ALBUM À LA FOIS (pages Airbnb, Portraits, Produits) =====
+// Plus de défilement à travers tous les albums : on garde seulement le menu
+// (boutons Connect, Dalila…). Cliquer un bouton ou un volet affiche cet album.
+(function () {
+  const lieux = [...document.querySelectorAll('.lieu')];
+  if (lieux.length < 2 || !document.querySelector('.lieu-choix')) return;
+  document.body.classList.add('un-album');
+  const volets = [...document.querySelectorAll('.galerie .volet')];
+
+  function afficher(id, allerAuMenu) {
+    const cible = lieux.find(l => l.id === id) || lieux[0];
+    lieux.forEach(l => { l.hidden = l !== cible; });
+    document.querySelectorAll('.lieu-choix a, .nav-lieux a').forEach(a =>
+      a.classList.toggle('actif', a.getAttribute('href') === '#' + cible.id));
+    volets.forEach(v => v.classList.toggle('actif', v.getAttribute('href') === '#' + cible.id));
+    if (allerAuMenu) cible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    else if (cible.getBoundingClientRect().top < 0) cible.scrollIntoView({ block: 'start' });
+    history.replaceState(null, '', '#' + cible.id);
+  }
+
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented) return;            // 1er toucher sur un volet : il s'ouvre seulement
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const id = a.getAttribute('href').slice(1);
+    if (!lieux.some(l => l.id === id)) return;
+    e.preventDefault();
+    afficher(id, a.classList.contains('volet'));
+  });
+
+  // Visionneuse : flèches ← → limitées aux photos de l'album affiché
+  if (typeof montrer === 'function' && typeof vignettes !== 'undefined') {
+    const montrerOrigine = montrer;
+    window.montrer = function (i) {
+      const n = vignettes.length, sens = i < actuel ? -1 : 1;
+      let j = (i + n) % n, essais = 0;
+      while (vignettes[j].closest('.lieu').hidden && essais++ < n) j = (j + sens + n) % n;
+      montrerOrigine(j);
+    };
+  }
+
+  afficher(location.hash.slice(1), false);
+})();
