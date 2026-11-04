@@ -72,8 +72,8 @@
   .menu-liens:hover a { opacity: .25; filter: blur(5px); }
   .menu-liens a:hover { opacity: 1; filter: blur(0); }
 
-  /* ===== PAGE D'ACCUEIL (style collage, fond gris) ===== */
-  .hero { position: relative; height: 100vh; min-height: 560px; overflow: hidden; background: #d6d6d6; color: #fff; }
+  /* ===== PAGE D'ACCUEIL (style collage, fond noir) ===== */
+  .hero { position: relative; height: 100vh; min-height: 560px; overflow: hidden; background: var(--fond); color: #fff; }
   .hero-photo { position: absolute; overflow: hidden; opacity: 0; transform: translateY(30px); animation: apparait 1.2s cubic-bezier(.2,.7,.2,1) forwards; }
   .hero-photo img { transition: transform 1.4s ease; }
   .hero-photo:hover img { transform: scale(1.04); }
@@ -85,11 +85,11 @@
   .hero-legende { position: absolute; left: 18.3%; top: 33%; z-index: 4; font-size: 12px; letter-spacing: .01em; color: #fff; opacity: 0; animation: apparait 1s ease .8s forwards; }
   .hero-lettre { position: absolute; left: 50%; top: 36%; z-index: 3; width: clamp(180px, 17vw, 270px); height: auto; object-fit: contain; filter: drop-shadow(0 2px 10px rgba(0,0,0,.3)); pointer-events: none; opacity: 0; animation: lettre 1.2s ease .6s forwards; }
   .hero-nom { position: absolute; left: 50px; bottom: 40px; z-index: 4; font-family: var(--titre); font-weight: 600; font-size: clamp(28px, 2.6vw, 40px); letter-spacing: -.035em; line-height: 1; color: #fff; }
-  .hero-vertical { position: absolute; z-index: 4; font-size: 12px; color: #fff; writing-mode: vertical-rl; transform: rotate(180deg); transition: opacity .3s; }
+  .hero-vertical { position: absolute; z-index: 4; font-size: 12px; color: var(--texte-doux); writing-mode: vertical-rl; transform: rotate(180deg); transition: opacity .3s; }
   .hero-vertical:hover { opacity: .6; }
   .hero-vertical-gauche { left: 32px; top: 50%; translate: 0 -50%; }
   .hero-vertical-droite { right: 28px; top: 90px; transform: none; }
-  .hero-fleche { position: absolute; right: 30px; bottom: 40px; z-index: 4; font-size: 18px; color: #fff; animation: rebond 2.2s ease-in-out infinite; }
+  .hero-fleche { position: absolute; right: 30px; bottom: 40px; z-index: 4; font-size: 18px; color: var(--texte-doux); animation: rebond 2.2s ease-in-out infinite; }
   @keyframes apparait { to { opacity: 1; transform: translateY(0); } }
   @keyframes lettre { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes rebond { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
@@ -151,7 +151,7 @@
 
   /* ===== PASSAGE ACCUEIL -> PORTFOLIO (carte + tache d'encre au scroll) ===== */
   .passage { position: relative; height: 400vh; }
-  .passage-scene { position: sticky; top: 0; height: 100vh; overflow: hidden; background: #d6d6d6; }
+  .passage-scene { position: sticky; top: 0; height: 100vh; overflow: hidden; background: var(--fond); }
   .passage-texte { position: absolute; left: 0; right: 0; top: 0; text-align: center; padding: 0 24px; color: #fff; will-change: transform; }
   .passage-texte .petit-titre { color: inherit; opacity: .7; }
   .passage-texte h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; text-transform: uppercase; font-size: clamp(40px, 7vw, 110px); line-height: .92; letter-spacing: -.01em; }
@@ -479,15 +479,11 @@
     const lisse = t => t * t * (3 - 2 * t);
     const sortie = t => 1 - Math.pow(1 - t, 3);
     const entree = t => t * t * t;
-    const gris = [214, 214, 214], noir = [10, 10, 10];
     let enCours = false;
     function maj() {
       enCours = false;
       const vw = innerWidth, vh = innerHeight;
       const p = clamp(-passage.getBoundingClientRect().top / (vh * 2));
-      // 1. Le fond gris de l'accueil devient noir
-      const f = lisse(clamp(p / 0.22));
-      scene.style.background = `rgb(${gris.map((g, i) => Math.round(g + (noir[i] - g) * f)).join(',')})`;
       // 2. Le grand texte monte puis sort par le haut
       const t = clamp(p / 0.45);
       texte.style.transform = `translateY(${(1 - t) * vh * 0.75 - t * vh * 0.55}px)`;
