@@ -363,6 +363,22 @@
       </div>
     </div>
     <div class="projet">
+      <a href="videos.html" class="projet-lien" aria-label="Watch the videos"></a>
+      <div class="projet-media"><video class="projet-video" muted loop playsinline preload="none" poster="video/hero-poster.jpg" aria-hidden="true"><source src="video/hero.mp4" type="video/mp4"></video></div>
+      <div class="projet-degrade"></div>
+      <div class="projet-footer">
+        <div class="projet-titre">Videos</div>
+      </div>
+    </div>
+    <div class="projet">
+      <a href="articles.html" class="projet-lien" aria-label="Read the articles"></a>
+      <div class="projet-media"><img src="images/zakaria-portrait.jpg" alt="" style="object-position:50% 35%"></div>
+      <div class="projet-degrade"></div>
+      <div class="projet-footer">
+        <div class="projet-titre">Articles</div>
+      </div>
+    </div>
+    <div class="projet">
       <a href="biography.html" class="projet-lien" aria-label="Read the biography"></a>
       <div class="projet-media"><img src="images/projet-5.jpg" alt=""></div>
       <div class="projet-degrade"></div>
@@ -579,6 +595,17 @@
       if (!visible || document.hidden) return;
       changer(tour % 2); tour++;
     }, DUREE);
+  })();
+</script>
+<script>
+  // Carte "Videos" du portfolio : la video se lance quand la carte est a l'ecran
+  (function () {
+    document.querySelectorAll('.projet-video').forEach(v => {
+      new IntersectionObserver(es => es.forEach(e => {
+        if (e.isIntersecting) { if (v.preload !== 'auto') { v.preload = 'auto'; v.load(); } v.play().catch(() => {}); }
+        else v.pause();
+      }), { rootMargin: '200px 0px' }).observe(v);
+    });
   })();
 </script>
 </body>
