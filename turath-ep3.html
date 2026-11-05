@@ -127,6 +127,15 @@
     .article .art-photo.large, .article .duo { width:calc(100vw - 40px); }
     .article .duo { gap:8px; margin:30px 0 32px; } .article .art-photo { margin:30px 0 32px; }
   }
+
+  /* Photos de l'article a la largeur du texte (plus discretes) */
+  .article .art-photo.large, .article .duo { width:100%; left:auto; }
+  .article .art-photo.large, .article .art-photo.large.vu { transform:none; }
+  .art-photo.large:not(.vu) { transform:translateY(24px); }
+  .article .art-photo.large .vignette { aspect-ratio:3/2; }
+  .article .art-photo, .article .duo { margin:34px 0 36px; }
+  .article .duo { gap:10px; transform:none; }
+  @media (max-width:860px) { .article .art-photo.large, .article .duo { width:100%; } }
 </style>
 </head>
 <body>
