@@ -270,6 +270,15 @@
 
   /* menu a 7 liens : taille adaptee a la hauteur de l'ecran */
   .menu-liens a { font-size: min(11vw, 10.5vh) !important; }
+
+  /* ===== HAUT DE L'ACCUEIL : photos plus grandes et centrees selon la largeur ET la hauteur de l'ecran ===== */
+  @media (min-width: 861px) {
+    .hero { --s: min(125vw, 150vh); --x: calc(50vw - .31 * var(--s)); --y: calc(52vh - .245 * var(--s)); }
+    .hero-photo-1 { left: var(--x); top: var(--y); width: calc(.48 * var(--s)); }
+    .hero-photo-2 { left: calc(var(--x) + .31 * var(--s)); top: calc(var(--y) + .1 * var(--s)); width: calc(.31 * var(--s)); }
+    .hero-legende { left: calc(var(--x) - 46px); top: calc(var(--y) + .21 * var(--s)); }
+    .hero-lettre { left: calc(var(--x) + .39 * var(--s)); top: calc(var(--y) + .25 * var(--s)); width: clamp(180px, calc(.2 * var(--s)), 320px); }
+  }
 </style>
 </head>
 <body>
