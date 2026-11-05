@@ -106,6 +106,27 @@
   .ep-suite a { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--texte-doux); border:1px solid rgba(237,237,237,.2); border-radius:999px; padding:10px 18px; transition:color .3s, border-color .3s; }
   .ep-suite a:hover { color:var(--texte); border-color:var(--texte); }
   @media (max-width:860px) { .ep-haut { padding:100px 20px 0; } .ep-couverture { aspect-ratio:4/3; } .art-bandeau { padding:26px 22px 24px; } .ep-corps { padding:50px 20px 10px; } .ep-suite { padding:40px 20px 0; } }
+
+  /* ===== PHOTOS DANS L'ARTICLE ===== */
+  .article .art-photo { display:block; margin:44px 0 46px; }
+  .article .art-photo.large { width:min(1100px, calc(100vw - 100px)); position:relative; left:50%; transform:translateX(-50%); }
+  .article .duo { display:flex; gap:14px; width:min(1100px, calc(100vw - 100px)); position:relative; left:50%; transform:translateX(-50%); margin:44px 0 46px; }
+  .article .duo .art-photo { margin:0; min-width:0; }
+  .article .art-photo .vignette { margin:0; cursor:zoom-in; }
+  .article .art-photo img { width:100%; height:auto; }
+  .article .art-photo.large .vignette { aspect-ratio:16/9; }
+  .article .art-photo.large img { height:100%; object-fit:cover; }
+  .article p:first-child::first-letter { font-family:var(--serif); float:left; font-size:78px; line-height:.82; padding:6px 12px 0 0; color:var(--texte); }
+  .art-photo { opacity:0; transform:translateY(24px); transition:opacity .9s ease, transform .9s ease; }
+  .art-photo.large { transform:translate(-50%, 24px); }
+  .art-photo.vu { opacity:1; transform:none; }
+  .art-photo.large.vu { transform:translateX(-50%); }
+  .duo .art-photo { transform:translateY(24px); }
+  .duo .art-photo.vu { transform:none; }
+  @media (max-width:860px) {
+    .article .art-photo.large, .article .duo { width:calc(100vw - 40px); }
+    .article .duo { gap:8px; margin:30px 0 32px; } .article .art-photo { margin:30px 0 32px; }
+  }
 </style>
 </head>
 <body>
@@ -124,11 +145,9 @@
 </section>
 
 <main class="ep-corps">
-  <article class="article"><p>Imagine a mighty Portuguese fortress, armed with heavy cannons and the most modern weapons of its age. Around it stand ordinary men from Sous, carrying swords and spears. They have one goal, which is to take back their land. They do not know fear, and they do not know the meaning of surrender.</p><p>You may have stood on the Kasbah of Agadir Oufella and admired the view of the bay. Most visitors see ruins and the scars of the 1960 earthquake. In this episode, Zakaria sees something more: a battlefield that shaped the history of Morocco.</p><p>The story begins in 1505, when a Portuguese explorer arrives, falls in love with a spring of fresh water and builds a fort around it. His name for the spot still lives on in a famous Agadir neighborhood today. From there, the coast is swallowed one fortress at a time, and the people of Sous are left to face cannons with almost nothing.</p><p>Then the tide begins to turn. There are daring raids, sudden betrayals and a night when cunning proves deadlier than any cannon. There is a truce that sparks one big question: was it a surrender, or the calm before a storm? And then comes a siege on a scale the region had rarely seen, with a vast army gathered on the hills above the fortress.</p><p>How did a people with so little bring down a fort with so much? And what did the Portuguese themselves write about their enemies, compared with what the Moroccans wrote about theirs?</p><p>Some victories are won with weapons. Some are won with unity and faith.</p><p class="cta">Press play and climb the Kasbah with us.</p></article>
+  <article class="article"><p>Imagine a mighty Portuguese fortress, armed with heavy cannons and the most modern weapons of its age. Around it stand ordinary men from Sous, carrying swords and spears. They have one goal, which is to take back their land. They do not know fear, and they do not know the meaning of surrender.</p><p>You may have stood on the Kasbah of Agadir Oufella and admired the view of the bay. Most visitors see ruins and the scars of the 1960 earthquake. In this episode, Zakaria sees something more: a battlefield that shaped the history of Morocco.</p><div class="duo"><figure class="art-photo" style="flex:1.778"><button class="vignette" data-full="images/turath/ep3/01.jpg" aria-label="Open photo 1 of The Saadians"><img src="images/turath/ep3/01.jpg" alt="The Saadians, photo 1" loading="lazy"></button></figure><figure class="art-photo" style="flex:0.800"><button class="vignette" data-full="images/turath/ep3/02.jpg" aria-label="Open photo 2 of The Saadians"><img src="images/turath/ep3/02.jpg" alt="The Saadians, photo 2" loading="lazy"></button></figure></div><p>The story begins in 1505, when a Portuguese explorer arrives, falls in love with a spring of fresh water and builds a fort around it. His name for the spot still lives on in a famous Agadir neighborhood today. From there, the coast is swallowed one fortress at a time, and the people of Sous are left to face cannons with almost nothing.</p><p>Then the tide begins to turn. There are daring raids, sudden betrayals and a night when cunning proves deadlier than any cannon. There is a truce that sparks one big question: was it a surrender, or the calm before a storm? And then comes a siege on a scale the region had rarely seen, with a vast army gathered on the hills above the fortress.</p><p>How did a people with so little bring down a fort with so much? And what did the Portuguese themselves write about their enemies, compared with what the Moroccans wrote about theirs?</p><p>Some victories are won with weapons. Some are won with unity and faith.</p><p class="cta">Press play and climb the Kasbah with us.</p></article>
   <div class="ep-section-titre">Watch the episode</div>
   <div class="video-ep"><iframe src="https://www.youtube-nocookie.com/embed/twMiH_Q5IKI" title="Episode 3 · The Saadians" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><a class="lien-yt" href="https://youtu.be/twMiH_Q5IKI" target="_blank" rel="noopener">Watch on YouTube ↗</a>
-  <div class="ep-section-titre">Photos · 2 photos</div>
-  <div class="grille"><button class="vignette" data-full="images/turath/ep3/01.jpg" aria-label="Open photo 1 of The Saadians"><img src="images/turath/ep3/01-mini.jpg" alt="The Saadians, photo 1" loading="lazy"></button><button class="vignette" data-full="images/turath/ep3/02.jpg" aria-label="Open photo 2 of The Saadians"><img src="images/turath/ep3/02-mini.jpg" alt="The Saadians, photo 2" loading="lazy"></button></div>
 </main>
 
 <nav class="ep-suite"><a href="turath-ep2.html">← Episode 2 · Saadian Sugar</a><a href="turath-ep4.html">Episode 4 · Iguiliz →</a></nav>
@@ -167,6 +186,13 @@
     if (e.key === 'ArrowLeft') montrer(actuel - 1);
     if (e.key === 'ArrowRight') montrer(actuel + 1);
   });
+
+  // Apparition douce des photos de l'article au defilement
+  const aVoir = document.querySelectorAll('.art-photo');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vu'); obs.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    aVoir.forEach(el => obs.observe(el));
+  } else { aVoir.forEach(el => el.classList.add('vu')); }
 </script>
 </body>
 </html>
