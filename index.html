@@ -501,6 +501,7 @@
     const cv = document.getElementById('iris'); if (!cv) return;
     const ctx = cv.getContext('2d'), fTexte = document.getElementById('f-stop');
     const lent = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const photo = new Image(); photo.src = 'images/zakaria-portrait.jpg';
     const LAMES = 9, STOPS = ['1.4', '2', '2.8', '4', '5.6', '8', '11', '16'];
     let W = 0, dpr = 1, ouverture = .6, cible = .6, souris = null, ferme = 0, t0 = performance.now(), visible = true;
     const bokeh = Array.from({ length: 26 }, () => ({ x: Math.random() * 2 - 1, y: Math.random() * 2 - 1, r: .05 + Math.random() * .16, v: .02 + Math.random() * .05, p: Math.random() * 6.28, c: Math.random() }));
@@ -527,6 +528,16 @@
       const fond = ctx.createRadialGradient(c, c, 0, c, c, R);
       fond.addColorStop(0, '#f3c38f'); fond.addColorStop(.45, '#b5582f'); fond.addColorStop(1, '#2a120a');
       ctx.fillStyle = fond; ctx.fillRect(0, 0, W, W);
+      if (photo.complete && photo.naturalWidth) {
+        // la photo de Zakaria dans l'objectif : elle zoome un peu quand le diaphragme se ferme
+        const z = 1.05 + (1 - o) * .25, cote = 2 * R * z, ratio = photo.naturalWidth / photo.naturalHeight;
+        const pw = ratio > 1 ? cote * ratio : cote, ph = ratio > 1 ? cote : cote / ratio;
+        ctx.drawImage(photo, c - pw * .5, c - ph * .38, pw, ph);
+        const voile = ctx.createRadialGradient(c, c, R * .2, c, c, R);
+        voile.addColorStop(0, 'rgba(40,20,10,0)'); voile.addColorStop(1, 'rgba(40,20,10,.45)');
+        ctx.fillStyle = voile; ctx.fillRect(0, 0, W, W);
+      }
+      ctx.globalAlpha = photo.naturalWidth ? .35 : 1;
       ctx.globalCompositeOperation = 'screen';
       bokeh.forEach(b => {
         const x = c + (b.x + Math.sin(t / 4000 * b.v * 20 + b.p) * .15) * R, y = c + (b.y + Math.cos(t / 5000 * b.v * 20 + b.p) * .15) * R, rr = b.r * R;
@@ -535,7 +546,7 @@
         g.addColorStop(0, `rgba(${col},.55)`); g.addColorStop(.85, `rgba(${col},.22)`); g.addColorStop(1, `rgba(${col},0)`);
         ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, rr, 0, 7); ctx.fill();
       });
-      ctx.globalCompositeOperation = 'source-over';
+      ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
 
       // lames du diaphragme
       const rot = t / 9000 + (1 - o) * 1.1, pts = [], bouts = [];
