@@ -252,6 +252,11 @@
   .hero-photo img.entre { opacity: 0; }
   .hero-legende { transition: opacity .2s ease; }
   .hero-legende.change { opacity: 0 !important; }
+
+  /* Reseaux a droite du haut de l'accueil : Instagram + YouTube, a la verticale */
+  .hero-reseaux { position: absolute; z-index: 4; right: 28px; top: 90px; display: flex; flex-direction: column; align-items: center; gap: 26px; }
+  .hero-reseaux .hero-vertical { position: static; transform: none; }
+  @media (max-width: 860px) { .hero-reseaux { right: 10px; top: auto; bottom: 140px; } }
 </style>
 </head>
 <body>
@@ -287,7 +292,10 @@
   <div class="hero-legende" id="hero-legende">The art of seeing - Morocco</div>
   <img class="hero-lettre" src="images/accueil/signature-z.png" alt="" aria-hidden="true">
   <a href="#portfolio" class="hero-vertical hero-vertical-gauche">Portfolio</a>
-  <a href="https://www.instagram.com/zakariahabbad/" target="_blank" rel="noopener" class="hero-vertical hero-vertical-droite">@zakariahabbad</a>
+  <div class="hero-reseaux">
+    <a href="https://www.instagram.com/zakariahabbad/" target="_blank" rel="noopener" class="hero-vertical">@zakariahabbad</a>
+    <a href="https://www.youtube.com/@zakariahabbad" target="_blank" rel="noopener" class="hero-vertical">YouTube</a>
+  </div>
   <div class="hero-nom">ZakariaHabbad</div>
   <a href="#portfolio" class="hero-fleche" aria-label="Scroll down">↓</a>
   <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Zakaria Habbad - Photographer &amp; Filmmaker</h1>
@@ -356,8 +364,8 @@
 
 <!-- ===== INSTAGRAM ===== -->
 <section class="insta">
-  <div class="petit-titre">Follow me on Instagram</div>
-  <h4><a href="https://www.instagram.com/madebyzakaria/" target="_blank" rel="noopener">@madebyzakaria</a> <span class="insta-sep">·</span> <a href="https://www.instagram.com/zakariahabbad/" target="_blank" rel="noopener">@zakariahabbad</a></h4>
+  <div class="petit-titre">Follow me on Instagram &amp; YouTube</div>
+  <h4><a href="https://www.instagram.com/madebyzakaria/" target="_blank" rel="noopener">@madebyzakaria</a> <span class="insta-sep">·</span> <a href="https://www.instagram.com/zakariahabbad/" target="_blank" rel="noopener">@zakariahabbad</a> <span class="insta-sep">·</span> <a href="https://www.youtube.com/@zakariahabbad" target="_blank" rel="noopener">YouTube</a></h4>
   <h3 class="insta-phrase">One photographer, two different worlds: <em>art has no borders, only horizons.</em></h3>
   <!-- Deux bandes qui défilent : change les photos ici (chaque bande est écrite 2 fois pour boucler) -->
   <div class="insta-bandes">
