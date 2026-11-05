@@ -101,7 +101,7 @@
   .bio-plus { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows .7s ease, opacity .6s ease; }
   .bio-plus > * { min-height: 0; }
   .bio-plus.ouvert { grid-template-rows: 1fr; opacity: 1; }
-  .bio-plus-interieur { overflow: hidden; }
+  .bio-plus-interieur { overflow: hidden; padding-top: 10px; }
 
   /* ===== PORTFOLIO (projets plein écran empilés) ===== */
   .travaux { padding: 90px 0 0; text-align: center; }
@@ -223,8 +223,7 @@
     <div class="petit-titre">About me</div>
     <h3>Understanding a place, and telling its story through my own eyes</h3>
     <!-- ===== BIOGRAPHIE (modifie le texte ici) ===== -->
-    <button class="bio-cercle" id="bio-cercle" aria-expanded="false" aria-controls="bio-plus" aria-label="Read the biography"><span>+</span></button>
-    <div class="bio-plus" id="bio-plus"><div class="bio-plus-interieur">
+    <div class="bio-plus ouvert" id="bio-plus"><div class="bio-plus-interieur">
       <p>I’m <strong>Zakaria Habbad</strong>, a <strong>Moroccan photographer and filmmaker</strong> from Agadir.</p>
       <p><strong>For more than a decade</strong>, I’ve been carrying a camera through Morocco, moving between cities, mountains, coastlines, deserts, workshops, medinas and villages. Photography and film became my way of <strong>understanding the country I come from</strong>, and of paying attention to the things that are easy to overlook.</p>
       <p>My work moves between <strong>photography, cinema, documentaries and visual storytelling</strong>. I photograph people, places, architecture, landscapes and everyday moments. I make films about history, culture, artisans, forgotten stories and <strong>the people who keep traditions alive</strong>. Sometimes I travel with a clear subject in mind. Other times, I simply follow what catches my eye.</p>
@@ -271,14 +270,6 @@
   menuBtn.onclick = ouvrirMenu;
   menuClose.onclick = fermerMenu;
   menuOverlay.querySelectorAll('[data-menu-lien]').forEach(a => a.onclick = fermerMenu);
-
-  // Biographie : cercle blanc qui ouvre le texte
-  const bioCercle = document.getElementById('bio-cercle');
-  const bioPlus = document.getElementById('bio-plus');
-  bioCercle.onclick = () => {
-    const ouvert = bioPlus.classList.toggle('ouvert');
-    bioCercle.setAttribute('aria-expanded', ouvert);
-  };
 
   // Curseur personnalisé (désactivé sur mobile/tactile)
   (function () {
