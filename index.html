@@ -246,6 +246,12 @@
     .iris { max-width: 420px; margin: 0 auto; }
     .contact-texte { margin: 0 auto; } .contact .contact-texte p { margin-left: auto; margin-right: auto; }
   }
+
+  /* ===== DIAPORAMA DE L'ACCUEIL : les 2 photos changent avec toutes les photos du site ===== */
+  .hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 1.2s ease, transform 1.4s ease; }
+  .hero-photo img.entre { opacity: 0; }
+  .hero-legende { transition: opacity .6s ease; }
+  .hero-legende.change { opacity: 0 !important; }
 </style>
 </head>
 <body>
@@ -276,9 +282,9 @@
 
 <!-- ===== PAGE D'ACCUEIL (change les 2 photos ici : images/accueil/) ===== -->
 <section class="hero" id="accueil">
-  <a href="#portfolio" class="hero-photo hero-photo-1"><img src="images/accueil/plage-danse.jpg" alt="Dancer on a Moroccan beach"></a>
-  <a href="#portfolio" class="hero-photo hero-photo-2"><img src="images/accueil/plage-homme.jpg" alt="Man in white shirt and black scarf on the shore"></a>
-  <div class="hero-legende">The art of seeing - Morocco</div>
+  <a href="#portfolio" class="hero-photo hero-photo-1" id="hero-1"><img src="images/accueil/plage-danse.jpg" alt="Dancer on a Moroccan beach"></a>
+  <a href="#portfolio" class="hero-photo hero-photo-2" id="hero-2"><img src="images/accueil/plage-homme.jpg" alt="Man in white shirt and black scarf on the shore"></a>
+  <div class="hero-legende" id="hero-legende">The art of seeing - Morocco</div>
   <img class="hero-lettre" src="images/accueil/signature-z.png" alt="" aria-hidden="true">
   <a href="#portfolio" class="hero-vertical hero-vertical-gauche">Portfolio</a>
   <a href="https://www.instagram.com/zakariahabbad/" target="_blank" rel="noopener" class="hero-vertical hero-vertical-droite">@zakariahabbad</a>
@@ -587,6 +593,50 @@
     }
     cv.addEventListener('click', () => declencher(null));
     document.getElementById('declencheur').addEventListener('click', function (e) { e.preventDefault(); declencher(this.href); });
+  })();
+</script>
+<script src="hero-photos.js"></script>
+<script>
+  // ===== DIAPORAMA DE L'ACCUEIL =====
+  // Les 2 photos du haut changent toutes les quelques secondes avec toutes les photos du site.
+  // Un clic sur une photo ouvre l'album d'ou elle vient.
+  (function () {
+    const L = window.HERO_PHOTOS; if (!L) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const DUREE = 4500;
+    const melanger = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+    const listes = [melanger(L.paysage), melanger(L.portrait)], pos = [0, 0];
+    const cadres = [document.getElementById('hero-1'), document.getElementById('hero-2')];
+    const legende = document.getElementById('hero-legende');
+    const hero = document.getElementById('accueil');
+    let visible = true, prochain = [null, null];
+
+    function precharger(k) {
+      const e = listes[k][pos[k] % listes[k].length]; pos[k]++;
+      const img = new Image(); img.decoding = 'async'; img.src = e.s;
+      prochain[k] = { e, img, pret: img.decode ? img.decode().catch(() => {}) : Promise.resolve() };
+    }
+    function changer(k) {
+      const p = prochain[k]; if (!p) return Promise.resolve();
+      return p.pret.then(() => {
+        const cadre = cadres[k], ancien = cadre.querySelector('img:last-of-type');
+        const nouveau = p.img; nouveau.alt = p.e.t; nouveau.className = 'entre';
+        cadre.appendChild(nouveau); void nouveau.offsetWidth; nouveau.classList.remove('entre');
+        cadre.href = p.e.l; cadre.setAttribute('aria-label', 'Open the album ' + p.e.t);
+        setTimeout(() => { cadre.querySelectorAll('img').forEach(i => { if (i !== nouveau) i.remove(); }); }, 1300);
+        if (k === 0) {
+          legende.classList.add('change');
+          setTimeout(() => { legende.textContent = p.e.t; legende.classList.remove('change'); }, 600);
+        }
+        precharger(k);
+      });
+    }
+    precharger(0); precharger(1);
+    new IntersectionObserver(es => es.forEach(e => visible = e.isIntersecting)).observe(hero);
+    setInterval(() => {
+      if (!visible || document.hidden) return;
+      changer(0); setTimeout(() => changer(1), 700);
+    }, DUREE);
   })();
 </script>
 </body>
