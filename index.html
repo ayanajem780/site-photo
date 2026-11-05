@@ -226,6 +226,52 @@
   .turath-texte .bouton { color: #fff; background: rgba(0,0,0,.25); }
   .turath-case:hover .bouton { background: #fff; color: #0a0a0a; border-color: #fff; }
   @media (max-width: 860px) { .turath-case { margin: 20px 20px 70px; height: 60vh; } .turath-texte { left: 24px; right: 24px; bottom: 28px; } }
+
+  /* ===== CONTACT : VISEUR, MISE AU POINT ET DECLENCHEUR ===== */
+  .contact { overflow: hidden; isolation: isolate; }
+  .contact img { transition: filter 1.4s cubic-bezier(.2,.7,.2,1), transform 2.2s cubic-bezier(.2,.7,.2,1); }
+  .contact-texte { position: relative; z-index: 3; transition: filter 1s ease .5s, opacity 1s ease .5s; }
+  .contact:not(.net) img { filter: blur(14px) brightness(.8); transform: scale(1.08); }
+  .contact:not(.net) .contact-texte { filter: blur(8px); opacity: .5; }
+  .viseur { position: absolute; inset: 36px; z-index: 2; pointer-events: none; font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.85); }
+  .v-coin { position: absolute; width: 34px; height: 34px; border: 0 solid rgba(255,255,255,.9); transition: all .9s cubic-bezier(.2,.7,.2,1); }
+  .contact:not(.net) .v-coin { width: 70px; height: 70px; opacity: .4; }
+  .v-hg { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
+  .v-hd { top: 0; right: 0; border-top-width: 2px; border-right-width: 2px; }
+  .v-bg { bottom: 0; left: 0; border-bottom-width: 2px; border-left-width: 2px; }
+  .v-bd { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
+  .v-tiers { position: absolute; background: rgba(255,255,255,.1); }
+  .v-t1, .v-t2 { top: 0; bottom: 0; width: 1px; } .v-t1 { left: 33.33%; } .v-t2 { left: 66.66%; }
+  .v-t3, .v-t4 { left: 0; right: 0; height: 1px; } .v-t3 { top: 33.33%; } .v-t4 { top: 66.66%; }
+  .v-info { position: absolute; padding: 10px 14px; display: flex; align-items: center; gap: 8px; }
+  .v-haut-g { top: 0; left: 0; } .v-haut-d { top: 0; right: 0; } .v-bas-g { bottom: 0; left: 0; } .v-bas-d { bottom: 0; right: 0; }
+  .v-rec { width: 9px; height: 9px; border-radius: 50%; background: #e5372b; animation: rec 1.2s steps(1) infinite; }
+  @keyframes rec { 50% { opacity: 0; } }
+  .v-focus { position: absolute; left: 50%; top: 50%; width: 120px; height: 84px; margin: -42px 0 0 -60px; border: 1.5px solid rgba(255,255,255,.75); transition: left .6s cubic-bezier(.2,.7,.2,1), top .6s cubic-bezier(.2,.7,.2,1), width .4s, height .4s, margin .4s, border-color .3s; }
+  .v-focus::before, .v-focus::after { content: ""; position: absolute; left: 50%; top: 50%; background: rgba(255,255,255,.75); }
+  .v-focus::before { width: 14px; height: 1px; margin-left: -7px; } .v-focus::after { width: 1px; height: 14px; margin-top: -7px; }
+  .v-focus.cherche { width: 160px; height: 112px; margin: -56px 0 0 -80px; border-color: rgba(255,255,255,.4); }
+  .v-focus.verrouille { border-color: #7cff9c; animation: af .5s steps(2) 2; }
+  @keyframes af { 50% { opacity: .2; } }
+  #v-af.ok { color: #7cff9c; }
+  .declencheur { display: inline-flex; align-items: center; gap: 14px; color: #fff; background: rgba(0,0,0,.25); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+  .dec-rond { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid currentColor; position: relative; transition: transform .3s; }
+  .dec-rond::after { content: ""; position: absolute; inset: 3px; border-radius: 50%; background: currentColor; transition: transform .15s; }
+  .declencheur:hover .dec-rond { transform: rotate(90deg); }
+  .declencheur:active .dec-rond::after { transform: scale(.55); }
+  .flash { position: absolute; inset: 0; z-index: 4; background: #fff; opacity: 0; pointer-events: none; }
+  .flash.on { animation: flash .7s ease-out; }
+  @keyframes flash { 0% { opacity: 0; } 8% { opacity: .95; } 100% { opacity: 0; } }
+  .contact.clic .viseur { animation: clic .25s ease; }
+  @keyframes clic { 0%,100% { inset: 36px; } 40% { inset: 50px; } }
+  @media (max-width: 860px) {
+    .viseur { inset: 16px; font-size: 9px; } .v-haut-d, .v-bas-g { display: none; }
+    @keyframes clic { 0%,100% { inset: 16px; } 40% { inset: 26px; } }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .contact img, .contact-texte, .v-coin, .v-focus { transition: none; }
+    .contact:not(.net) img, .contact:not(.net) .contact-texte { filter: none; transform: none; opacity: 1; }
+  }
 </style>
 </head>
 <body>
@@ -391,10 +437,21 @@
 <!-- ===== CONTACT ===== -->
 <section class="contact" id="contact">
   <img src="images/contact-cafe.jpg" alt="Zakaria Habbad with a coffee and his camera">
-  <div>
+  <!-- Viseur d'appareil photo : la scene fait la mise au point quand on arrive -->
+  <div class="viseur" aria-hidden="true">
+    <span class="v-coin v-hg"></span><span class="v-coin v-hd"></span><span class="v-coin v-bg"></span><span class="v-coin v-bd"></span>
+    <span class="v-tiers v-t1"></span><span class="v-tiers v-t2"></span><span class="v-tiers v-t3"></span><span class="v-tiers v-t4"></span>
+    <span class="v-info v-haut-g"><b class="v-rec"></b>REC <span id="v-temps">00:00:00</span></span>
+    <span class="v-info v-haut-d">ISO 200 · RAW</span>
+    <span class="v-info v-bas-g">f/2.8 · 1/250 · 35mm</span>
+    <span class="v-info v-bas-d"><span id="v-af">AF ···</span> · <span id="v-photos">0</span> shots</span>
+    <span class="v-focus" id="v-focus"></span>
+  </div>
+  <div class="flash" id="flash"></div>
+  <div class="contact-texte">
     <h2>Let's talk business around a coffee</h2>
     <p>I look forward to hearing from you and creating images that last a lifetime.</p>
-    <a href="mailto:contact@yourwebsite.com" class="bouton">Get in touch</a>
+    <a href="mailto:contact@yourwebsite.com" class="bouton declencheur" id="declencheur"><span class="dec-rond"></span>Get in touch</a>
   </div>
 </section>
 
@@ -456,6 +513,75 @@
     document.querySelectorAll('.projet-media img').forEach(el => {
       el.addEventListener('mouseenter', () => { curseur.classList.add('survol'); label.textContent = '[VIEW]'; });
       el.addEventListener('mouseleave', () => { curseur.classList.remove('survol'); label.textContent = ''; });
+    });
+  })();
+</script>
+<script>
+  // ===== CONTACT : mise au point a l'arrivee, cadre AF qui suit la souris, declencheur =====
+  (function () {
+    const s = document.getElementById('contact');
+    if (!s) return;
+    const focus = document.getElementById('v-focus'), af = document.getElementById('v-af');
+    const temps = document.getElementById('v-temps'), nb = document.getElementById('v-photos');
+    let secondes = 0, minuteur = null, attente = null, photos = 0;
+
+    function miseAuPoint() {
+      focus.classList.remove('verrouille'); focus.classList.add('cherche');
+      af.textContent = 'AF ···'; af.classList.remove('ok');
+      clearTimeout(attente);
+      attente = setTimeout(() => {
+        focus.classList.remove('cherche'); focus.classList.add('verrouille');
+        af.textContent = 'AF ●'; af.classList.add('ok');
+        s.classList.add('net');
+      }, 650);
+    }
+    new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) {
+        miseAuPoint();
+        if (!minuteur) minuteur = setInterval(() => {
+          secondes++;
+          const f = n => String(n).padStart(2, '0');
+          temps.textContent = f(Math.floor(secondes / 3600)) + ':' + f(Math.floor(secondes / 60) % 60) + ':' + f(secondes % 60);
+        }, 1000);
+      } else {
+        s.classList.remove('net'); clearInterval(minuteur); minuteur = null;
+      }
+    }), { threshold: .45 }).observe(s);
+
+    // Ordinateur : le cadre de mise au point suit la souris
+    if (window.matchMedia('(hover: hover)').matches) {
+      let repos = null;
+      s.addEventListener('mousemove', e => {
+        const r = s.getBoundingClientRect();
+        focus.style.left = (e.clientX - r.left - 36) + 'px';
+        focus.style.top = (e.clientY - r.top - 36) + 'px';
+        clearTimeout(repos); repos = setTimeout(miseAuPoint, 180);
+      });
+      s.addEventListener('mouseleave', () => { focus.style.left = ''; focus.style.top = ''; });
+    }
+
+    // Bruit de declencheur (fabrique par le navigateur, sans fichier son)
+    function bruit() {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        [0, .09].forEach(t => {
+          const d = ctx.createBuffer(1, ctx.sampleRate * .05, ctx.sampleRate), c = d.getChannelData(0);
+          for (let i = 0; i < c.length; i++) c[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / c.length, 3);
+          const src = ctx.createBufferSource(), g = ctx.createGain(), f = ctx.createBiquadFilter();
+          f.type = 'highpass'; f.frequency.value = 1200; g.gain.value = .35;
+          src.buffer = d; src.connect(f); f.connect(g); g.connect(ctx.destination); src.start(ctx.currentTime + t);
+        });
+      } catch (e) {}
+    }
+
+    document.getElementById('declencheur').addEventListener('click', function (e) {
+      e.preventDefault();
+      const lien = this.href, flash = document.getElementById('flash');
+      bruit();
+      flash.classList.remove('on'); void flash.offsetWidth; flash.classList.add('on');
+      s.classList.remove('clic'); void s.offsetWidth; s.classList.add('clic');
+      nb.textContent = ++photos;
+      setTimeout(() => { location.href = lien; }, 650);
     });
   })();
 </script>
