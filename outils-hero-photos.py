@@ -5,7 +5,7 @@ import re, sys, os, glob, json
 from PIL import Image
 
 ROOT = sys.argv[1]
-RUBRIQUES = {"airbnb": "Airbnb", "portraits": "Portraits", "produits": "Products", "maghreb": "Maghreb", "anza": "Anza", "turath": "Turath Ummati"}
+RUBRIQUES = {"airbnb": "Airbnb", "portraits": "People", "produits": "Products", "maghreb": "Maghreb", "anza": "Anza", "turath": "Turath Ummati"}
 
 paysage, portrait, vus = [], [], set()
 for page in sorted(glob.glob(os.path.join(ROOT, "*.html"))):
