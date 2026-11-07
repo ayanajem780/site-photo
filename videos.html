@@ -251,6 +251,12 @@
   .film-client h3 { margin-top: 8px; font-family: var(--titre); font-weight: 600; font-size: clamp(20px, 2vw, 26px); line-height: 1.2; }
   .vide-clients { padding: 60px 0; color: var(--texte-doux); font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 2.6vw, 34px); }
   @media (max-width: 860px) { .onglets { gap: 24px; margin-top: 34px; } .grille-clients { grid-template-columns: 1fr; gap: 40px; } }
+  .grille-films { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px 26px; margin-bottom: 20px; }
+  .grille-films .lecteur-affiche img { opacity: .85; }
+  .grille-films h3 { font-size: clamp(17px, 1.5vw, 21px); }
+  .liste-titre.seconde { margin-top: 90px; }
+  @media (max-width: 960px) { .grille-films { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .grille-films { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -331,6 +337,9 @@
         <strong>The Forgotten Summit That Shook an Empire</strong>
       </button>
   </div>
+
+  <div class="liste-titre seconde">More documentary films</div>
+  <div class="grille-films" id="grille-docs"></div>
 
   <div class="chaine">
     <p>More stories on the channel.</p>
@@ -424,10 +433,59 @@
   })();
 </script>
 <script>
+  // ===== AUTRES DOCUMENTAIRES (onglet Documentary Films) =====
+  // yt = identifiant YouTube, vimeo = identifiant Vimeo (le nombre dans vimeo.com/123456789)
+  const DOCS = [
+    { vimeo: "1098502588", annee: "2024", titre: "Silent Minerals: Calecite" },
+    { vimeo: "988427510",  annee: "2024", titre: "Atlas Art: Selenite Workshop" },
+    { vimeo: "981337975",  annee: "2024", titre: "Atlas Art: Wood Chair Carving" },
+    { yt: "QfekjBO4Zq0",   annee: "2023", titre: "Remembering Marrakech: Trailer" },
+    { vimeo: "1244714764", annee: "2023", titre: "Boudhour #02 | Sur les chemins des Almohades" },
+    { vimeo: "808818458",  annee: "2023", titre: "Demain: Des jeunes répondent" },
+    { yt: "UH8G-gID21s",   annee: "2023", titre: "Qrayathon: Le plaisir de lire" },
+    { yt: "4kIiPct4gpM",   annee: "2022", titre: "B'LFAN: Inside the Story" },
+    { yt: "4t91MU_MBFg",   annee: "2021", titre: "YADN: Résidence musicale" },
+    { yt: "XZFJKKSvoOA",   annee: "2020", titre: "Mazal" },
+  ];
+
+  // Affiche une grille de films (YouTube ou Vimeo) qui se lancent au clic
+  function grilleFilms(grille, films) {
+    const esc = t => String(t).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+    grille.innerHTML = films.map(f => {
+      const src = f.yt
+        ? 'https://www.youtube-nocookie.com/embed/' + f.yt + '?autoplay=1&rel=0'
+        : 'https://player.vimeo.com/video/' + f.vimeo + '?autoplay=1&title=0&byline=0&portrait=0';
+      const img = f.yt ? 'https://i.ytimg.com/vi/' + f.yt + '/hqdefault.jpg' : '';
+      return `
+        <article class="film-client">
+          <div class="lecteur" data-src="${esc(src)}" data-titre="${esc(f.titre)}">
+            <button class="lecteur-affiche" aria-label="Play ${esc(f.titre)}">
+              <img src="${img}" alt="" loading="lazy" ${f.vimeo ? 'data-vimeo="' + f.vimeo + '"' : ''} ${img ? '' : 'style="visibility:hidden"'}>
+              <span class="lecteur-play"></span>
+            </button>
+          </div>
+          <div class="meta">${esc(f.client ? f.client + ' · ' + f.annee : f.annee)}</div>
+          <h3>${esc(f.titre)}</h3>
+        </article>`;
+    }).join('');
+    // miniatures Vimeo via l'API officielle
+    grille.querySelectorAll('img[data-vimeo]').forEach(im => {
+      fetch('https://vimeo.com/api/oembed.json?width=640&url=' + encodeURIComponent('https://vimeo.com/' + im.dataset.vimeo))
+        .then(r => r.ok ? r.json() : null)
+        .then(d => { if (d && d.thumbnail_url) { im.src = d.thumbnail_url; im.style.visibility = ''; } })
+        .catch(() => {});
+    });
+    grille.querySelectorAll('.lecteur').forEach(l => l.addEventListener('click', () => {
+      if (l.querySelector('iframe')) return;
+      l._affiche = l.innerHTML;
+      l.innerHTML = '<iframe src="' + l.dataset.src + '" title="' + l.dataset.titre + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+    }));
+  }
+
   // ===== FILMS CLIENTS : ajoute une ligne par film =====
   // vid = identifiant YouTube (dans youtube.com/watch?v=XXXX, c'est XXXX)
   const CLIENTS = [
-    // { vid: "XXXXXXXXXXX", client: "Nom du client", annee: "2026", titre: "Titre du film" },
+    // { yt: "XXXXXXXXXXX", client: "Nom du client", annee: "2026", titre: "Titre du film" },  (ou vimeo: "123456789")
   ];
 
   (function () {
@@ -435,22 +493,9 @@
     if (!CLIENTS.length) {
       grille.outerHTML = '<p class="vide-clients">Client films coming soon.</p>';
     } else {
-      grille.innerHTML = CLIENTS.map(f => `
-        <article class="film-client">
-          <div class="lecteur" data-vid="${f.vid}" data-titre="${f.titre.replace(/"/g, '&quot;')}">
-            <button class="lecteur-affiche" aria-label="Play ${f.titre.replace(/"/g, '&quot;')}">
-              <img src="https://i.ytimg.com/vi/${f.vid}/hqdefault.jpg" alt="" loading="lazy">
-              <span class="lecteur-play"></span>
-            </button>
-          </div>
-          <div class="meta">${f.client} · ${f.annee}</div>
-          <h3>${f.titre}</h3>
-        </article>`).join('');
-      grille.querySelectorAll('.lecteur').forEach(l => l.addEventListener('click', () => {
-        if (l.querySelector('iframe')) return;
-        l.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + l.dataset.vid + '?autoplay=1&rel=0" title="' + l.dataset.titre + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
-      }));
+      grilleFilms(grille, CLIENTS.map(f => ({ yt: f.vid, ...f })));
     }
+    grilleFilms(document.getElementById('grille-docs'), DOCS);
 
     // Onglets (lien direct possible : videos.html#client)
     const affiches = new Map();
@@ -461,7 +506,7 @@
       onglets.forEach(o => o.classList.toggle('actif', o.dataset.onglet === id));
       panneaux.forEach(p => p.classList.toggle("actif", p.id === "panneau-" + id));
       // arrete la video en cours en remettant l'affiche
-      document.querySelectorAll('.lecteur').forEach(l => { if (l.querySelector('iframe') && affiches.has(l)) l.innerHTML = affiches.get(l); });
+      document.querySelectorAll('.lecteur').forEach(l => { if (l.querySelector('iframe') && (l._affiche || affiches.has(l))) l.innerHTML = l._affiche || affiches.get(l); });
     }
     onglets.forEach(o => o.addEventListener('click', () => {
       afficher(o.dataset.onglet);
