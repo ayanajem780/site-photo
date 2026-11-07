@@ -233,6 +233,24 @@
     .lecteur-play::after { border-width: 11px 0 11px 18px; margin-left: 4px; }
     .chaine { flex-direction: column; align-items: flex-start; }
   }
+
+  /* ===== ONGLETS : DOCUMENTARY / CLIENT ===== */
+  .onglets { display: flex; gap: 40px; margin-top: 46px; border-bottom: 1px solid rgba(237,237,237,.12); flex-wrap: wrap; }
+  .onglet { background: none; border: 0; color: var(--texte); font-family: var(--mono); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; padding: 0 0 16px; margin-bottom: -1px; border-bottom: 2px solid transparent; opacity: .45; cursor: pointer; transition: opacity .3s, border-color .3s; }
+  .onglet:hover { opacity: .8; }
+  .onglet.actif { opacity: 1; border-bottom-color: #c98a6c; }
+  .onglet .compte { color: #c98a6c; margin-left: 8px; }
+  .panneau { display: none; }
+  .panneau.actif { display: block; animation: apparait .5s ease; }
+  @keyframes apparait { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .panneau-intro { max-width: 560px; color: var(--texte-doux); font-size: 17px; line-height: 1.6; margin-bottom: 40px; }
+  .panneau-intro a { color: var(--texte); border-bottom: 1px solid currentColor; }
+  .grille-clients { display: grid; grid-template-columns: repeat(2, 1fr); gap: 50px 30px; }
+  .film-client .lecteur { border-radius: 4px; }
+  .film-client .meta { margin-top: 18px; font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #c98a6c; }
+  .film-client h3 { margin-top: 8px; font-family: var(--titre); font-weight: 600; font-size: clamp(20px, 2vw, 26px); line-height: 1.2; }
+  .vide-clients { padding: 60px 0; color: var(--texte-doux); font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 2.6vw, 34px); }
+  @media (max-width: 860px) { .onglets { gap: 24px; margin-top: 34px; } .grille-clients { grid-template-columns: 1fr; gap: 40px; } }
 </style>
 </head>
 <body>
@@ -264,12 +282,18 @@
 </div>
 
 <section class="pg-intro">
-  <div class="petit-titre">Films · Turath Ummati</div>
+  <div class="petit-titre">Films</div>
   <h1>Videos</h1>
-  <p>The episodes of <em>Turath Ummati</em>, a documentary series across Morocco. Watch them here, or on <a href="https://www.youtube.com/@zakariahabbad" target="_blank" rel="noopener">the YouTube channel</a>.</p>
+  <div class="onglets" role="tablist">
+    <button class="onglet actif" data-onglet="documentary" role="tab">Documentary Films</button>
+    <button class="onglet" data-onglet="client" role="tab">Selected Client Films</button>
+  </div>
 </section>
 
 <main class="pg-zone">
+ <!-- ===== ONGLET 1 : DOCUMENTARY FILMS ===== -->
+ <div class="panneau actif" id="panneau-documentary">
+  <p class="panneau-intro">The episodes of <em>Turath Ummati</em>, a documentary series across Morocco. Watch them here, or on <a href="https://www.youtube.com/@zakariahabbad" target="_blank" rel="noopener">the YouTube channel</a>.</p>
   <div class="lecteur" id="lecteur">
     <button class="lecteur-affiche" id="lecteur-affiche" aria-label="Play the episode">
       <img id="lecteur-img" src="images/turath/main/ep1.jpg" alt="">
@@ -311,7 +335,14 @@
   <div class="chaine">
     <p>More stories on the channel.</p>
     <a href="https://www.youtube.com/@zakariahabbad" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Subscribe on YouTube</a>
-  </div>
+    </div>
+ </div>
+
+ <!-- ===== ONGLET 2 : SELECTED CLIENT FILMS ===== -->
+ <div class="panneau" id="panneau-client">
+  <p class="panneau-intro">A selection of commissioned films for brands, hotels and organizations.</p>
+  <div class="grille-clients" id="grille-clients"></div>
+ </div>
 </main>
 
 <footer>
@@ -390,6 +421,54 @@
       choisir(EPS[+c.dataset.n - 1], true);
       lecteur.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }));
+  })();
+</script>
+<script>
+  // ===== FILMS CLIENTS : ajoute une ligne par film =====
+  // vid = identifiant YouTube (dans youtube.com/watch?v=XXXX, c'est XXXX)
+  const CLIENTS = [
+    // { vid: "XXXXXXXXXXX", client: "Nom du client", annee: "2026", titre: "Titre du film" },
+  ];
+
+  (function () {
+    const grille = document.getElementById('grille-clients');
+    if (!CLIENTS.length) {
+      grille.outerHTML = '<p class="vide-clients">Client films coming soon.</p>';
+    } else {
+      grille.innerHTML = CLIENTS.map(f => `
+        <article class="film-client">
+          <div class="lecteur" data-vid="${f.vid}" data-titre="${f.titre.replace(/"/g, '&quot;')}">
+            <button class="lecteur-affiche" aria-label="Play ${f.titre.replace(/"/g, '&quot;')}">
+              <img src="https://i.ytimg.com/vi/${f.vid}/hqdefault.jpg" alt="" loading="lazy">
+              <span class="lecteur-play"></span>
+            </button>
+          </div>
+          <div class="meta">${f.client} · ${f.annee}</div>
+          <h3>${f.titre}</h3>
+        </article>`).join('');
+      grille.querySelectorAll('.lecteur').forEach(l => l.addEventListener('click', () => {
+        if (l.querySelector('iframe')) return;
+        l.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + l.dataset.vid + '?autoplay=1&rel=0" title="' + l.dataset.titre + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+      }));
+    }
+
+    // Onglets (lien direct possible : videos.html#client)
+    const affiches = new Map();
+    document.querySelectorAll('.lecteur').forEach(l => affiches.set(l, l.innerHTML));
+    const onglets = document.querySelectorAll('.onglet');
+    const panneaux = document.querySelectorAll('.panneau');
+    function afficher(id) {
+      onglets.forEach(o => o.classList.toggle('actif', o.dataset.onglet === id));
+      panneaux.forEach(p => p.classList.toggle("actif", p.id === "panneau-" + id));
+      // arrete la video en cours en remettant l'affiche
+      document.querySelectorAll('.lecteur').forEach(l => { if (l.querySelector('iframe') && affiches.has(l)) l.innerHTML = affiches.get(l); });
+    }
+    onglets.forEach(o => o.addEventListener('click', () => {
+      afficher(o.dataset.onglet);
+      history.replaceState(null, '', '#' + o.dataset.onglet);
+    }));
+    const h = location.hash.slice(1);
+    if (h === 'client' || h === 'documentary') afficher(h);
   })();
 </script>
 </body>
