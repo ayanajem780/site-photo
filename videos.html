@@ -299,46 +299,7 @@
 <main class="pg-zone">
  <!-- ===== ONGLET 1 : DOCUMENTARY FILMS ===== -->
  <div class="panneau actif" id="panneau-documentary">
-  <p class="panneau-intro">The episodes of <em>Turath Ummati</em>, a documentary series across Morocco. Watch them here, or on <a href="https://www.youtube.com/@zakariahabbad" target="_blank" rel="noopener">the YouTube channel</a>.</p>
-  <div class="lecteur" id="lecteur">
-    <button class="lecteur-affiche" id="lecteur-affiche" aria-label="Play the episode">
-      <img id="lecteur-img" src="images/turath/main/ep1.jpg" alt="">
-      <span class="lecteur-play"></span>
-    </button>
-  </div>
-  <div class="lecteur-info">
-    <div>
-      <div class="meta" id="lecteur-meta">Episode 1 · Wagag</div>
-      <h2 id="lecteur-titre">The Forgotten Village That Gave Birth to an Empire</h2>
-    </div>
-    <a id="lecteur-article" href="turath-ep1.html#article">Read the article →</a>
-  </div>
-
-  <div class="liste-titre">All episodes · 4</div>
-  <div class="liste-videos">
-      <button class="carte-video actif" data-n="1">
-        <span class="vignette-v"><img src="images/turath/main/ep1.jpg" alt="" loading="lazy"><span class="num">01</span><span class="en-cours">Now playing</span></span>
-        <small>Episode 1 · Wagag</small>
-        <strong>The Forgotten Village That Gave Birth to an Empire</strong>
-      </button>
-      <button class="carte-video" data-n="2">
-        <span class="vignette-v"><img src="images/turath/main/ep2.jpg" alt="" loading="lazy"><span class="num">02</span><span class="en-cours">Now playing</span></span>
-        <small>Episode 2 · Saadian Sugar</small>
-        <strong>The Sweet Secret That Built an Empire</strong>
-      </button>
-      <button class="carte-video" data-n="3">
-        <span class="vignette-v"><img src="images/turath/main/ep3.jpg" alt="" loading="lazy"><span class="num">03</span><span class="en-cours">Now playing</span></span>
-        <small>Episode 3 · The Saadians</small>
-        <strong>The Fortress That Fell: The Battle for Santa Cruz</strong>
-      </button>
-      <button class="carte-video" data-n="4">
-        <span class="vignette-v"><img src="images/turath/main/ep4.jpg" alt="" loading="lazy"><span class="num">04</span><span class="en-cours">Now playing</span></span>
-        <small>Episode 4 · Iguiliz</small>
-        <strong>The Forgotten Summit That Shook an Empire</strong>
-      </button>
-  </div>
-
-  <div class="liste-titre seconde">More documentary films</div>
+  <p class="panneau-intro">Documentary films and stories from across Morocco. More on <a href="https://www.youtube.com/@zakariahabbad" target="_blank" rel="noopener">the YouTube channel</a>.</p>
   <div class="grille-films" id="grille-docs"></div>
 
   <div class="chaine">
@@ -406,30 +367,6 @@
       el.addEventListener('mouseenter', () => { curseur.classList.add('survol'); label.textContent = '[VIEW]'; });
       el.addEventListener('mouseleave', () => { curseur.classList.remove('survol'); label.textContent = ''; });
     });
-  })();
-</script>
-<script>
-  // Lecteur : la video YouTube ne se charge qu'au clic. Les cartes changent l'episode affiche.
-  (function () {
-    const EPS = [{"n": 1, "vid": "qbM-1uRkg-Q", "tv": "The Forgotten Village That Gave Birth to an Empire", "lieu": "Wagag"}, {"n": 2, "vid": "Gv8EQaXfRf4", "tv": "The Sweet Secret That Built an Empire", "lieu": "Saadian Sugar"}, {"n": 3, "vid": "twMiH_Q5IKI", "tv": "The Fortress That Fell: The Battle for Santa Cruz", "lieu": "The Saadians"}, {"n": 4, "vid": "xpfi-gz3kE8", "tv": "The Forgotten Summit That Shook an Empire", "lieu": "Iguiliz"}];
-    const lecteur = document.getElementById('lecteur');
-    let actuel = EPS[0];
-    function jouer() {
-      lecteur.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + actuel.vid + '?autoplay=1&rel=0" title="' + actuel.tv.replace(/"/g, '&quot;') + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
-    }
-    function choisir(e, lancer) {
-      actuel = e;
-      document.getElementById('lecteur-meta').textContent = 'Episode ' + e.n + ' · ' + e.lieu;
-      document.getElementById('lecteur-titre').textContent = e.tv;
-      document.getElementById('lecteur-article').href = 'turath-ep' + e.n + '.html#article';
-      document.querySelectorAll('.carte-video').forEach(c => c.classList.toggle('actif', +c.dataset.n === e.n));
-      if (lancer) jouer();
-    }
-    lecteur.addEventListener('click', e => { if (e.target.closest('#lecteur-affiche')) jouer(); });
-    document.querySelectorAll('.carte-video').forEach(c => c.addEventListener('click', () => {
-      choisir(EPS[+c.dataset.n - 1], true);
-      lecteur.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }));
   })();
 </script>
 <script>
