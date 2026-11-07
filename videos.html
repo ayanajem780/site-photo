@@ -350,7 +350,7 @@
  <!-- ===== ONGLET 2 : SELECTED CLIENT FILMS ===== -->
  <div class="panneau" id="panneau-client">
   <p class="panneau-intro">A selection of commissioned films for brands, hotels and organizations.</p>
-  <div class="grille-clients" id="grille-clients"></div>
+  <div class="grille-films" id="grille-clients"></div>
  </div>
 </main>
 
@@ -456,6 +456,7 @@
         ? 'https://www.youtube-nocookie.com/embed/' + f.yt + '?autoplay=1&rel=0'
         : 'https://player.vimeo.com/video/' + f.vimeo + '?autoplay=1&title=0&byline=0&portrait=0';
       const img = f.yt ? 'https://i.ytimg.com/vi/' + f.yt + '/hqdefault.jpg' : '';
+      const meta = [f.client, f.annee].filter(Boolean).join(' · ');
       return `
         <article class="film-client">
           <div class="lecteur" data-src="${esc(src)}" data-titre="${esc(f.titre)}">
@@ -464,7 +465,7 @@
               <span class="lecteur-play"></span>
             </button>
           </div>
-          <div class="meta">${esc(f.client ? f.client + ' · ' + f.annee : f.annee)}</div>
+          ${meta ? '<div class="meta">' + esc(meta) + '</div>' : ''}
           <h3>${esc(f.titre)}</h3>
         </article>`;
     }).join('');
@@ -486,6 +487,18 @@
   // vid = identifiant YouTube (dans youtube.com/watch?v=XXXX, c'est XXXX)
   const CLIENTS = [
     // { yt: "XXXXXXXXXXX", client: "Nom du client", annee: "2026", titre: "Titre du film" },  (ou vimeo: "123456789")
+    { vimeo: "1244280199", client: "Amori",          titre: "Ice Cream" },
+    { vimeo: "1007062510",                           titre: "Ifoulki" },
+    { vimeo: "578628063",                            titre: "Koko Kombucha" },
+    { vimeo: "1244687863", client: "TigMAÏA",        titre: "A Creative Escape in Agadir" },
+    { vimeo: "439573832",                            titre: "Argan Oil" },
+    { vimeo: "331860380",                            titre: "Summer House" },
+    { yt: "Y4ymkc1S9TE",   client: "Concert",        titre: "Jubantouja" },
+    { yt: "4uNHa8ENZio",                             titre: "Agadir Culture #02" },
+    { yt: "qqRK31gLRZc",   client: "Cultural Event", titre: "NABNI #04" },
+    { yt: "nWF5m2Dtot4",   client: "Cultural Event", titre: "NABNI #03" },
+    { yt: "348G7jYbfp4",                             titre: "Podcast Presentation" },
+    { vimeo: "1244710324", client: "Artisania",      titre: "The Art of Moroccan Pottery" },
   ];
 
   (function () {
@@ -493,7 +506,7 @@
     if (!CLIENTS.length) {
       grille.outerHTML = '<p class="vide-clients">Client films coming soon.</p>';
     } else {
-      grilleFilms(grille, CLIENTS.map(f => ({ yt: f.vid, ...f })));
+      grilleFilms(grille, CLIENTS);
     }
     grilleFilms(document.getElementById('grille-docs'), DOCS);
 
